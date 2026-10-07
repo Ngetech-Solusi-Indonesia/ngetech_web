@@ -8,7 +8,7 @@ export const site = {
   email: 'TODO_EMAIL',
   // Registered entity name as it should appear in the footer, e.g. "PT NgeTech Solusi Indonesia"
   legalName: 'TODO_LEGAL_NAME',
-  githubOrg: 'TODO_GITHUB_ORG',
+  githubOrg: 'Ngetech-Solusi-Indonesia',
 };
 
 export function waLink(text: string): string {

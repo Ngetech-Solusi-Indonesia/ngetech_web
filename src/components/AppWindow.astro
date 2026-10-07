@@ -144,6 +144,7 @@ const strings = {
         </div>
         <div class="booth-side">
           <div class="booth-head">
+            <img class="booth-wordmark" src="/brand/ngebooth-wordmark-white.svg" alt="NgeBooth" width="112" height="30" loading="lazy" />
             <p class="app-h">{a.booth.title}</p>
             <p>{a.booth.layout}</p>
           </div>
@@ -384,6 +385,8 @@ const strings = {
   @keyframes flash { from { opacity: 0.9; } to { opacity: 0; } }
   .booth-side { display: grid; gap: 16px; align-content: start; }
   .booth-head p { font-size: var(--text-xs); color: var(--booth-ink-2); }
+  .booth-head .app-h { color: var(--booth-ink); font-size: var(--text-sm); margin-top: 10px; }
+  .booth-wordmark { height: 26px; width: auto; }
   .strip {
     display: grid;
     grid-template-columns: repeat(4, 1fr);

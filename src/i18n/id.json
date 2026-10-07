@@ -1,12 +1,16 @@
 {
   "meta": {
-    "title": "NgeTech Solusi Indonesia: software dan perangkat untuk usaha di Bandung",
-    "description": "Tim software di Bandung. Kami bikin aplikasi sesuai cara kerja Anda: sistem inventaris, absensi RFID, dan photobooth NgeBooth."
+    "title": "NgeTech: Jasa Pembuatan Aplikasi dan Software di Bandung",
+    "description": "Tim software di Bandung yang membuat aplikasi sesuai cara kerja Anda: inventaris dan piutang, absensi RFID sekolah, dan photobooth NgeBooth.",
+    "ogAlt": "NgeTech: dari kertas dan Excel ke sistem yang rapi",
+    "notFoundTitle": "Halaman tidak ditemukan",
+    "notFoundBody": "Halaman yang Anda cari tidak ada. Mungkin alamatnya berubah.",
+    "home": "Kembali ke beranda"
   },
   "nav": {
-    "demo": "Produk",
+    "demo": "Demo",
     "why": "Keunggulan",
-    "status": "Status",
+    "status": "Produk",
     "team": "Tim",
     "cta": "Chat di WhatsApp",
     "skip": "Langsung ke konten",
@@ -16,7 +20,7 @@
     "title": "Dari kertas dan Excel ke sistem yang rapi.",
     "sub": "Tim software di Bandung. Kami bikin aplikasi sesuai cara kerja Anda, lengkap dengan perangkatnya: pembaca kartu, kamera, printer.",
     "cta": "Chat di WhatsApp",
-    "secondary": "Lihat status produk",
+    "secondary": "Lihat produk kami",
     "demoNote": "Demo interaktif dengan data contoh. Silakan dicoba."
   },
   "app": {
@@ -187,25 +191,44 @@
     ]
   },
   "projects": {
-    "title": "Status produk kami, apa adanya",
-    "sub": "Sesuai keadaan hari ini.",
-    "colProduct": "Produk",
+    "title": "Produk yang sudah kami bangun",
+    "sub": "Screenshot asli dari tiap aplikasi, dengan status apa adanya.",
+    "shotNote": "Screenshot asli dengan data contoh.",
     "colFor": "Untuk",
-    "colStatus": "Status",
     "inventory": {
       "name": "Sistem Inventaris",
-      "desc": "Catat barang masuk dan keluar, lihat sisa stok per lokasi.",
-      "for": "Usaha dengan stok barang"
+      "desc": "Pencatatan pembelian, penjualan, stok gudang, dan piutang pelanggan dalam satu aplikasi web.",
+      "for": "Usaha dagang dengan stok dan pelanggan langganan",
+      "points": [
+        "Penjualan tunai atau piutang, tercatat otomatis",
+        "Pembelian dari pemasok dan stok gudang",
+        "Piutang dan cicilan per pelanggan",
+        "Dashboard laba dan grafik harga beli"
+      ],
+      "alt": "Halaman Penjualan di Sistem Inventaris: daftar transaksi dengan status Piutang atau Cash"
     },
     "ngebooth": {
       "name": "NgeBooth",
-      "desc": "Aplikasi photobooth: ambil foto, susun jadi strip, cetak.",
-      "for": "Acara dan event"
+      "desc": "Platform photobooth untuk acara dan vendor: dari ambil foto sampai cetak dan bagikan.",
+      "for": "Acara, event, dan vendor photobooth",
+      "points": [
+        "Template strip dan editor foto",
+        "QR code dan passcode untuk unduh foto",
+        "Dashboard vendor: harga, voucher, lisensi booth",
+        "Terhubung ke kamera dan printer"
+      ],
+      "alt": "Dashboard vendor NgeBooth: pendapatan, sesi, status perangkat, dan tren sesi foto"
     },
     "rfid": {
       "name": "Absensi RFID",
-      "desc": "Tap kartu di pembaca, kehadiran langsung tercatat.",
-      "for": "Sekolah dan kantor"
+      "desc": "Absensi sekolah dengan kartu RFID: siswa tap kartu di pembaca ESP32, kehadiran masuk ke dashboard.",
+      "for": "Sekolah",
+      "points": [
+        "Pembaca kartu RFID berbasis ESP32",
+        "Data siswa, guru, kelas, dan jadwal",
+        "Rekap dan laporan kehadiran"
+      ],
+      "alt": "Halaman masuk Sistem Manajemen Kehadiran dengan logo NgeTech"
     }
   },
   "team": {

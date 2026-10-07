@@ -1,12 +1,16 @@
 {
   "meta": {
-    "title": "NgeTech Solusi Indonesia: software and hardware for businesses in Bandung",
-    "description": "A software team in Bandung. We build apps around how you work: an inventory system, RFID attendance, and the NgeBooth photobooth."
+    "title": "NgeTech: Custom Software and App Development in Bandung",
+    "description": "A software team in Bandung building apps around how you work: inventory and receivables, RFID school attendance, and the NgeBooth photobooth.",
+    "ogAlt": "NgeTech: from paper and spreadsheets to one tidy system",
+    "notFoundTitle": "Page not found",
+    "notFoundBody": "The page you're looking for doesn't exist. The address may have changed.",
+    "home": "Back to home"
   },
   "nav": {
-    "demo": "Products",
+    "demo": "Demo",
     "why": "Why us",
-    "status": "Status",
+    "status": "Products",
     "team": "Team",
     "cta": "Chat on WhatsApp",
     "skip": "Skip to content",
@@ -16,7 +20,7 @@
     "title": "From paper and spreadsheets to one tidy system.",
     "sub": "A software team in Bandung. We build apps around how you work, including the hardware: card readers, cameras, printers.",
     "cta": "Chat on WhatsApp",
-    "secondary": "See product status",
+    "secondary": "See our products",
     "demoNote": "Interactive demo with sample data. Go ahead and try it."
   },
   "app": {
@@ -187,25 +191,44 @@
     ]
   },
   "projects": {
-    "title": "Where our products stand, honestly",
-    "sub": "As of today.",
-    "colProduct": "Product",
+    "title": "Products we've built",
+    "sub": "Real screenshots from each app, with its actual status.",
+    "shotNote": "Real screenshot with sample data.",
     "colFor": "For",
-    "colStatus": "Status",
     "inventory": {
       "name": "Inventory System",
-      "desc": "Record stock in and out, see what's left at each location.",
-      "for": "Businesses that hold stock"
+      "desc": "Purchases, sales, warehouse stock and customer receivables in one web app.",
+      "for": "Trading businesses with stock and regular customers",
+      "points": [
+        "Cash or credit sales, recorded automatically",
+        "Purchases from suppliers and warehouse stock",
+        "Receivables and instalments per customer",
+        "Profit dashboard and purchase-price chart"
+      ],
+      "alt": "Sales page in the Inventory System: transactions marked Receivable or Cash"
     },
     "ngebooth": {
       "name": "NgeBooth",
-      "desc": "Photobooth app: take photos, lay out a strip, print.",
-      "for": "Events"
+      "desc": "A photobooth platform for events and vendors: from taking photos to printing and sharing them.",
+      "for": "Events and photobooth vendors",
+      "points": [
+        "Strip templates and photo editor",
+        "QR code and passcode to download photos",
+        "Vendor dashboard: pricing, vouchers, booth licences",
+        "Works with cameras and printers"
+      ],
+      "alt": "NgeBooth vendor dashboard: revenue, sessions, device status and session trend"
     },
     "rfid": {
       "name": "RFID Attendance",
-      "desc": "Tap a card on the reader and attendance is recorded.",
-      "for": "Schools and offices"
+      "desc": "School attendance with RFID cards: students tap a card on an ESP32 reader and attendance reaches the dashboard.",
+      "for": "Schools",
+      "points": [
+        "ESP32-based RFID card reader",
+        "Students, teachers, classes and schedules",
+        "Attendance summaries and reports"
+      ],
+      "alt": "Sign-in page of the attendance management system with the NgeTech logo"
     }
   },
   "team": {

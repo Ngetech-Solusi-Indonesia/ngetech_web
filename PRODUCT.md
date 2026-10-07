@@ -25,26 +25,28 @@ Confirmed differentiators (user-confirmed 2026-10-07):
 - Scale and cost that make sense for UMKM.
 
 ## Capabilities and Constraints
-Products and their true status:
-- **Inventory system:** in use by a real client (client not named).
-- **NgeBooth** (photobooth app): internal testing.
-- **RFID attendance:** in development, not deployed anywhere.
+Products and their true status (capabilities confirmed from the org repos, 2026-10-07):
+- **Inventory system** (repo Inventory-Management-Final): purchases from suppliers, cash/credit sales, warehouse stock, customer receivables with instalments, profit dashboard. In use by a real client (client not named).
+- **NgeBooth** (repo Ngebooth, latest work on branch feat/booth-editor-ux): web photobooth platform with strip templates, photo editor, QR code + passcode sharing, vendor dashboard (pricing, vouchers, booth licences), camera and printer bridge. Internal testing.
+- **RFID attendance** (repo School-Project): school attendance with ESP32 RFID readers, students/teachers/classes/schedules, reports. In development, not deployed anywhere.
 
 Constraints: Indonesian is the primary language, English secondary. Contact is via WhatsApp and email only (no form). Domain: ngetech.studio.
 
-Open (not yet provided): WhatsApp number, team names and roles, legal entity name, contact email, GitHub org.
+Team: Daniandra Prayudisty (CEO), Muhammad Farhan Al Hasan (CTO), Ali Hizqil (Designer), Athallah Zacky Maulana (Developer), Ulinnuha Ubay (Developer). GitHub org: Ngetech-Solusi-Indonesia.
+
+Open (not yet provided): WhatsApp number, legal entity name, contact email.
 
 ## Brand Commitments
 - Name: NgeTech Solusi Indonesia ("NgeTech", spelled as in the logo).
 - Logo: teal cup with a green leaf and a circuit motif, from github.com/Ngetech-Solusi-Indonesia/.github (master: public/brand/ngetech-logo-1500.png). Used unmodified; only cropped to the mark for small sizes.
-- NgeBooth has its own identity (lime accent, Poppins wordmark), which is kept inside NgeBooth's own surfaces.
+- NgeBooth has its own identity (lime #D5F267, outline/bold "NgeBooth" wordmark with a sparkle, from its repo), kept inside NgeBooth's own surfaces.
 - Voice: plain, concrete Indonesian. No marketing buzzwords, no forced puns on the name.
 - Visual direction (chosen 2026-10-07): the category standard for a software company, executed straight. Craft bar: Linear and Vercel.
 
 ## Evidence on Hand
-- NgeBooth photos / photo strips: the user can provide these (not yet received).
-- Official logo (found in the org's .github repo, 2026-10-07).
-- No screenshots of the inventory system, no team photos, no hardware photos available. The NgeBooth, inventory and RFID repos are not readable from this session.
+- Official NgeTech logo (org .github repo) and NgeBooth wordmark SVGs (Ngebooth repo).
+- Real screenshots of all three products, captured from the repos running locally with their own sample seed data (public/work/).
+- No team photos, no hardware photos, no real NgeBooth event photos yet.
 - No testimonials, client logos, case-study numbers, or metrics exist. None may be invented.
 
 ## Product Principles

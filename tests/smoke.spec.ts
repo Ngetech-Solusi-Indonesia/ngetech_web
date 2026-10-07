@@ -16,7 +16,7 @@ for (const [path, lang, heading] of [
     await page.goto(path);
     await expect(page.locator('html')).toHaveAttribute('lang', lang);
     await expect(page.locator('h1')).toContainText(heading);
-    for (const id of ['demo', 'why', 'status', 'team', 'contact']) {
+    for (const id of ['demo', 'why', 'products', 'team', 'contact']) {
       await expect(page.locator(`#${id}`)).toBeVisible();
     }
     expect(errors).toEqual([]);
@@ -25,7 +25,7 @@ for (const [path, lang, heading] of [
 
 test('project status labels match reality', async ({ page }) => {
   await page.goto('/');
-  const items = page.locator('#status .item');
+  const items = page.locator('#products .product');
   await expect(items).toHaveCount(3);
   await expect(items.nth(0)).toContainText('Sistem Inventaris');
   await expect(items.nth(0)).toContainText('Dipakai klien');
@@ -88,4 +88,17 @@ test('NgeBooth session fills the strip (reduced motion runs instantly)', async (
   await expect(page.locator('.strip-frame.is-filled')).toHaveCount(4);
   await expect(page.locator('[data-vf]')).toHaveText('Strip ready to print');
   await ctx.close();
+});
+
+test('SEO: JSON-LD, hreflang, OG and real team names', async ({ page }) => {
+  await page.goto('/');
+  const ld = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent())!);
+  const org = ld['@graph'][0];
+  expect(org.address.addressLocality).toBe('Bandung');
+  expect(org.employee.map((e: { name: string }) => e.name)).toContain('Daniandra Prayudisty');
+  expect(JSON.stringify(ld)).not.toContain('TODO_');
+  await expect(page.locator('link[rel="alternate"][hreflang="en"]')).toHaveAttribute('href', 'https://ngetech.studio/en/');
+  await expect(page.locator('meta[property="og:image:alt"]')).toHaveCount(1);
+  await expect(page.locator('#team')).toContainText('Ali Hizqil');
+  await expect(page.locator('#products img')).toHaveCount(3);
 });

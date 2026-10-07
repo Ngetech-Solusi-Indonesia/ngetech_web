@@ -64,7 +64,6 @@ const hwIcons = ['identification-card', 'camera', 'printer'];
       </article>
 
       <article class="cell cell-cost">
-        <span class="cost-icon"><Icon name="coins" size={20} /></span>
         <h3>{w.items[3].title}</h3>
         <p>{w.items[3].body}</p>
       </article>
@@ -149,27 +148,11 @@ const hwIcons = ['identification-card', 'camera', 'printer'];
   .flow :global(.flow-arrow) { color: var(--ink-3); }
 
   /* Cost: one compact line, height matches its content */
-  .cell-cost {
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    gap: 6px 16px;
-    padding-block: 22px;
-  }
-  .cost-icon {
-    grid-row: span 2;
-    display: grid; place-items: center;
-    width: 44px; height: 44px;
-    border-radius: var(--radius-control);
-    border: 1px solid var(--line-2);
-    background: var(--surface-2);
-    color: var(--ink);
-  }
+  .cell-cost { gap: 6px 20px; padding-block: 22px; }
   .cell-cost h3 { font-size: var(--text-lg); letter-spacing: -0.015em; }
-  .cell-cost p { color: var(--ink-2); grid-column: 2; }
+  .cell-cost p { color: var(--ink-2); }
   @media (min-width: 760px) {
-    .cell-cost { grid-template-columns: auto auto 1fr; }
-    .cost-icon { grid-row: auto; }
-    .cell-cost p { grid-column: auto; }
+    .cell-cost { grid-template-columns: auto 1fr; align-items: baseline; }
   }
 
   @media (max-width: 559px) {

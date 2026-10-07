@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-07T10:01:15Z",
+  "generatedAt": "2026-10-07T10:44:36+00:00",
   "title": "Design System: NgeTech Solusi Indonesia",
   "extensions": {
     "colorMeta": {
@@ -29,7 +29,182 @@
       "ngebooth-lime": {
         "role": "brand-scoped",
         "displayName": "NgeBooth Lime",
-        "canonical": "#C8F051"
+        "canonical": "#D5F267"
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "canonical": "#FDFDFD"
+      },
+      "surface-raised": {
+        "role": "neutral",
+        "displayName": "Surface Raised",
+        "canonical": "#F3F3F4"
+      },
+      "surface-sunk": {
+        "role": "neutral",
+        "displayName": "Surface Sunk",
+        "canonical": "#EAEAEC"
+      },
+      "ink-secondary": {
+        "role": "neutral",
+        "displayName": "Ink Secondary",
+        "canonical": "#47474F"
+      },
+      "ink-tertiary": {
+        "role": "neutral",
+        "displayName": "Ink Tertiary",
+        "canonical": "#6B6B74"
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#E6E6E9"
+      },
+      "hairline-strong": {
+        "role": "neutral",
+        "displayName": "Hairline Strong",
+        "canonical": "#D6D6DB"
+      },
+      "state-teal-soft": {
+        "role": "primary",
+        "displayName": "State Teal Soft",
+        "canonical": "#E2F5F8"
+      },
+      "state-teal-line": {
+        "role": "primary",
+        "displayName": "State Teal Line",
+        "canonical": "#A8DCE5"
+      },
+      "caution": {
+        "role": "neutral",
+        "displayName": "Caution",
+        "canonical": "#8A5300"
+      },
+      "caution-soft": {
+        "role": "neutral",
+        "displayName": "Caution Soft",
+        "canonical": "#FBF0DC"
+      },
+      "ground-dark": {
+        "role": "neutral",
+        "displayName": "Ground Dark",
+        "canonical": "#0B0B0C"
+      },
+      "surface-dark": {
+        "role": "neutral",
+        "displayName": "Surface Dark",
+        "canonical": "#121214"
+      },
+      "ink-dark": {
+        "role": "neutral",
+        "displayName": "Ink Dark",
+        "canonical": "#EDEDEF"
+      },
+      "state-teal-dark": {
+        "role": "primary",
+        "displayName": "State Teal Dark",
+        "canonical": "#45C6DB"
+      },
+      "ngebooth-ground": {
+        "role": "brand-scoped",
+        "displayName": "Ngebooth Ground",
+        "canonical": "#141513"
+      },
+      "invert": {
+        "role": "neutral",
+        "displayName": "Invert",
+        "canonical": "#111113"
+      },
+      "surface-raised-dark": {
+        "role": "neutral",
+        "displayName": "Surface Raised Dark",
+        "canonical": "#18181B"
+      },
+      "surface-sunk-dark": {
+        "role": "neutral",
+        "displayName": "Surface Sunk Dark",
+        "canonical": "#222226"
+      },
+      "ink-secondary-dark": {
+        "role": "neutral",
+        "displayName": "Ink Secondary Dark",
+        "canonical": "#B4B4BC"
+      },
+      "ink-tertiary-dark": {
+        "role": "neutral",
+        "displayName": "Ink Tertiary Dark",
+        "canonical": "#8E8E97"
+      },
+      "hairline-dark": {
+        "role": "neutral",
+        "displayName": "Hairline Dark",
+        "canonical": "#232327"
+      },
+      "hairline-strong-dark": {
+        "role": "neutral",
+        "displayName": "Hairline Strong Dark",
+        "canonical": "#303036"
+      },
+      "state-teal-soft-dark": {
+        "role": "primary",
+        "displayName": "State Teal Soft Dark",
+        "canonical": "#0F2C31"
+      },
+      "state-teal-line-dark": {
+        "role": "primary",
+        "displayName": "State Teal Line Dark",
+        "canonical": "#1E5660"
+      },
+      "caution-dark": {
+        "role": "neutral",
+        "displayName": "Caution Dark",
+        "canonical": "#F0B65A"
+      },
+      "caution-soft-dark": {
+        "role": "neutral",
+        "displayName": "Caution Soft Dark",
+        "canonical": "#33260F"
+      },
+      "invert-dark": {
+        "role": "neutral",
+        "displayName": "Invert Dark",
+        "canonical": "#1C1C20"
+      },
+      "ngebooth-viewfinder": {
+        "role": "brand-scoped",
+        "displayName": "Ngebooth Viewfinder",
+        "canonical": "#1D1E1B"
+      },
+      "ngebooth-frame": {
+        "role": "brand-scoped",
+        "displayName": "Ngebooth Frame",
+        "canonical": "#2B2D28"
+      },
+      "ngebooth-frame-empty": {
+        "role": "brand-scoped",
+        "displayName": "Ngebooth Frame Empty",
+        "canonical": "#DCDCD5"
+      },
+      "ngebooth-frame-label": {
+        "role": "brand-scoped",
+        "displayName": "Ngebooth Frame Label",
+        "canonical": "#8B8B84"
+      },
+      "ngebooth-ink": {
+        "role": "brand-scoped",
+        "displayName": "Ngebooth Ink",
+        "canonical": "#EFEFEA"
+      },
+      "ngebooth-ink-secondary": {
+        "role": "brand-scoped",
+        "displayName": "Ngebooth Ink Secondary",
+        "canonical": "#A3A39B"
+      },
+      "shadow-hairline": {
+        "role": "neutral",
+        "displayName": "Shadow Hairline",
+        "canonical": "#00000014"
       }
     },
     "typographyMeta": {

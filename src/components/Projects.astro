@@ -1,53 +1,93 @@
 ---
 import { t, type Locale } from '../i18n';
 import { projects } from '../data/projects';
+import Icon from './Icon.astro';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const d = t(locale);
 const pillClass = { in_use: 'is-live', internal_testing: 'is-testing', in_development: '' } as const;
+const [lead, ...rest] = projects;
 ---
-<section class="section" id="status">
+<section class="section" id="products">
   <div class="wrap">
     <div class="section-head">
       <h2>{d.projects.title}</h2>
       <p>{d.projects.sub}</p>
     </div>
-    <div class="table" role="table" aria-label={d.projects.title}>
-      <div class="tr th" role="row">
-        <span role="columnheader">{d.projects.colProduct}</span>
-        <span role="columnheader">{d.projects.colFor}</span>
-        <span role="columnheader">{d.projects.colStatus}</span>
-      </div>
-      {projects.map((p) => {
-        const c = d.projects[p.key];
-        return (
-          <div class="tr item" role="row" data-key={p.key}>
-            <div role="cell" class="product">
+
+    {[lead, ...rest].map((p, i) => {
+      const c = d.projects[p.key];
+      return (
+        <article class:list={['product', i === 0 ? 'is-lead' : 'is-pair']} data-key={p.key}>
+          <div class="copy">
+            <div class="title">
               <h3>{c.name}</h3>
-              <p>{c.desc}</p>
+              <span class={`pill ${pillClass[p.status]}`}>{d.status[p.status]}</span>
             </div>
-            <span role="cell" class="for">{c.for}</span>
-            <span role="cell" class="status"><span class={`pill ${pillClass[p.status]}`}>{d.status[p.status]}</span></span>
+            <p class="desc">{c.desc}</p>
+            <ul class="points">
+              {c.points.map((pt) => <li><Icon name="check" size={16} /><span>{pt}</span></li>)}
+            </ul>
+            <p class="for"><span>{d.projects.colFor}</span> {c.for}</p>
           </div>
-        );
-      })}
-    </div>
+          <figure class="shot">
+            <img
+              src={`${p.shot}-1600.webp`}
+              srcset={`${p.shot}-800.webp 800w, ${p.shot}-1600.webp 1600w`}
+              sizes={i === 0 ? '(min-width: 1000px) 700px, 100vw' : '(min-width: 900px) 580px, 100vw'}
+              width="1600"
+              height="1000"
+              alt={c.alt}
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+        </article>
+      );
+    })}
+    <p class="note">{d.projects.shotNote}</p>
   </div>
 </section>
 
 <style>
-  .table { border-top: 1px solid var(--ink); }
-  .tr { display: grid; gap: 8px 24px; padding-block: 22px; border-bottom: 1px solid var(--line); }
-  .th { display: none; }
-  .product { display: grid; gap: 4px; }
-  .product p { color: var(--ink-2); max-width: 46ch; }
-  .for { color: var(--ink-2); font-size: var(--text-sm); }
-  .status { margin-top: 4px; }
+  .wrap { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  .section-head { margin-bottom: 24px; }
+  .product {
+    display: grid;
+    gap: 28px;
+    padding: clamp(20px, 3vw, 36px);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-surface);
+    background: var(--surface);
+    min-width: 0;
+  }
+  .copy { display: grid; gap: 14px; align-content: start; }
+  .title { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+  h3 { font-size: var(--text-xl); letter-spacing: -0.02em; }
+  .desc { color: var(--ink-2); max-width: 46ch; }
+  .points { list-style: none; padding: 0; display: grid; gap: 8px; font-size: var(--text-sm); color: var(--ink); }
+  .points li { display: grid; grid-template-columns: 16px 1fr; gap: 10px; align-items: start; }
+  .points :global(svg) { color: var(--accent); margin-top: 2px; }
+  .for { font-size: var(--text-sm); color: var(--ink-2); }
+  .for span { color: var(--ink-3); margin-right: 6px; }
+  .shot {
+    margin: 0;
+    border-radius: var(--radius-control);
+    border: 1px solid var(--line);
+    overflow: hidden;
+    background: var(--surface-2);
+    align-self: start;
+  }
+  .shot img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; }
+  .note { font-size: var(--text-sm); color: var(--ink-3); margin-top: 4px; }
 
-  @media (min-width: 760px) {
-    .tr { grid-template-columns: minmax(0, 6fr) minmax(0, 3fr) minmax(0, 3fr); align-items: start; }
-    .th { display: grid; padding-block: 12px; font-size: var(--text-xs); color: var(--ink-3); font-weight: 500; }
-    .for { font-size: var(--text-base); padding-top: 1px; }
-    .status { margin-top: 0; }
+  @media (min-width: 900px) {
+    .wrap { grid-template-columns: 1fr 1fr; }
+    .section-head, .note, .is-lead { grid-column: 1 / -1; }
+    .is-pair { grid-template-rows: auto 1fr; }
+    .is-pair .shot { order: -1; }
+  }
+  @media (min-width: 1000px) {
+    .is-lead { grid-template-columns: 5fr 7fr; align-items: center; gap: 48px; }
   }
 </style>

@@ -16,12 +16,31 @@ colors:
   state-teal-line: "#A8DCE5"
   caution: "#8A5300"
   caution-soft: "#FBF0DC"
+  invert: "#111113"
   ground-dark: "#0B0B0C"
   surface-dark: "#121214"
+  surface-raised-dark: "#18181B"
+  surface-sunk-dark: "#222226"
   ink-dark: "#EDEDEF"
+  ink-secondary-dark: "#B4B4BC"
+  ink-tertiary-dark: "#8E8E97"
+  hairline-dark: "#232327"
+  hairline-strong-dark: "#303036"
   state-teal-dark: "#45C6DB"
+  state-teal-soft-dark: "#0F2C31"
+  state-teal-line-dark: "#1E5660"
+  caution-dark: "#F0B65A"
+  caution-soft-dark: "#33260F"
+  invert-dark: "#1C1C20"
   ngebooth-ground: "#141513"
-  ngebooth-lime: "#C8F051"
+  ngebooth-viewfinder: "#1D1E1B"
+  ngebooth-frame: "#2B2D28"
+  ngebooth-frame-empty: "#DCDCD5"
+  ngebooth-frame-label: "#8B8B84"
+  ngebooth-ink: "#EFEFEA"
+  ngebooth-ink-secondary: "#A3A39B"
+  ngebooth-lime: "#D5F267"
+  shadow-hairline: "#00000014"
 typography:
   display:
     fontFamily: "Geist, Geist Fallback, ui-sans-serif, system-ui, sans-serif"
@@ -46,6 +65,39 @@ typography:
     fontSize: "1rem"
     fontWeight: 400
     lineHeight: 1.6
+  numeral:
+    fontFamily: "Geist, Geist Fallback, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "1.5rem"
+    fontWeight: 600
+    lineHeight: 1.2
+    fontFeature: "'tnum' on"
+  closing:
+    fontFamily: "Geist, Geist Fallback, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "clamp(2rem, 1.3rem + 2.8vw, 3.5rem)"
+    fontWeight: 600
+    lineHeight: 1.04
+    letterSpacing: "-0.04em"
+  countdown:
+    fontFamily: "Geist, Geist Fallback, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "5rem"
+    fontWeight: 600
+    lineHeight: 1
+    letterSpacing: "-0.04em"
+  brand:
+    fontFamily: "Geist, Geist Fallback, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "1.0625rem"
+    fontWeight: 600
+    letterSpacing: "-0.02em"
+  caption:
+    fontFamily: "Geist, Geist Fallback, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "0.75rem"
+    fontWeight: 500
+    lineHeight: 1.3
+  micro:
+    fontFamily: "Geist, Geist Fallback, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "0.6875rem"
+    fontWeight: 500
+    lineHeight: 1.25
   label:
     fontFamily: "Geist, Geist Fallback, ui-sans-serif, system-ui, sans-serif"
     fontSize: "0.8125rem"
@@ -53,6 +105,9 @@ typography:
     lineHeight: 1.4
     fontFeature: "'tnum' on"
 rounded:
+  hairline: "2px"
+  badge: "4px"
+  inner: "6px"
   control: "8px"
   surface: "12px"
   pill: "999px"
@@ -127,7 +182,7 @@ Neutral zinc with one state colour; no warm or cream cast.
 ### Named Rules
 **The State-Only Teal Rule.** Teal marks something live or something that just changed. A teal fill on a whole card or a decorative icon breaks it.
 **The One Theme Rule.** No section inverts mid-page. Cells differ by content, not by flipping light and dark.
-**The NgeBooth Exception.** NgeBooth's lime (#C8F051) on near-black (#141513) appears only inside NgeBooth's own surfaces.
+**The NgeBooth Exception.** NgeBooth's own lime (#D5F267, sampled from its landing page) on near-black (#141513) and its wordmark appear only inside NgeBooth's own surfaces.
 
 ## Typography
 
@@ -165,7 +220,7 @@ The official logo lives in `public/brand/`: the 1500px master, the full lockup, 
 
 ## Shapes
 
-12px radius on surfaces (window, bento cells, contact panel), 8px on controls (buttons, inputs, tabs, icon tiles), full pill only for status labels. 1px hairlines throughout; an ink-weight top rule opens the status table.
+12px radius on surfaces (window, bento cells, product cards, contact panel), 8px on controls (buttons, inputs, tabs, screenshots), 6px on controls nested inside a control (nav links, language segments), 4px on inline badges (\"Menipis\"), 2px on photo-strip frames, full pill only for status labels. 1px hairlines throughout; an ink-weight top rule opens the status table.
 
 ## Components
 
@@ -174,6 +229,10 @@ The official logo lives in `public/brand/`: the 1500px master, the full lockup, 
 - **Status pill:** 24px, text only, no dot. Teal = in use, caution = internal testing, neutral outline = in development.
 - **App window:** sidebar tabs on desktop (label + status pill), three equal tabs with a text status line on mobile; panels keep their state while switching.
 - **Icons:** Phosphor regular, 14–24px, one stroke family.
+
+## Product Screenshots
+
+The products section uses real screenshots of NgeTech's own apps (public/work/, WebP at 800/1600px), captured from the org repos with each app's own sample seed data and labelled as such. Each sits in an 8px-radius hairline frame at 16:10, cropped from the top-left. Replace them only with newer real captures, never mockups.
 
 ## Do's and Don'ts
 

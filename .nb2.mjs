@@ -1,0 +1,11 @@
+import { chromium } from '@playwright/test';
+const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium', args: ['--use-fake-ui-for-media-stream','--use-fake-device-for-media-stream'] });
+const ctx = await b.newContext({ viewport: { width: 1440, height: 900 }, permissions: ['camera'] });
+const p = await ctx.newPage();
+await p.goto('http://localhost:3100/booth/demo-booth', { waitUntil: 'networkidle' });
+await p.fill('input', 'DEMO-BOOTH-2026');
+await p.getByRole('button').first().click();
+await p.waitForTimeout(3500);
+await p.screenshot({ path: '/tmp/claude-0/-home-user/31b4057c-e5ab-5ede-a171-09fd83aa46bb/scratchpad/shots/nb-booth-1.png' });
+const btns = await p.getByRole('button').allInnerTexts(); console.log('buttons:', btns.slice(0,15));
+await b.close();

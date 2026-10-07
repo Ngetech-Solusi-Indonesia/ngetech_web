@@ -6,15 +6,9 @@ export interface Member {
 }
 
 export const team: Member[] = [
-  { name: 'TODO_TEAM_1_NAME', role: { id: 'TODO_TEAM_1_ROLE', en: 'TODO_TEAM_1_ROLE' } },
-  { name: 'TODO_TEAM_2_NAME', role: { id: 'TODO_TEAM_2_ROLE', en: 'TODO_TEAM_2_ROLE' } },
-  { name: 'TODO_TEAM_3_NAME', role: { id: 'TODO_TEAM_3_ROLE', en: 'TODO_TEAM_3_ROLE' } },
-  { name: 'TODO_TEAM_4_NAME', role: { id: 'TODO_TEAM_4_ROLE', en: 'TODO_TEAM_4_ROLE' } },
-  { name: 'TODO_TEAM_5_NAME', role: { id: 'TODO_TEAM_5_ROLE', en: 'TODO_TEAM_5_ROLE' } },
+  { name: 'Daniandra Prayudisty', role: { id: 'CEO', en: 'CEO' } },
+  { name: 'Muhammad Farhan Al Hasan', role: { id: 'CTO', en: 'CTO' }, github: 'farhanlhsn' },
+  { name: 'Ali Hizqil', role: { id: 'Desainer', en: 'Designer' } },
+  { name: 'Athallah Zacky Maulana', role: { id: 'Developer', en: 'Developer' } },
+  { name: 'Ulinnuha Ubay', role: { id: 'Developer', en: 'Developer' } },
 ];
-
-export function initials(name: string): string {
-  if (name.startsWith('TODO_')) return '··';
-  const parts = name.trim().split(/\s+/);
-  return ((parts[0]?.[0] ?? '') + (parts.length > 1 ? parts[parts.length - 1][0] : '')).toUpperCase();
-}

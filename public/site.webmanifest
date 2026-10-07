@@ -1,0 +1,11 @@
+{
+  "name": "NgeTech Solusi Indonesia",
+  "short_name": "NgeTech",
+  "icons": [
+    { "src": "/brand/ngetech-mark-192.png", "sizes": "192x192", "type": "image/png" }
+  ],
+  "theme_color": "#FAFAFA",
+  "background_color": "#FAFAFA",
+  "display": "browser",
+  "start_url": "/"
+}

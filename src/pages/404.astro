@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { t } from '../i18n';
+const d = t('id');
+const e = t('en');
+---
+<Base locale="id" title={`${d.meta.notFoundTitle} | NgeTech`} noindex>
+  <Header locale="id" />
+  <main id="main" class="wrap nf">
+    <h1>{d.meta.notFoundTitle}</h1>
+    <p>{d.meta.notFoundBody}</p>
+    <p lang="en" class="en">{e.meta.notFoundBody}</p>
+    <a class="btn btn-primary" href="/">{d.meta.home}</a>
+  </main>
+  <Footer locale="id" />
+</Base>
+
+<style>
+  .nf { display: grid; gap: 16px; justify-items: start; padding-block: clamp(80px, 12vw, 160px); }
+  h1 { font-size: var(--text-2xl); letter-spacing: -0.03em; }
+  p { color: var(--ink-2); max-width: 46ch; }
+  .en { color: var(--ink-3); font-size: var(--text-sm); }
+</style>
