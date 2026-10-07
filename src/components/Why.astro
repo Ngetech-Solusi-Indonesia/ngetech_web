@@ -9,11 +9,11 @@ const hwIcons = ['identification-card', 'camera', 'printer'];
 ---
 <section class="section" id="why">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head" data-reveal>
       <h2>{w.title}</h2>
     </div>
     <div class="bento">
-      <article class="cell cell-hw">
+      <article class="cell cell-hw" data-reveal data-ambient>
         <div class="copy">
           <h3>{w.items[0].title}</h3>
           <p>{w.items[0].body}</p>
@@ -33,7 +33,7 @@ const hwIcons = ['identification-card', 'camera', 'printer'];
         </div>
       </article>
 
-      <article class="cell cell-site">
+      <article class="cell cell-site" data-reveal data-reveal-delay="100">
         <div class="copy">
           <h3>{w.items[1].title}</h3>
           <p>{w.items[1].body}</p>
@@ -45,7 +45,7 @@ const hwIcons = ['identification-card', 'camera', 'printer'];
         </ol>
       </article>
 
-      <article class="cell cell-flow">
+      <article class="cell cell-flow" data-reveal>
         <div class="copy">
           <h3>{w.items[2].title}</h3>
           <p>{w.items[2].body}</p>
@@ -63,7 +63,7 @@ const hwIcons = ['identification-card', 'camera', 'printer'];
         </div>
       </article>
 
-      <article class="cell cell-cost">
+      <article class="cell cell-cost" data-reveal>
         <h3>{w.items[3].title}</h3>
         <p>{w.items[3].body}</p>
       </article>
@@ -78,10 +78,14 @@ const hwIcons = ['identification-card', 'camera', 'printer'];
     gap: 28px;
     align-content: space-between;
     padding: clamp(24px, 3vw, 36px);
-    border-radius: var(--radius-surface);
+    border-radius: 20px;
     border: 1px solid var(--line);
     background: var(--surface);
     min-width: 0;
+    transition: transform 300ms var(--ease-out), border-color 300ms ease, box-shadow 300ms ease;
+  }
+  @media (hover: hover) {
+    .cell:hover { transform: translateY(-4px); border-color: var(--accent-line); box-shadow: 0 12px 32px -24px color-mix(in srgb, var(--accent) 45%, transparent); }
   }
   .copy { display: grid; gap: 8px; max-width: 34rem; }
   .copy h3 { font-size: var(--text-xl); letter-spacing: -0.02em; }
@@ -103,7 +107,12 @@ const hwIcons = ['identification-card', 'camera', 'printer'];
     color: var(--ink);
   }
   .hw-wires { width: 100%; height: 152px; margin-inline: 0; }
-  .hw-wires path { fill: none; stroke: var(--line-2); stroke-width: 1.25; vector-effect: non-scaling-stroke; }
+  .hw-wires path { fill: none; stroke: var(--accent-line); stroke-width: 1.25; vector-effect: non-scaling-stroke; stroke-dasharray: 5 5; }
+  @media (prefers-reduced-motion: no-preference) {
+    .is-inview .hw-wires path { animation: signal-flow 4s linear infinite; }
+    :global(.page-hidden) .hw-wires path { animation-play-state: paused; }
+  }
+  @keyframes signal-flow { to { stroke-dashoffset: -40; } }
   .hw-app {
     flex-direction: column;
     justify-content: center;

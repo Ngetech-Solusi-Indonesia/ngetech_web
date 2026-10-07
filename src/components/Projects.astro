@@ -1,18 +1,20 @@
 ---
 import { t, type Locale } from '../i18n';
 import { Image } from 'astro:assets';
-import { projects } from '../data/projects';
+import { getProjects } from '../data/projects';
 import { productImage } from '../data/content';
 import Icon from './Icon.astro';
+import { waLink } from '../data/site';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const d = t(locale);
+const projects = getProjects();
 const pillClass = { in_use: 'is-live', internal_testing: 'is-testing', in_development: '' } as const;
 const [lead, ...rest] = projects;
 ---
 <section class="section" id="products">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head" data-reveal>
       <h2>{d.projects.title}</h2>
       <p>{d.projects.sub}</p>
     </div>
@@ -20,7 +22,7 @@ const [lead, ...rest] = projects;
     {[lead, ...rest].map((p, i) => {
       const c = d.projects[p.key];
       return (
-        <article class:list={['product', i === 0 ? 'is-lead' : 'is-pair']} data-key={p.key}>
+        <article class:list={['product', i === 0 ? 'is-lead' : 'is-pair']} data-key={p.key} data-reveal data-reveal-delay={i === 2 ? '100' : '0'}>
           <div class="copy">
             <div class="title">
               <h3>{c.name}</h3>
@@ -31,9 +33,12 @@ const [lead, ...rest] = projects;
               {c.points.map((pt) => <li><Icon name="check" size={16} /><span>{pt}</span></li>)}
             </ul>
             <p class="for"><span>{d.projects.colFor}</span> {c.for}</p>
+            <a class="product-link" href={waLink(`${d.contact.waText} ${locale === 'id' ? 'Saya tertarik dengan' : "I'm interested in"} ${c.name}.`)} target="_blank" rel="noopener">
+              {locale === 'id' ? 'Bahas proyek serupa' : 'Discuss a similar project'}<Icon name="arrow-up-right" size={18} />
+            </a>
           </div>
           <figure class="shot">
-            <Image
+            {p.screenshot.startsWith('/media/') ? <img src={p.screenshot} width="1600" height="1000" alt={c.alt} loading="lazy" /> : <Image
               src={productImage(p.screenshot)}
               widths={[800, 1600]}
               sizes={i === 0 ? '(min-width: 1000px) 700px, 100vw' : '(min-width: 900px) 580px, 100vw'}
@@ -41,7 +46,7 @@ const [lead, ...rest] = projects;
               quality={80}
               alt={c.alt}
               loading="lazy"
-            />
+            />}
           </figure>
         </article>
       );
@@ -58,28 +63,36 @@ const [lead, ...rest] = projects;
     gap: 28px;
     padding: clamp(20px, 3vw, 36px);
     border: 1px solid var(--line);
-    border-radius: var(--radius-surface);
+    border-radius: 20px;
     background: var(--surface);
     min-width: 0;
+    transition: border-color 280ms ease;
   }
+  .product:hover { border-color: var(--accent-line); }
   .copy { display: grid; gap: 14px; align-content: start; }
   .title { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
-  h3 { font-size: var(--text-xl); letter-spacing: -0.02em; }
+  h3 { font-size: clamp(1.5rem, 1.2rem + .8vw, 2rem); letter-spacing: -0.035em; }
   .desc { color: var(--ink-2); max-width: 46ch; }
   .points { list-style: none; padding: 0; display: grid; gap: 8px; font-size: var(--text-sm); color: var(--ink); }
   .points li { display: grid; grid-template-columns: 16px 1fr; gap: 10px; align-items: start; }
   .points :global(svg) { color: var(--accent); margin-top: 2px; }
   .for { font-size: var(--text-sm); color: var(--ink-2); }
   .for span { color: var(--ink-3); margin-right: 6px; }
+  .product-link { display: inline-flex; align-items: center; gap: 8px; width: fit-content; font-size: var(--text-sm); font-weight: 600; color: var(--accent); text-decoration: none; padding-block: 10px 2px; }
+  .product-link :global(svg) { transition: transform 250ms var(--ease-out); }
+  .product-link:hover :global(svg) { transform: translate(3px, -3px); }
+  .product-link:hover { text-decoration: underline; }
   .shot {
     margin: 0;
-    border-radius: var(--radius-control);
+    border-radius: 12px;
     border: 1px solid var(--line);
     overflow: hidden;
     background: var(--surface-2);
+    box-shadow: 0 12px 24px -20px rgb(0 0 0 / .3);
     align-self: start;
   }
-  .shot img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; }
+  .shot img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; transition: transform 700ms var(--ease-out); }
+  @media (hover: hover) { .product:hover .shot img { transform: scale(1.025); } }
   .note { font-size: var(--text-sm); color: var(--ink-3); margin-top: 4px; }
 
   @media (min-width: 900px) {

@@ -1,35 +1,12 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
-import sitemap from '@astrojs/sitemap';
-import react from '@astrojs/react';
-import keystatic from '@keystatic/astro';
-import cloudflare from '@astrojs/cloudflare';
-
-// `astro dev` runs in Node so Keystatic can write content files locally;
-// builds target Cloudflare Pages, where it commits to GitHub instead.
-const isDev = process.argv.includes('dev');
-
+import node from '@astrojs/node';
+const siteUrl = new URL(process.env.PUBLIC_SITE_URL || 'https://ngetech.studio');
 export default defineConfig({
-  site: 'https://ngetech.studio',
+  site: siteUrl.href,
+  security: { allowedDomains: [{ hostname: siteUrl.hostname }, { hostname: '127.0.0.1', protocol: 'http' }, { hostname: 'localhost', protocol: 'http' }] },
   trailingSlash: 'ignore',
-  // The whole stylesheet is ~20KB; inlining saves a render-blocking request.
+  output: 'server',
+  adapter: node({ mode: 'standalone', bodySizeLimit: 12 * 1024 * 1024 }),
   build: { inlineStylesheets: 'always' },
-  i18n: {
-    defaultLocale: 'id',
-    locales: ['id', 'en'],
-    routing: { prefixDefaultLocale: false },
-  },
-  // The site is static; only the CMS (/keystatic and its API) runs on demand.
-  output: 'static',
-  adapter: isDev ? undefined : cloudflare({ imageService: 'compile' }),
-  integrations: [
-    react(),
-    keystatic(),
-    sitemap({
-      i18n: { defaultLocale: 'id', locales: { id: 'id-ID', en: 'en-US' } },
-      filter: (page) => !page.includes('/404') && !page.includes('/keystatic'),
-      lastmod: new Date(),
-      changefreq: 'monthly',
-    }),
-  ],
+  i18n: { defaultLocale: 'id', locales: ['id', 'en'], routing: { prefixDefaultLocale: false } },
 });

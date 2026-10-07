@@ -1,7 +1,7 @@
 // Team members, edited in the CMS (src/content/team/). Work entries are
 // summarised from each person's commits; keep them factual.
 import type { Locale } from '../i18n';
-import { teamDocs, type Bi } from './content';
+import { getTeamDocs, type Bi } from './content';
 
 export interface Member {
   slug: string;
@@ -14,7 +14,7 @@ export interface Member {
   work: { product: string; summary: Bi }[];
 }
 
-export const team: Member[] = teamDocs.map((m) => ({
+export const getTeam = (): Member[] => getTeamDocs().map((m) => ({
   slug: m.slug,
   name: m.name,
   short: m.short,

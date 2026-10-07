@@ -1,21 +1,23 @@
 ---
 import { t, type Locale } from '../i18n';
-import { team, profilePath } from '../data/team';
+import { getTeam, profilePath } from '../data/team';
 import Icon from './Icon.astro';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const d = t(locale);
+const team = getTeam();
 ---
 <section class="section team" id="team">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head" data-reveal>
       <h2>{d.team.title}</h2>
       <p>{d.team.sub}</p>
     </div>
     <ul class="roster">
-      {team.map((m) => (
-        <li>
+      {team.map((m, i) => (
+        <li data-reveal data-reveal-delay={String(i * 60)}>
           <a class="card" href={profilePath(locale, m.slug)}>
+            <span class="avatar" aria-hidden="true">{m.short.slice(0, 1)}</span>
             <span class="name">{m.name}</span>
             <span class="role">{m.role[locale]}</span>
             <span class="more">{d.team.profile}<Icon name="arrow-right" size={14} /></span>
@@ -40,14 +42,16 @@ const d = t(locale);
     flex-direction: column;
     gap: 2px;
     height: 100%;
-    padding: 18px 18px 16px;
+    padding: 24px 20px 20px;
     border: 1px solid var(--line);
-    border-radius: var(--radius-surface);
+    border-radius: 16px;
     background: var(--surface);
     text-decoration: none;
-    transition: border-color 150ms ease;
+    transition: border-color 250ms ease, transform 250ms var(--ease-out), background-color 250ms ease;
   }
-  .card:hover { border-color: var(--ink-3); }
+  .card:hover { border-color: var(--accent-line); background: color-mix(in srgb, var(--surface) 94%, var(--accent)); }
+  @media (hover: hover) { .card:hover { transform: translateY(-5px); } }
+  .avatar { display: grid; place-items: center; width: 48px; height: 48px; margin-bottom: 20px; border: 1px solid var(--accent-line); border-radius: 14px; color: var(--accent); background: var(--accent-soft); font-size: 1.125rem; font-weight: 600; }
   .name { font-weight: 600; letter-spacing: -0.01em; overflow-wrap: anywhere; }
   .role { color: var(--ink-3); font-size: var(--text-sm); }
   .more {
@@ -58,4 +62,6 @@ const d = t(locale);
     color: var(--ink-2);
   }
   .card:hover .more { color: var(--ink); }
+  .more :global(svg) { transition: transform 250ms var(--ease-out); }
+  .card:hover .more :global(svg) { transform: translateX(4px); }
 </style>

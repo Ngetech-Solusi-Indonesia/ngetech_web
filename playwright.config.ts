@@ -1,15 +1,6 @@
 import { defineConfig } from '@playwright/test';
-
 export default defineConfig({
-  testDir: 'tests',
-  webServer: {
-    command: 'pnpm build:preview && pnpm preview --port 4322 --ignore-lock',
-    url: 'http://localhost:4322',
-    reuseExistingServer: !process.env.CI,
-    timeout: 120_000,
-  },
-  use: {
-    baseURL: 'http://localhost:4322',
-    launchOptions: { executablePath: process.env.CHROMIUM_PATH || undefined },
-  },
+  testDir: 'tests', workers: 1,
+  webServer: { command: 'node scripts/test-server.mjs', url: 'http://127.0.0.1:4322', reuseExistingServer: false, timeout: 60000 },
+  use: { baseURL: 'http://127.0.0.1:4322', launchOptions: { executablePath: process.env.CHROMIUM_PATH || undefined } },
 });

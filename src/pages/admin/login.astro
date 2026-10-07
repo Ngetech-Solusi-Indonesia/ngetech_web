@@ -1,0 +1,36 @@
+---
+import AdminLayout from '../../components/AdminLayout.astro';
+import { accountConfigured, sessionUser } from '../../server/auth.mjs';
+import { isLocalSetup } from '../../server/http';
+if (sessionUser(Astro.cookies.get('ngetech_session')?.value)) return Astro.redirect('/admin');
+const configured = accountConfigured();
+const canSetup = !configured && isLocalSetup(Astro);
+const error = Astro.url.searchParams.get('error');
+const errors: Record<string, string> = { invalid: 'Username atau password salah.', confirm: 'Konfirmasi password belum sama.', setup: 'Gunakan username 3–80 karakter dan password minimal 12 karakter.' };
+---
+<AdminLayout title={canSetup ? 'Buat akun admin' : 'Login'}>
+  <main class="login-card">
+    <span class="login-mark" aria-hidden="true">N</span>
+    <h1>{canSetup ? 'Buat akun admin Anda.' : 'Masuk ke admin.'}</h1>
+    <p class="intro">{canSetup ? 'Satu kali setup. Pilih username dan password untuk mengelola website.' : 'Kelola halaman, produk, dan tim NgeTech.'}</p>
+    {error && <p class="admin-message" data-kind="error" role="alert">{errors[error] || 'Permintaan belum berhasil.'}</p>}
+    {Astro.url.searchParams.has('created') && <p class="admin-message" data-kind="success" role="status">Akun berhasil dibuat. Silakan login.</p>}
+    {configured || canSetup ? <form method="post" action={canSetup ? '/api/admin/setup' : '/api/admin/login'}>
+      <label>Username<input class="admin-input" name="username" autocomplete="username" required minlength="3" maxlength="80" autofocus /></label>
+      <label>Password<input class="admin-input" name="password" type="password" autocomplete={canSetup ? 'new-password' : 'current-password'} required minlength={canSetup ? 12 : undefined} maxlength="256" /></label>
+      {canSetup && <><p class="hint">Gunakan minimal 12 karakter.</p><label>Ulangi password<input class="admin-input" name="confirm" type="password" autocomplete="new-password" required minlength="12" maxlength="256" /></label></>}
+      <button class="admin-button" type="submit">{canSetup ? 'Buat akun admin' : 'Masuk'}</button>
+    </form> : <div class="setup-note"><p>Akun admin belum disiapkan.</p><p>Di terminal server, jalankan <code>npm run cms:user</code>, lalu kembali ke halaman ini.</p></div>}
+  </main>
+</AdminLayout>
+<style>
+  .login-card { width: min(100% - 32px, 440px); margin: clamp(40px, 8vw, 96px) auto; padding: clamp(24px, 4vw, 40px); background: var(--surface); border: 1px solid var(--line); border-radius: 20px; display: grid; gap: 20px; }
+  .login-mark { display: grid; place-items: center; width: 48px; height: 48px; color: var(--accent); background: var(--accent-soft); border: 1px solid var(--accent-line); border-radius: 14px; font-weight: 600; }
+  h1 { font-size: 2rem; letter-spacing: -.04em; line-height: 1.15; }
+  .intro { color: var(--ink-2); }
+  form { display: grid; gap: 18px; }
+  label { display: grid; gap: 7px; font-size: .875rem; font-weight: 500; }
+  .hint { margin-top: -12px; color: var(--ink-3); font-size: .8125rem; }
+  .setup-note { display: grid; gap: 10px; font-size: .875rem; padding: 16px; border-radius: 10px; background: var(--surface-2); }
+  code { white-space: nowrap; }
+</style>

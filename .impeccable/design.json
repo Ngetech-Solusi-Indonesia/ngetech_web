@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-07T10:44:36+00:00",
+  "generatedAt": "2026-10-07T12:54:12.9022764+00:00",
   "title": "Design System: NgeTech Solusi Indonesia",
   "extensions": {
     "colorMeta": {
@@ -232,12 +232,12 @@
       {
         "name": "ease-out",
         "value": "cubic-bezier(0.16, 1, 0.3, 1)",
-        "purpose": "Hero entrance, demo state changes."
+        "purpose": "Hero entrance, scroll reveals, hover feedback, and demo state changes."
       },
       {
         "name": "hero-entrance",
-        "value": "900ms rise + 6px blur, 80ms stagger; window 1200ms from 40px",
-        "purpose": "The page's one authored entrance."
+        "value": "950ms fade/24px rise with 100ms stagger; demo 1200ms",
+        "purpose": "Hero entrance; below-fold content reveals once over 800ms. Ambient effects pause offscreen and in hidden tabs; reduced motion disables decoration."
       },
       {
         "name": "tick",
@@ -288,17 +288,18 @@
   ],
   "narrative": {
     "northStar": "The Working Product (proposed)",
-    "overview": "Category-standard software site at Linear/Vercel craft. The hero is a working, labelled demo of three products; the rest stays quiet so the demo and the WhatsApp action carry the page.",
+    "overview": "Expressive product-first software site with a centered teal hero, framed interactive demo, scroll reveals, restrained hover feedback, and a clear WhatsApp action.",
     "keyCharacteristics": [
-      "One family, Geist",
-      "Neutral zinc, teal for state only",
-      "12px surfaces, 8px controls, pills for status",
-      "Real UI with real state, never a picture of UI"
+      "Geist with oversized centered hero typography",
+      "Neutral zinc with teal brand emphasis and state feedback",
+      "16–24px feature surfaces and 8px controls",
+      "Real interactive demos and honest product screenshots",
+      "Reduced-motion support and readable content without JavaScript"
     ],
     "rules": [
       {
-        "name": "The State-Only Teal Rule",
-        "body": "Teal marks something live or just changed; never a decorative fill.",
+        "name": "The Brand Teal Rule",
+        "body": "Teal emphasizes the hero, connected hardware, contact panel, interactive feedback, and live product status.",
         "section": "colors"
       },
       {
@@ -312,8 +313,8 @@
         "section": "typography"
       },
       {
-        "name": "The One Lifted Object Rule",
-        "body": "Only the demo window is elevated.",
+        "name": "The Restrained Depth Rule",
+        "body": "The demo is the primary elevated surface; cards use small hover movement and subtle depth.",
         "section": "elevation"
       }
     ],

@@ -1,0 +1,26 @@
+[Unit]
+Description=NgeTech website and CMS
+After=network.target
+
+[Service]
+Type=simple
+User=ngetech
+Group=ngetech
+WorkingDirectory=/opt/ngetech
+Environment=NODE_ENV=production
+Environment=HOST=127.0.0.1
+Environment=PORT=3000
+Environment=DATA_DIR=/var/lib/ngetech
+Environment=CMS_COOKIE_SECURE=true
+EnvironmentFile=/opt/ngetech/.env
+ExecStart=/usr/bin/node /opt/ngetech/dist/server/entry.mjs
+Restart=on-failure
+RestartSec=5
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/ngetech
+
+[Install]
+WantedBy=multi-user.target

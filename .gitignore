@@ -1,11 +1,13 @@
 node_modules/
+.node_modules-incomplete-*/
 dist/
 .astro/
 test-results/
 playwright-report/
 .impeccable/review/
 .impeccable/config.local.json
-.wrangler/
+data/
+data-test/
 .env
 .env.*
 !.env.example

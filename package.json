@@ -1,43 +1,29 @@
 {
   "name": "ngetech-web",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
+  "packageManager": "pnpm@11.10.0",
+  "engines": { "node": ">=22.12.0" },
   "scripts": {
-    "dev": "astro dev",
+    "dev": "node --env-file-if-exists=.env node_modules/astro/bin/astro.mjs dev --host 127.0.0.1",
     "check:content": "node scripts/check-todo.mjs",
-    "build": "node scripts/check-todo.mjs && astro build",
-    "build:preview": "astro build",
-    "preview": "astro preview",
-    "test": "playwright test",
-    "cms:setup": "PUBLIC_KEYSTATIC_STORAGE=github astro dev",
-    "deploy": "pnpm build && wrangler deploy"
+    "build": "node scripts/check-todo.mjs && node --env-file-if-exists=.env node_modules/astro/bin/astro.mjs build",
+    "build:preview": "node --env-file-if-exists=.env node_modules/astro/bin/astro.mjs build",
+    "preview": "node --env-file-if-exists=.env dist/server/entry.mjs",
+    "start": "node --env-file-if-exists=.env dist/server/entry.mjs",
+    "cms:user": "node --env-file-if-exists=.env scripts/cms-user.mjs",
+    "test:server": "node --test tests/server.test.mjs",
+    "test": "node node_modules/@playwright/test/cli.js test"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^14.3.4",
-    "@astrojs/react": "^7.0.1",
-    "@astrojs/sitemap": "^3.7.4",
-    "@keystar/ui": "~0.10.0",
-    "@keystatic/astro": "^6.0.0",
-    "@keystatic/core": "^0.6.9",
-    "astro": "^7.3.6",
-    "react": "^19.3.0",
-    "react-aria": "3.50.0",
-    "react-dom": "^19.3.0",
-    "react-stately": "3.48.0",
-    "sharp": "^0.35.5"
+    "@astrojs/node": "11.1.7",
+    "astro": "7.3.6",
+    "sharp": "0.35.5",
+    "zod": "4.6.5"
   },
   "devDependencies": {
-    "@phosphor-icons/core": "^2.1.1",
-    "@playwright/test": "^1.63.0",
-    "@types/react": "^19.3.0",
-    "@types/react-dom": "^19.3.0",
-    "geist": "^1.7.2",
-    "wrangler": "^4.148.0"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild"
-    ]
+    "@playwright/test": "1.63.0",
+    "@types/node": "^24.19.1"
   }
 }

@@ -3,53 +3,83 @@ import { t, type Locale } from '../i18n';
 import { waLink } from '../data/site';
 import AppWindow from './AppWindow.astro';
 import Icon from './Icon.astro';
-
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const d = t(locale);
+const ending = locale === 'id' ? 'ke sistem yang rapi.' : 'to one tidy system.';
+const hasEnding = d.hero.title.endsWith(ending);
+const titleStart = hasEnding ? d.hero.title.slice(0, -ending.length) : d.hero.title;
+const capabilities = locale === 'id'
+  ? ['Software sesuai alur kerja', 'Perangkat yang terhubung', 'Tim lokal di Bandung']
+  : ['Software around your workflow', 'Connected hardware', 'A local team in Bandung'];
+const icons = ['flow-arrow', 'identification-card', 'map-pin'];
 ---
-<section class="hero" id="top">
+<section class="hero" id="top" data-ambient>
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
   <div class="wrap">
-    <h1 class="in" style="--i:0">{d.hero.title}</h1>
-    <p class="sub in" style="--i:1">{d.hero.sub}</p>
-    <div class="actions in" style="--i:2">
-      <a class="btn btn-primary" href={waLink(d.contact.waText)} target="_blank" rel="noopener"><Icon name="whatsapp-logo" size={18} />{d.hero.cta}</a>
-      <a class="btn btn-ghost" href="#products">{d.hero.secondary}<Icon name="arrow-right" size={16} /></a>
+    <div class="hero-copy">
+      <h1 class="in" style="--i:0">{titleStart}{hasEnding && <span class="hero-emphasis">{ending}</span>}</h1>
+      <p class="sub in" style="--i:1">{d.hero.sub}</p>
+      <div class="actions in" style="--i:2">
+        <a class="btn btn-primary" href={waLink(d.contact.waText)} target="_blank" rel="noopener"><Icon name="whatsapp-logo" size={18} />{d.hero.cta}<Icon name="arrow-up-right" size={18} /></a>
+        <a class="btn btn-ghost" href="#products">{d.hero.secondary}<Icon name="arrow-right" size={16} /></a>
+      </div>
     </div>
     <div class="demo app-in" id="demo">
-      <AppWindow locale={locale} />
+      <div class="demo-shell">
+        <div class="demo-toolbar">
+          <span><Icon name="package" size={15} />NgeTech Workspace</span>
+          <span class="demo-toolbar-note">{locale === 'id' ? 'Pilih produk. Coba aplikasinya.' : 'Choose a product. Try the app.'}<Icon name="arrow-counter-clockwise" size={14} /></span>
+        </div>
+        <AppWindow locale={locale} />
+      </div>
     </div>
+    <ul class="capabilities" data-reveal>
+      {capabilities.map((label, i) => <li><Icon name={icons[i]} size={18} /><span>{label}</span></li>)}
+    </ul>
   </div>
 </section>
-
 <style>
-  .hero { padding-top: clamp(48px, 6vw, 88px); padding-bottom: clamp(32px, 4vw, 56px); }
-  h1 {
-    font-size: var(--text-hero);
-    line-height: 1.02;
-    letter-spacing: -0.04em;
-    max-width: 15em;
+  .hero { position: relative; isolation: isolate; overflow: clip; padding-top: clamp(60px, 8vw, 112px); padding-bottom: 0; }
+  .hero-grid { position: absolute; z-index: -2; inset: 0 0 12%; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 72px 72px; opacity: .55; mask-image: radial-gradient(ellipse 65% 65% at 50% 30%, #000 15%, transparent 100%); }
+  .hero-glow { position: absolute; z-index: -1; width: min(1100px, 130vw); aspect-ratio: 1.4; left: 50%; top: 120px; translate: -50% 0; background: radial-gradient(ellipse, color-mix(in srgb, var(--accent) 15%, transparent), transparent 68%); pointer-events: none; }
+  .hero-copy { display: grid; justify-items: center; text-align: center; }
+  h1 { font-size: clamp(2.75rem, 1.3rem + 5.1vw, 5.75rem); line-height: 1.04; letter-spacing: -.065em; max-width: 13em; }
+  .hero-emphasis { display: block; color: var(--accent); }
+  .sub { margin-top: 28px; max-width: 40rem; font-size: var(--text-xl); line-height: 1.65; color: var(--ink-2); letter-spacing: -.01em; }
+  .actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+  .actions .btn { min-height: 50px; padding-inline: 22px; }
+  .demo { position: relative; margin-top: clamp(48px, 6vw, 76px); scroll-margin-top: 100px; }
+  .demo-shell { padding: 8px; border: 1px solid var(--line-2); border-radius: 20px; background: color-mix(in srgb, var(--surface) 85%, transparent); box-shadow: 0 30px 70px -40px color-mix(in srgb, var(--accent) 35%, transparent), var(--shadow-window); }
+  .demo-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 12px 16px; font-size: var(--text-xs); color: var(--ink-2); }
+  .demo-toolbar span { display: inline-flex; align-items: center; gap: 8px; }
+  .demo-toolbar span:first-child { font-weight: 600; }
+  .demo-toolbar-note { color: var(--ink-3); }
+  .demo-shell :global(.app-frame) { box-shadow: none; }
+  .demo-shell :global(figcaption) { text-align: center; padding: 2px 12px 8px; }
+  .capabilities { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; gap: 16px 48px; padding: 32px 0; border-bottom: 1px solid var(--line); color: var(--ink-2); font-size: var(--text-sm); }
+  .capabilities li { display: flex; align-items: center; gap: 10px; }
+  .capabilities :global(svg) { color: var(--accent); }
+  @media (max-width: 559px) {
+    .hero { padding-top: 56px; }
+    h1 { font-size: clamp(2.5rem, 10vw, 3.5rem); letter-spacing: -.055em; }
+    .sub { margin-top: 22px; font-size: 1.0625rem; }
+    .actions { width: 100%; }
+    .actions .btn { padding-inline: 16px; }
+    .demo-shell { padding: 5px; border-radius: 16px; }
+    .demo-toolbar { padding: 10px 8px 14px; }
+    .demo-toolbar-note { display: none !important; }
+    .capabilities { justify-content: flex-start; gap: 14px; padding-block: 24px; }
+    .capabilities li { width: 100%; }
   }
-  .sub {
-    margin-top: 20px;
-    max-width: 36rem;
-    font-size: var(--text-xl);
-    line-height: 1.5;
-    color: var(--ink-2);
-    letter-spacing: -0.01em;
-  }
-  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
-  .demo { margin-top: clamp(48px, 6vw, 72px); scroll-margin-top: 88px; }
-
-  /* The page's one authored entrance. Content is visible without it. */
   @media (prefers-reduced-motion: no-preference) {
-    .in { animation: rise 900ms var(--ease-out) both; animation-delay: calc(var(--i) * 80ms); }
-    .app-in { animation: rise-window 1200ms var(--ease-out) 240ms both; }
+    .in { animation: hero-rise 950ms var(--ease-out) both; animation-delay: calc(var(--i) * 100ms); }
+    .app-in { animation: hero-rise 1200ms var(--ease-out) 260ms both; }
+    .hero-glow { animation: glow-drift 12s ease-in-out infinite alternate; animation-play-state: paused; }
+    .is-inview .hero-glow { animation-play-state: running; }
+    :global(.page-hidden) .hero-glow { animation-play-state: paused; }
   }
-  @keyframes rise {
-    from { opacity: 0; transform: translateY(14px); filter: blur(6px); }
-  }
-  @keyframes rise-window {
-    from { opacity: 0; transform: translateY(40px) scale(0.985); filter: blur(12px); }
-  }
+  @keyframes hero-rise { from { opacity: 0; transform: translateY(24px); } }
+  @keyframes glow-drift { from { transform: translate(-8%, -3%) scale(.94); } to { transform: translate(8%, 4%) scale(1.08); } }
 </style>

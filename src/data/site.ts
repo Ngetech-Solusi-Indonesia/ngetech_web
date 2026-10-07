@@ -1,17 +1,6 @@
-import { siteDoc } from './content';
-
-// Contact details are edited in the CMS (src/content/site.json).
-export const site = {
-  name: 'NgeTech Solusi Indonesia',
-  shortName: 'NgeTech',
-  url: 'https://ngetech.studio',
-  waNumber: siteDoc.waNumber,
-  email: siteDoc.email,
-  // Not a registered PT/CV yet; empty until it is. The name stays "NgeTech Solusi Indonesia".
-  legalName: siteDoc.legalName || undefined,
-  githubOrg: siteDoc.githubOrg,
-};
-
-export function waLink(text: string): string {
-  return `https://wa.me/${site.waNumber}?text=${encodeURIComponent(text)}`;
+import { getSiteDoc } from './content';
+export function getSite() {
+  const doc = getSiteDoc();
+  return { name: 'NgeTech Solusi Indonesia', shortName: 'NgeTech', url: process.env.PUBLIC_SITE_URL || 'https://ngetech.studio', waNumber: doc.waNumber, email: doc.email, legalName: doc.legalName || undefined, githubOrg: doc.githubOrg };
 }
+export function waLink(text: string): string { return `https://wa.me/${getSite().waNumber}?text=${encodeURIComponent(text)}`; }

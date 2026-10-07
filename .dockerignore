@@ -1,0 +1,12 @@
+node_modules
+.node_modules-incomplete-*
+dist
+.astro
+.git
+.env
+.env.*
+data
+data-test
+test-results
+playwright-report
+docs/previews

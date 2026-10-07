@@ -1,6 +1,6 @@
 import id from './id.json';
 import en from './en.json';
-import { pageDoc, productDocs, localize } from '../data/content';
+import { getPageDoc, getProductDocs, localize } from '../data/content';
 
 export const locales = ['id', 'en'] as const;
 export type Locale = (typeof locales)[number];
@@ -51,9 +51,9 @@ if (missing.length) throw new Error(`i18n key mismatch:\n  ${missing.join('\n  '
 
 function build(locale: Locale): Dict {
   const ui = locale === 'id' ? id : en;
-  const page = localize(pageDoc, locale) as Page;
+  const page = localize(getPageDoc(), locale) as Page;
   const products = Object.fromEntries(
-    productDocs.map((p) => [
+    getProductDocs().map((p) => [
       p.slug,
       {
         name: locale === 'id' ? p.name : p.nameEn || p.name,
@@ -70,10 +70,8 @@ function build(locale: Locale): Dict {
   } as Dict;
 }
 
-const dicts: Record<Locale, Dict> = { id: build('id'), en: build('en') };
-
 export function t(locale: Locale): Dict {
-  return dicts[locale];
+  return build(locale);
 }
 
 export function pathFor(locale: Locale): string {

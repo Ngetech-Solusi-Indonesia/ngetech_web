@@ -1,14 +1,16 @@
 ---
 import { t, type Locale } from '../i18n';
-import { site, waLink } from '../data/site';
+import { getSite, waLink } from '../data/site';
 import Icon from './Icon.astro';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const d = t(locale);
+const site = getSite();
 ---
 <section class="section contact" id="contact">
   <div class="wrap">
-    <div class="panel">
+    <div class="panel" data-reveal>
+      <span class="contact-arrow" aria-hidden="true"><Icon name="arrow-up-right" size={72} /></span>
       <h2>{d.contact.title}</h2>
       <p class="body">{d.contact.body}</p>
       <a class="btn btn-primary btn-lg" href={waLink(d.contact.waText)} target="_blank" rel="noopener"><Icon name="whatsapp-logo" size={20} />{d.contact.cta}</a>
@@ -24,15 +26,21 @@ const d = t(locale);
 <style>
   .contact { padding-top: 0; }
   .panel {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     display: grid;
     justify-items: start;
     gap: 0;
     padding: clamp(32px, 6vw, 80px);
-    border-radius: var(--radius-surface);
-    background: var(--surface-2);
-    border: 1px solid var(--line);
+    border-radius: 24px;
+    background: linear-gradient(120deg, var(--surface-2) 30%, var(--accent-soft));
+    border: 1px solid var(--accent-line);
   }
-  h2 { font-size: clamp(2rem, 1.3rem + 2.8vw, 3.5rem); letter-spacing: -0.04em; line-height: 1.04; max-width: 16em; }
+  .panel::before { content: ''; position: absolute; z-index: -1; width: 440px; height: 440px; border: 1px solid var(--accent-line); border-radius: 50%; right: -180px; top: -120px; box-shadow: 0 0 0 50px color-mix(in srgb, var(--accent-line) 15%, transparent), 0 0 0 100px color-mix(in srgb, var(--accent-line) 8%, transparent); }
+  .contact-arrow { position: absolute; right: clamp(32px, 6vw, 80px); top: 60px; color: var(--accent); transition: transform 400ms var(--ease-out); }
+  .panel:hover .contact-arrow { transform: translate(6px, -6px); }
+  h2 { font-size: clamp(2rem, 1.3rem + 2.8vw, 3.5rem); letter-spacing: -0.04em; line-height: 1.04; max-width: 13em; padding-right: 60px; }
   .body { margin-top: 16px; max-width: 36rem; font-size: var(--text-xl); line-height: 1.5; color: var(--ink-2); }
   .btn-lg { margin-top: 32px; min-height: 52px; padding: 0 24px; font-size: var(--text-lg); }
   .btn-lg :global(svg) { width: 20px; height: 20px; }
@@ -41,4 +49,5 @@ const d = t(locale);
   .meta a { color: var(--ink); overflow-wrap: anywhere; }
   .who { margin-top: 12px; font-size: var(--text-sm); color: var(--ink-3); }
   .who-inline { color: var(--ink-3); }
+  @media (max-width: 767px) { .contact-arrow { display: none; } h2 { padding-right: 0; } }
 </style>

@@ -4,14 +4,13 @@ slug: "src-pages-index-astro"
 primary_target: "src/pages/index.astro"
 related_targets: ["src/pages/en/index.astro"]
 ---
+Scope: ngetech.studio landing, Indonesian at / and English at /en/. Visitor action: understand the products and start a WhatsApp conversation.
 
-Scope: ngetech.studio landing (ID at /, EN at /en/). Visitor mode: Persuade.
-Audience: UMKM owners, school/institution admins, event organisers in Bandung, equal weight. Action: open a WhatsApp chat. Proof on hand: three real products with true statuses; NgeBooth photos to come. No metrics, logos, or testimonials exist.
+## Current direction
+The user requested a more expressive appearance with animation on 2026-10-07. Centered oversized typography, a teal headline ending, a subtle grid and ambient halo, and a framed interactive workspace replace the original restrained hero. Teal is used for brand emphasis as well as states. Keep neutral zinc surfaces, Geist, the official logo, system light/dark themes, real screenshots, and truthful product statuses.
 
-## Direction contract
-THESIS: Category standard played straight, at Linear/Vercel craft. Refuses the text-only editorial page and div-built fake screenshots; the product is shown as a working component.
-OWN-WORLD: Neutral zinc ground, off-black ink, one teal accent for state change only. Geist Sans throughout, Geist Mono for figures. 1px hairlines, 12px radius on surfaces, 8px on controls, pill only for status. Light and dark from system.
-STORY: Visitor sees their paper-and-spreadsheet problem named, tries a real mini app, learns the four true differentiators, sees honest status, messages on WhatsApp.
-FIRST VIEWPORT: Left-aligned two-line headline, 20-word sub, black "Chat di WhatsApp" plus ghost secondary; below, a full-width app window with three product tabs, interactive, labelled demo data.
-FORM: Canon (standing exit), user-chosen; seed 4e01a9b9 degraded, assigned candidate 5 declined by user.
-FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+## Story
+Problem → interactive demo → software/hardware/local-team capabilities → differentiators → products → real team → WhatsApp. Do not fabricate customer proof or photos.
+
+## Motion and finish
+Use one-time scroll reveals, small hover movements, a header reading-progress line, and an animated hardware signal. Ambient effects pause outside the viewport and in hidden tabs. Respect reduced motion and keep content readable without JavaScript. Review desktop/mobile and light/dark, preserve demo behavior, and document actual verification in docs/qa-design-refresh-2026-10-07.md.

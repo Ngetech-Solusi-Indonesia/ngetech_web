@@ -1,9 +1,7 @@
 ---
 import Profile from '../../../components/Profile.astro';
-import { team } from '../../../data/team';
-export function getStaticPaths() {
-  return team.map((member) => ({ params: { slug: member.slug }, props: { member } }));
-}
-const { member } = Astro.props;
+import { getTeam } from '../../../data/team';
+const member = getTeam().find(item => item.slug === Astro.params.slug);
+if (!member) return Astro.rewrite('/404');
 ---
 <Profile locale="en" member={member} />

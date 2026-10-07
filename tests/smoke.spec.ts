@@ -129,3 +129,35 @@ test('Dani is the WhatsApp contact; site WhatsApp number is set', async ({ page 
   expect(await page.locator('a[href^="https://wa.me/6282188974105"]').count()).toBeGreaterThanOrEqual(3);
   await expect(page.locator('#contact')).toContainText('farhanlhsn@ngetech.studio');
 });
+
+test('design refresh fits a phone and tracks scroll progress', async ({ page }) => {
+  await page.setViewportSize({ width: 360, height: 800 });
+  const errors = collectErrors(page);
+  await page.goto('/');
+  await expect(page.locator('.hero-emphasis')).toHaveText('ke sistem yang rapi.');
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.locator('#products').scrollIntoViewIfNeeded();
+  await expect(page.locator('.header')).toHaveClass(/is-scrolled/);
+  await expect.poll(() => page.locator('.header').evaluate((node) => Number((node as HTMLElement).style.getPropertyValue('--read-progress')))).toBeGreaterThan(0);
+  await expect(page.locator('.product-link')).toHaveCount(3);
+  expect(errors).toEqual([]);
+});
+
+test('reduced motion shows content without decorative animations', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/en/');
+  await page.locator('#team').scrollIntoViewIfNeeded();
+  await expect(page.locator('#team .card').first()).toBeVisible();
+  expect(await page.evaluate(() => document.getAnimations().filter((animation) => animation.playState === 'running').length)).toBe(0);
+});
+
+test('content remains readable without JavaScript', async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  const page = await context.newPage();
+  await page.goto('/');
+  await expect(page.locator('h1')).toContainText('Dari kertas dan Excel');
+  await expect(page.locator('#products .product').first()).toBeVisible();
+  await expect(page.locator('#team .card').first()).toBeVisible();
+  await expect(page.locator('#contact h2')).toBeVisible();
+  await context.close();
+});

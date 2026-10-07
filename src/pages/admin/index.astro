@@ -1,0 +1,78 @@
+---
+import AdminLayout from '../../components/AdminLayout.astro';
+import { currentContent } from '../../server/store';
+import { productImage } from '../../data/content';
+const state = currentContent();
+const section = ['page', 'site', 'products', 'team'].includes(Astro.url.searchParams.get('section') || '') ? Astro.url.searchParams.get('section')! : 'page';
+const isNew = Astro.url.searchParams.get('new') === '1' && ['products', 'team'].includes(section);
+const entries = section === 'products' ? state.products : section === 'team' ? state.team : [];
+const selected = entries.find(item => item.slug === Astro.url.searchParams.get('entry')) || entries[0];
+const bi = () => ({ id: '', en: '' });
+const freshProduct = { slug: '', name: '', nameEn: '', order: 10, status: 'in_development', screenshot: '', alt: bi(), desc: bi(), for: bi(), points: [bi()] };
+const freshTeam = { slug: '', name: '', short: '', order: 10, role: bi(), email: '', github: '', whatsapp: false, work: [] };
+const doc = section === 'page' ? state.page : section === 'site' ? { legalName: '', ...state.site } : isNew ? (section === 'products' ? freshProduct : freshTeam) : selected;
+const labels: Record<string, string> = { page: 'Halaman utama', site: 'Kontak perusahaan', products: 'Produk', team: 'Tim' };
+const title = isNew ? (section === 'products' ? 'Tambah produk' : 'Tambah anggota tim') : selected?.name || labels[section];
+const imageUrls = Object.fromEntries(state.products.filter(item => !item.screenshot.startsWith('/media/')).map(item => [item.screenshot, productImage(item.screenshot).src]));
+---
+<AdminLayout title={title}>
+  <div class="admin-shell">
+    <aside class="admin-sidebar">
+      <p class="sidebar-label">Kelola website</p>
+      <nav aria-label="Bagian CMS">
+        {Object.entries(labels).map(([key, label]) => <a href={`/admin?section=${key}`} aria-current={section === key ? 'page' : undefined}>{label}</a>)}
+      </nav>
+      {entries.length > 0 && <div class="entry-list"><p class="sidebar-label">{labels[section]}</p>{entries.map(item => <a href={`/admin?section=${section}&entry=${item.slug}`} aria-current={!isNew && selected?.slug === item.slug ? 'page' : undefined}>{item.name}</a>)}<a class="add-link" href={`/admin?section=${section}&new=1`}>+ {section === 'products' ? 'Tambah produk' : 'Tambah anggota'}</a></div>}
+      <p class="signed-in">Masuk sebagai <strong>{Astro.locals.admin}</strong></p>
+    </aside>
+    <main class="editor-main">
+      <header class="editor-heading"><div><h1>{title}</h1><p>Perubahan yang disimpan langsung tampil di website.</p></div><a class="preview-link" href="/" target="_blank" rel="noopener">Lihat website ↗</a></header>
+      <form id="cms-editor" data-section={section} data-entry={isNew ? '' : selected?.slug || ''} data-new={String(isNew)} data-revision={state.revision} data-document={JSON.stringify(doc)} data-images={JSON.stringify(imageUrls)} data-products={JSON.stringify(state.products.map(item => ({ slug: item.slug, name: item.name })))}>
+        <div data-fields class="editor-fields"></div>
+        <noscript><p>Aktifkan JavaScript untuk memakai editor konten.</p></noscript>
+        <div class="save-bar"><button class="admin-button" type="submit" data-save>Simpan perubahan</button><p class="admin-message" data-status role="status" aria-live="polite"></p>{!isNew && entries.length > 0 && <button class="delete-button" type="button" data-delete>Hapus {section === 'products' ? 'produk' : 'anggota'}</button>}</div>
+      </form>
+    </main>
+  </div>
+</AdminLayout>
+<script>import '../../scripts/cms';</script>
+<style is:global>
+  .admin-shell { display: grid; grid-template-columns: 230px minmax(0, 1fr); max-width: 1480px; margin: auto; min-height: calc(100vh - 73px); }
+  .admin-sidebar { padding: 28px 20px; border-right: 1px solid var(--line); background: var(--bg); }
+  .sidebar-label { font-size: .8125rem; color: var(--ink-3); margin-bottom: 10px; }
+  .admin-sidebar nav, .entry-list { display: grid; gap: 4px; }
+  .admin-sidebar a { padding: 9px 12px; font-size: .875rem; border-radius: 8px; text-decoration: none; overflow-wrap: anywhere; }
+  .admin-sidebar a:hover { background: var(--surface-2); }
+  .admin-sidebar a[aria-current] { background: var(--accent-soft); color: var(--accent); font-weight: 500; }
+  .entry-list { margin-top: 28px; border-top: 1px solid var(--line); padding-top: 24px; }
+  .entry-list .add-link { color: var(--accent); margin-top: 6px; }
+  .signed-in { font-size: .75rem; color: var(--ink-3); margin: 36px 12px 0; }
+  .editor-main { padding: clamp(24px, 4vw, 48px); min-width: 0; max-width: 1100px; }
+  .editor-heading { display: flex; justify-content: space-between; gap: 20px; align-items: center; margin-bottom: 28px; }
+  .editor-heading h1 { font-size: clamp(1.75rem, 3vw, 2.5rem); letter-spacing: -.04em; line-height: 1.2; }
+  .editor-heading p { color: var(--ink-3); font-size: .875rem; margin-top: 8px; }
+  .preview-link { font-size: .875rem; white-space: nowrap; color: var(--accent); }
+  .editor-fields { display: grid; gap: 18px; }
+  .cms-group { padding: 24px; border: 1px solid var(--line); background: var(--surface); border-radius: 14px; min-width: 0; display: grid; gap: 18px; }
+  details.cms-group { display: block; }
+  .cms-group > summary { cursor: pointer; font-size: 1rem; font-weight: 600; }
+  .cms-group > .group-body { display: grid; gap: 20px; padding-top: 24px; }
+  .cms-field { display: grid; gap: 7px; min-width: 0; }
+  .cms-field > label, .cms-field > .field-label { font-size: .875rem; font-weight: 500; }
+  .cms-field .hint { color: var(--ink-3); font-size: .75rem; }
+  .cms-bi { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .cms-bi label { color: var(--ink-3); font-size: .75rem; }
+  textarea.admin-input { resize: vertical; min-height: 92px; line-height: 1.5; }
+  .cms-array { display: grid; gap: 14px; }
+  .cms-array-item { border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: grid; gap: 14px; background: var(--bg); }
+  .array-toolbar { display: flex; justify-content: space-between; gap: 12px; align-items: center; font-size: .8125rem; color: var(--ink-3); }
+  .small-button { width: fit-content; padding: 7px 12px; border: 1px solid var(--line-2); border-radius: 8px; background: var(--surface); font-size: .8125rem; color: var(--ink-2); }
+  .small-button:disabled { opacity: .4; cursor: default; }
+  .cms-check { display: flex; gap: 10px; align-items: center; font-size: .875rem; }
+  .cms-check input { width: 18px; height: 18px; accent-color: var(--accent); }
+  .cms-image { width: min(100%, 420px); border-radius: 8px; border: 1px solid var(--line); margin-top: 8px; }
+  .save-bar { position: sticky; bottom: 0; padding: 18px 0; background: color-mix(in srgb, var(--surface-2) 96%, transparent); display: flex; align-items: center; flex-wrap: wrap; gap: 14px; margin-top: 20px; }
+  .save-bar .admin-message { flex: 1; min-width: 180px; }
+  .delete-button { border: 0; background: transparent; color: var(--warn); font-size: .8125rem; padding: 10px; }
+  @media (max-width: 767px) { .admin-shell { grid-template-columns: 1fr; } .admin-sidebar { border-right: 0; border-bottom: 1px solid var(--line); padding: 16px; } .admin-sidebar nav { display: flex; flex-wrap: wrap; } .entry-list { margin-top: 14px; padding-top: 14px; } .signed-in { display: none; } .editor-heading { align-items: flex-start; } .preview-link { display: none; } .cms-bi { grid-template-columns: 1fr; } .cms-group { padding: 18px; } }
+</style>

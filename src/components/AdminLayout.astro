@@ -1,0 +1,39 @@
+---
+import '../styles/tokens.css';
+import '../styles/base.css';
+import Logo from './Logo.astro';
+interface Props { title: string }
+const { title } = Astro.props;
+---
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" /><title>{title} · NgeTech Admin</title>
+    <link rel="icon" href="/favicon-32.png" /><link rel="preload" href="/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin />
+  </head>
+  <body class="admin-body">
+    <header class="admin-bar">
+      <a href="/admin" class="admin-brand"><Logo /><strong>NgeTech</strong><span>Admin</span></a>
+      <div class="admin-actions"><a href="/" target="_blank" rel="noopener">Lihat website ↗</a>{Astro.locals.admin && <form action="/api/admin/logout" method="post"><button type="submit">Keluar</button></form>}</div>
+    </header>
+    <slot />
+  </body>
+</html>
+<style is:global>
+  .admin-body { background: var(--surface-2); }
+  .admin-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px clamp(16px, 3vw, 40px); background: var(--bg); border-bottom: 1px solid var(--line); }
+  .admin-brand, .admin-actions { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .admin-brand span:last-child { padding-left: 12px; border-left: 1px solid var(--line-2); color: var(--ink-3); font-size: .875rem; }
+  .admin-actions { font-size: .875rem; }
+  .admin-actions a { text-decoration: none; }
+  .admin-actions button { border: 1px solid var(--line-2); border-radius: 8px; padding: 7px 12px; background: var(--surface); }
+  .admin-input { width: 100%; min-width: 0; min-height: 44px; padding: 10px 12px; border: 1px solid var(--line-2); border-radius: 8px; background: var(--bg); color: var(--ink); font: inherit; }
+  .admin-input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .admin-button { padding: 10px 18px; border: 0; border-radius: 8px; background: var(--btn-bg); color: var(--btn-ink); font-weight: 500; min-height: 44px; }
+  .admin-button:disabled { opacity: .5; cursor: wait; }
+  .admin-message { color: var(--ink-2); font-size: .875rem; }
+  .admin-message[data-kind="error"] { color: var(--warn); }
+  .admin-message[data-kind="success"] { color: var(--accent); }
+  @media (max-width: 420px) { .admin-brand span:last-child { display: none; } .admin-actions { gap: 8px; font-size: .8125rem; } }
+</style>

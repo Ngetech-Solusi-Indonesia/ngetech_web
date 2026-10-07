@@ -1,15 +1,16 @@
 // JSON-LD for search engines. Only facts that are true today; fields that are
 // still placeholders (TODO_) are left out rather than published.
-import { site } from './site';
-import { team, profilePath, type Member } from './team';
-import { projects } from './projects';
+import { getSite } from './site';
+import { getTeam, profilePath, type Member } from './team';
+import { getProjects } from './projects';
 import { t, pathFor, type Locale } from '../i18n';
 
 const filled = (v?: string) => (v && !v.startsWith('TODO_') ? v : undefined);
 
-const personId = (m: Member) => `${site.url}/tim/${m.slug}/#person`;
+const personId = (m: Member) => `${getSite().url}/tim/${m.slug}/#person`;
 
 function person(locale: Locale, m: Member) {
+  const site = getSite();
   return {
     '@type': 'Person',
     '@id': personId(m),
@@ -23,6 +24,7 @@ function person(locale: Locale, m: Member) {
 }
 
 export function personSchema(locale: Locale, m: Member) {
+  const site = getSite();
   const url = new URL(profilePath(locale, m.slug), site.url).href;
   return {
     '@context': 'https://schema.org',
@@ -43,6 +45,9 @@ export function personSchema(locale: Locale, m: Member) {
 }
 
 export function schemaFor(locale: Locale) {
+  const site = getSite();
+  const team = getTeam();
+  const projects = getProjects();
   const d = t(locale);
   const url = new URL(pathFor(locale), site.url).href;
   const orgId = `${site.url}/#organization`;

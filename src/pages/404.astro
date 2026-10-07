@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import { t } from '../i18n';
 const d = t('id');
 const e = t('en');
+Astro.response.status = 404;
 ---
 <Base locale="id" title={`${d.meta.notFoundTitle} | NgeTech`} noindex>
   <Header locale="id" />

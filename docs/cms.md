@@ -1,50 +1,36 @@
-# Mengedit isi situs (Keystatic)
+# Mengelola website melalui CMS
 
-Isi situs diedit lewat **https://ngetech.studio/keystatic**. Setiap kali Anda menekan **Save**, Keystatic membuat commit ke repo `Ngetech-Solusi-Indonesia/ngetech_web`, lalu Cloudflare membangun ulang dan menayangkan situs dalam ±1–2 menit. Tidak perlu terminal atau redeploy manual.
+CMS berada di `/admin`. Login memakai username dan password sendiri. Konten tersimpan pada server VPS dan langsung tampil setelah disimpan; tidak membutuhkan akun GitHub, Cloudflare, commit, atau build ulang.
 
-## Yang bisa diedit
+## Pertama kali di komputer lokal
+1. Pasang dependensi: `pnpm install`.
+2. Jika menggunakan `.env` dari contoh, atur `CMS_COOKIE_SECURE=false` untuk HTTP lokal. Jalankan `pnpm dev` dan buka `http://127.0.0.1:4321/admin`.
+3. Jika akun belum ada, halaman lokal menampilkan **Buat akun admin**. Isi username dan password minimal 12 karakter, lalu login.
+4. Menu **Halaman utama**, **Kontak perusahaan**, **Produk**, dan **Tim** berisi form yang bisa diedit. Isi Indonesia dan English, lalu tekan **Simpan perubahan**.
 
-| Menu | Isi |
-|---|---|
-| **Teks halaman utama** | Judul, teks hero, empat keunggulan, judul tiap bagian, kontak, dan teks SEO (judul & deskripsi di Google). Setiap teks punya kolom Indonesia dan English berdampingan. |
-| **Kontak & info perusahaan** | Nomor WhatsApp, email kontak, nama badan hukum (kosongkan selama belum PT/CV), organisasi GitHub. |
-| **Produk** | Nama, status, screenshot, deskripsi, poin fitur, urutan. Produk dengan urutan terkecil tampil besar. |
-| **Tim** | Nama, peran, email, GitHub, apakah menjawab WhatsApp, dan daftar "yang dikerjakan" per produk. Tiap anggota otomatis punya halaman profil di `/tim/<alamat>/`. |
+Setup melalui browser hanya tersedia pada dev server localhost dan otomatis tertutup setelah akun dibuat. Di VPS, akun awal dibuat dari terminal dengan `npm run cms:user`; perintah tersebut menyembunyikan password saat diketik. Menjalankan ulang perintah dapat mereset akun/password dan mengakhiri semua sesi sebelumnya.
 
-Teks tampilan demo interaktif (tabel stok, absensi, NgeBooth) tetap di kode (`src/i18n/*.json`), karena itu bagian dari antarmuka, bukan konten.
+## Mengedit konten
+- Halaman utama: judul, deskripsi, keunggulan, teks kontak, dan SEO.
+- Kontak: nomor WhatsApp, email, nama badan hukum, dan tautan organisasi GitHub sebagai informasi perusahaan.
+- Produk: tambah/edit/hapus, status, urutan, fitur, dan upload screenshot.
+- Tim: tambah/edit/hapus, kontak, peran, dan pekerjaan per produk. Profil baru otomatis tersedia dalam dua bahasa.
+- Screenshot: JPG, PNG, WebP, atau AVIF maksimal 10 MB / 40 megapiksel; CMS membuat WebP secara otomatis.
+- Alamat produk/profil yang sudah ada dikunci agar tautan lama tidak berubah.
+- Produk yang masih dirujuk profil tim harus dilepas dari profil tersebut sebelum dapat dihapus.
+- Bila konten telah berubah dari tab lain, editor menolak penyimpanan versi lama. Muat ulang halaman dan ulangi perubahan.
+- Teks antarmuka demo tetap berada di `src/i18n/*.json`.
 
-Tips:
-- **Screenshot**: rasio 16:10, lebar minimal 1600 px. Ukuran dan format WebP dibuat otomatis saat build.
-- **Judul di Google** ±60 karakter, **deskripsi** ±155 karakter.
-- Mengubah **Alamat profil** anggota tim atau **Kunci** produk akan memutus link lama; biarkan kecuali memang perlu.
+## Penyimpanan dan backup
+`DATA_DIR` menentukan folder data permanen. Default lokal: `./data`.
+- `content.json`: konten aktif.
+- `media/`: screenshot hasil upload.
+- `history/`: salinan konten sebelum setiap perubahan.
+- `admin.json`: username dan hash password scrypt.
+- `sessions.json`: sesi login yang disimpan sebagai hash token.
+- `audit.jsonl`: catatan perubahan.
 
-## Setup sekali (oleh admin repo)
+Backup seluruh folder ini, bukan hanya `content.json`. Jangan menaruh DATA_DIR di folder publik atau menghapus volume saat mengganti versi aplikasi. Password dan sesi tidak ikut repository. Sesi berakhir setelah delapan jam; Keluar membatalkan sesi saat ini. CMS menggunakan satu proses Node, agar pembaruan konten dan sesi tetap terserialisasi.
 
-Situs dideploy ke **Cloudflare Workers** (adapter Astro untuk Cloudflare). Bagian statis tetap statis; hanya `/keystatic` yang berjalan di server.
-
-### 1. Hubungkan repo ke Cloudflare
-1. Cloudflare dashboard → **Workers & Pages** → **Create** → **Import a repository** → pilih `Ngetech-Solusi-Indonesia/ngetech_web`.
-2. Build command: `pnpm build` · Deploy command: `npx wrangler deploy`.
-3. Tambahkan domain `ngetech.studio` di **Settings → Domains & Routes**.
-
-### 2. Buat GitHub App untuk Keystatic
-Di komputer yang sudah clone repo ini:
-```bash
-pnpm install
-pnpm cms:setup
-```
-Buka http://localhost:4321/keystatic, ikuti tombol **Create GitHub App**, pilih organisasi `Ngetech-Solusi-Indonesia`. Keystatic akan menulis `.env` berisi empat nilai (lihat `.env.example`). File `.env` tidak ikut di-commit.
-
-Lalu di pengaturan GitHub App tersebut (GitHub → Settings → Developer settings → GitHub Apps):
-- **Callback URL**: tambahkan `https://ngetech.studio/api/keystatic/github/oauth/callback`
-- **Install** app ke repo `ngetech_web`.
-
-### 3. Isi variabel di Cloudflare
-Di Worker `ngetech-web` → **Settings → Variables and Secrets**:
-- Secret: `KEYSTATIC_GITHUB_CLIENT_ID`, `KEYSTATIC_GITHUB_CLIENT_SECRET`, `KEYSTATIC_SECRET`
-- **Build** variable: `PUBLIC_KEYSTATIC_GITHUB_APP_SLUG`
-
-Deploy ulang sekali. Setelah itu siapa pun di tim yang punya akses ke repo bisa login di `/keystatic` dengan akun GitHub-nya.
-
-## Mengedit secara lokal
-`pnpm dev` lalu buka http://localhost:4321/keystatic. Perubahan langsung ditulis ke file di `src/content/`; commit dan push seperti biasa.
+## VPS
+Lihat `docs/vps.md`. Aplikasi memakai adapter Node standalone. `/keystatic` diarahkan ke `/admin` untuk membantu pengguna tautan lama.

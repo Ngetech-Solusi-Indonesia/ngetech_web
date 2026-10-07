@@ -1,12 +1,13 @@
 ---
 import { t, type Locale } from '../i18n';
-import { site } from '../data/site';
+import { getSite } from '../data/site';
 import LangSwitch from './LangSwitch.astro';
 import Logo from './Logo.astro';
 
 interface Props { locale: Locale; alternates?: Record<Locale, string> }
 const { locale, alternates } = Astro.props;
 const d = t(locale);
+const site = getSite();
 const year = new Date().getFullYear();
 ---
 <footer class="footer">

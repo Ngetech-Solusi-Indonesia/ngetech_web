@@ -1,38 +1,22 @@
 # ngetech.studio
 
-Landing page for Ngetech Solusi Indonesia. Astro, static output, ID (default) + EN.
+Website NgeTech dengan CMS mandiri dan server Node untuk VPS. Bahasa Indonesia + English.
 
-## Commands
-| | |
+## Menjalankan
+Gunakan Node >=22.12 dan pnpm 11.10.0. Di Windows, workspace pada NTFS direkomendasikan untuk dependensi Node.
+
+| Perintah | Fungsi |
 |---|---|
-| `pnpm dev` | Dev server |
-| `pnpm build:preview` | Build even with placeholders (for previews) |
-| `pnpm build` | Production build. **Fails while any `TODO_` remains** in `src/data` or `src/i18n` |
-| `pnpm preview` | Serve the built site locally (Cloudflare Workers runtime) |
-| `pnpm cms:setup` | Run dev with Keystatic in GitHub mode (one-time GitHub App setup) |
-| `pnpm deploy` | Build and deploy to Cloudflare Workers via wrangler |
-| `pnpm test` | Playwright smoke tests (builds + serves on :4322) |
-| `node scripts/assets.mjs` | Regenerate `public/og.png` + `favicon-32.png` (needs `pnpm preview` running) |
+| `pnpm install` | Pasang dependensi |
+| `pnpm dev` | Website dan CMS lokal di port 4321 |
+| `pnpm build` | Validasi konten awal dan build server Node |
+| `pnpm start` | Jalankan server hasil build |
+| `pnpm cms:user` | Buat/reset akun admin melalui terminal |
+| `pnpm test` | Tes website dan CMS pada penyimpanan sementara terisolasi; jalankan build dahulu |
+| `node scripts/assets.mjs` | Regenerasi gambar OG dari server yang aktif |
 
-In the cloud dev container, Playwright needs `CHROMIUM_PATH=/opt/pw-browsers/chromium`.
+CMS: `/admin`, memakai username/password sendiri. Edit konten langsung tampil tanpa build ulang. Tidak ada autentikasi GitHub atau layanan Cloudflare dalam aplikasi ini.
 
-## Editing content (CMS)
-Content is edited in Keystatic at `/keystatic` (see `docs/cms.md`, in Indonesian). Saving commits to GitHub and the site rebuilds automatically.
+Konten awal: `src/content/`. Konten aktif, gambar, akun, sesi, riwayat, dan audit disimpan pada `DATA_DIR` (default `./data`). Folder ini tidak ikut repository dan harus dipertahankan saat deployment.
 
-## Where content lives
-- Page text (ID + EN side by side): `src/content/page.json`
-- Contact info: `src/content/site.json`
-- Products (+ screenshots in `src/assets/products/`): `src/content/products/`
-- Team and profiles: `src/content/team/`
-- Interface strings (demo app, nav, labels): `src/i18n/id.json`, `src/i18n/en.json`. Both must have the same keys, or the build fails.
-
-## Before launch
-Fill every `TODO_` (run `pnpm check:content` to list them), then regenerate the OG image if the headline changed.
-
-Design system: `DESIGN.md` (+ `.impeccable/design.json`); product truth: `PRODUCT.md`; direction contract: `.impeccable/surfaces/`.
-
-After regenerating `og.png` / `favicon-32.png`, re-embed their origin with impeccable's `embed-prompt` (see `.impeccable/surfaces/`), or note how they were made.
-
-NgeBooth photos: put four images in `public/ngebooth/` and list them in `src/data/ngebooth.ts`; the demo strip uses them automatically.
-
-Docs: `docs/superpowers/specs/` (design spec), `docs/superpowers/plans/` (implementation plan), `docs/qa-2026-10-07.md`.
+Panduan: `docs/cms.md` untuk editor, `docs/vps.md` untuk deployment, `DESIGN.md` untuk desain. Variabel server ada di `.env.example`. Situs dapat dijalankan dengan Docker Compose atau Node + systemd di belakang reverse proxy HTTPS.

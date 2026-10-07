@@ -81,12 +81,16 @@ p { text-wrap: pretty; }
   letter-spacing: -0.01em;
   text-decoration: none;
   white-space: nowrap;
-  transition: background-color 160ms ease, border-color 160ms ease, transform 120ms ease;
+  transition: background-color 180ms ease, border-color 180ms ease, transform 220ms var(--ease-out), box-shadow 220ms ease;
 }
+.btn:hover { transform: translateY(-2px); }
+.btn svg { transition: transform 220ms var(--ease-out); }
+.btn:hover svg:last-child { transform: translate(2px, -1px); }
 .btn:active { transform: scale(0.98); }
 .btn svg { width: 18px; height: 18px; flex: none; }
 .btn-primary { background: var(--btn-bg); color: var(--btn-ink); }
 .btn-primary:hover { background: var(--btn-hover); }
+.btn-primary:hover { box-shadow: 0 6px 18px rgb(0 0 0 / .12); }
 .btn-ghost { background: var(--surface); border-color: var(--line-2); color: var(--ink); }
 .btn-ghost:hover { border-color: var(--ink-3); }
 .btn-sm { min-height: 36px; padding: 0 14px; font-size: var(--text-sm); }
@@ -130,3 +134,9 @@ p { text-wrap: pretty; }
   border-radius: var(--radius-control);
 }
 .skip:focus { top: 12px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .btn:hover, .btn:hover svg:last-child { transform: none; }
+  .cell:hover, .card:hover, .product:hover .shot img, .product-link:hover svg, .panel:hover .contact-arrow, .card:hover .more svg { transform: none !important; }
+}
