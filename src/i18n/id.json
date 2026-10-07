@@ -233,7 +233,8 @@
   },
   "team": {
     "title": "Tim kami",
-    "sub": "Lima orang di Bandung. Anda bicara langsung dengan yang mengerjakan proyek Anda."
+    "sub": "Lima orang di Bandung. Anda bicara langsung dengan yang mengerjakan proyek Anda.",
+    "profile": "Profil"
   },
   "contact": {
     "title": "Ceritakan apa yang ingin Anda rapikan.",
@@ -241,10 +242,25 @@
     "cta": "Chat di WhatsApp",
     "waText": "Halo NgeTech, saya mau ngobrol soal proyek.",
     "orEmail": "Atau email ke",
-    "location": "Bandung, Indonesia"
+    "location": "Bandung, Indonesia",
+    "waWho": "Dijawab oleh Dani, CEO",
+    "emailWho": "Email dibalas oleh Farhan, CTO"
   },
   "footer": {
     "rights": "Hak cipta dilindungi.",
     "github": "GitHub"
+  },
+  "profile": {
+    "back": "Semua anggota tim",
+    "work": "Yang dikerjakan di NgeTech",
+    "workNote": "Diringkas dari riwayat commit di repositori NgeTech.",
+    "noWork": "Narahubung WhatsApp NgeTech untuk proyek baru.",
+    "contact": "Kontak",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "github": "GitHub",
+    "others": "Anggota tim lainnya",
+    "titleAt": "di NgeTech Solusi Indonesia",
+    "descPrefix": "Profil"
   }
 }

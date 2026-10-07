@@ -4,10 +4,10 @@ export const site = {
   shortName: 'NgeTech',
   url: 'https://ngetech.studio',
   // International format without "+" or spaces, e.g. 6281234567890
-  waNumber: 'TODO_WA_NUMBER',
-  email: 'TODO_EMAIL',
-  // Registered entity name as it should appear in the footer, e.g. "PT NgeTech Solusi Indonesia"
-  legalName: 'TODO_LEGAL_NAME',
+  waNumber: '6282188974105', // Dani (CEO)
+  email: 'farhanlhsn@ngetech.studio', // Farhan (CTO) handles email enquiries
+  // Not a registered PT/CV yet. Fill in when registered; the name stays "NgeTech Solusi Indonesia".
+  legalName: undefined as string | undefined,
   githubOrg: 'Ngetech-Solusi-Indonesia',
 };
 

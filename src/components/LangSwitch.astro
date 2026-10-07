@@ -1,11 +1,12 @@
 ---
 import { pathFor, locales, type Locale } from '../i18n';
-interface Props { locale: Locale; label: string }
+interface Props { locale: Locale; label: string; alternates?: Record<Locale, string> }
 const { locale, label } = Astro.props;
+const alternates = Astro.props.alternates ?? { id: pathFor('id'), en: pathFor('en') };
 ---
 <nav class="lang" aria-label={label}>
   {locales.map((l) => (
-    <a href={pathFor(l)} hreflang={l} lang={l} aria-current={l === locale ? 'true' : undefined} data-lang-link>
+    <a href={alternates[l]} hreflang={l} lang={l} aria-current={l === locale ? 'true' : undefined} data-lang-link>
       {l.toUpperCase()}
     </a>
   ))}

@@ -34,7 +34,7 @@ Constraints: Indonesian is the primary language, English secondary. Contact is v
 
 Team: Daniandra Prayudisty (CEO), Muhammad Farhan Al Hasan (CTO), Ali Hizqil (Designer), Athallah Zacky Maulana (Developer), Ulinnuha Ubay (Developer). GitHub org: Ngetech-Solusi-Indonesia.
 
-Open (not yet provided): WhatsApp number, legal entity name, contact email.
+Contact: WhatsApp +62 821-8897-4105 (Dani, CEO); email farhanlhsn@ngetech.studio (Farhan, CTO). Each member has a @ngetech.studio address. Not yet a registered PT/CV; if registered, the name stays NgeTech Solusi Indonesia, so never write "PT" or "CV" before then.
 
 ## Brand Commitments
 - Name: NgeTech Solusi Indonesia ("NgeTech", spelled as in the logo).

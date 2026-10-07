@@ -5,13 +5,23 @@ import { t, pathFor, htmlLang, locales, type Locale } from '../i18n';
 import { site } from '../data/site';
 import { schemaFor } from '../data/schema';
 
-interface Props { locale: Locale; title?: string; description?: string; noindex?: boolean }
+interface Props {
+  locale: Locale;
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+  // Same page in each locale; defaults to the home pages.
+  alternates?: Record<Locale, string>;
+  // Page-specific JSON-LD; defaults to the site graph.
+  schema?: unknown;
+}
 const { locale, noindex = false } = Astro.props;
+const alternates = Astro.props.alternates ?? { id: pathFor('id'), en: pathFor('en') };
 const d = t(locale);
 const title = Astro.props.title ?? d.meta.title;
 const description = Astro.props.description ?? d.meta.description;
 const other = locale === 'id' ? 'en_US' : 'id_ID';
-const canonical = new URL(pathFor(locale), site.url).href;
+const canonical = new URL(alternates[locale], site.url).href;
 const ogImage = new URL('/og.png', site.url).href;
 ---
 <!doctype html>
@@ -23,8 +33,8 @@ const ogImage = new URL('/og.png', site.url).href;
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex" />}
     <link rel="canonical" href={canonical} />
-    {locales.map((l) => <link rel="alternate" hreflang={htmlLang[l]} href={new URL(pathFor(l), site.url).href} />)}
-    <link rel="alternate" hreflang="x-default" href={new URL(pathFor('id'), site.url).href} />
+    {locales.map((l) => <link rel="alternate" hreflang={htmlLang[l]} href={new URL(alternates[l], site.url).href} />)}
+    <link rel="alternate" hreflang="x-default" href={new URL(alternates.id, site.url).href} />
 
     <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
     <link rel="icon" href="/brand/ngetech-mark-192.png" sizes="192x192" type="image/png" />
@@ -54,7 +64,7 @@ const ogImage = new URL('/og.png', site.url).href;
     <meta name="geo.region" content="ID-JB" />
     <meta name="geo.placename" content="Bandung" />
 
-    {!noindex && <script type="application/ld+json" set:html={JSON.stringify(schemaFor(locale))} />}
+    {!noindex && <script type="application/ld+json" set:html={JSON.stringify(Astro.props.schema ?? schemaFor(locale))} />}
   </head>
   <body>
     <script is:inline>document.documentElement.classList.add("js");</script>

@@ -95,10 +95,37 @@ test('SEO: JSON-LD, hreflang, OG and real team names', async ({ page }) => {
   const ld = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent())!);
   const org = ld['@graph'][0];
   expect(org.address.addressLocality).toBe('Bandung');
-  expect(org.employee.map((e: { name: string }) => e.name)).toContain('Daniandra Prayudisty');
+  const people = ld['@graph'].filter((n: { '@type': string }) => n['@type'] === 'Person');
+  expect(people.map((n: { name: string }) => n.name)).toContain('Daniandra Prayudisty');
+  expect(org.employee).toHaveLength(5);
   expect(JSON.stringify(ld)).not.toContain('TODO_');
   await expect(page.locator('link[rel="alternate"][hreflang="en"]')).toHaveAttribute('href', 'https://ngetech.studio/en/');
   await expect(page.locator('meta[property="og:image:alt"]')).toHaveCount(1);
   await expect(page.locator('#team')).toContainText('Ali Hizqil');
+  expect(org.telephone).toBe('+6282188974105');
   await expect(page.locator('#products img')).toHaveCount(3);
+});
+
+test('team cards link to profiles; profile has work, contact and correct hreflang', async ({ page }) => {
+  await page.goto('/');
+  await page.locator('#team a', { hasText: 'Muhammad Farhan Al Hasan' }).click();
+  await expect(page).toHaveURL(/\/tim\/muhammad-farhan-al-hasan\/$/);
+  await expect(page.locator('h1')).toHaveText('Muhammad Farhan Al Hasan');
+  await expect(page.locator('a[href="mailto:farhanlhsn@ngetech.studio"]')).toBeVisible();
+  await expect(page.locator('.work li')).toHaveCount(3);
+  await expect(page.locator('link[rel="alternate"][hreflang="en"]')).toHaveAttribute('href', 'https://ngetech.studio/en/team/muhammad-farhan-al-hasan/');
+  const ld = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent())!);
+  expect(ld['@graph'][0]['@type']).toBe('ProfilePage');
+  // Language switch goes to the same person.
+  await page.locator('.header [data-lang-link][hreflang="en"]').click();
+  await expect(page).toHaveURL(/\/en\/team\/muhammad-farhan-al-hasan\/$/);
+});
+
+test('Dani is the WhatsApp contact; site WhatsApp number is set', async ({ page }) => {
+  await page.goto('/tim/daniandra-prayudisty/');
+  const wa = page.locator('main a[href^="https://wa.me/6282188974105"]');
+  await expect(wa).toHaveCount(1);
+  await page.goto('/');
+  expect(await page.locator('a[href^="https://wa.me/6282188974105"]').count()).toBeGreaterThanOrEqual(3);
+  await expect(page.locator('#contact')).toContainText('farhanlhsn@ngetech.studio');
 });

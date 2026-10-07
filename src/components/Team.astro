@@ -1,6 +1,6 @@
 ---
 import { t, type Locale } from '../i18n';
-import { team } from '../data/team';
+import { team, profilePath } from '../data/team';
 import Icon from './Icon.astro';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
@@ -15,14 +15,11 @@ const d = t(locale);
     <ul class="roster">
       {team.map((m) => (
         <li>
-          <p class="name">{m.name}</p>
-          <p class="role">{m.role[locale]}</p>
-          {(m.github || m.linkedin) && (
-            <p class="links">
-              {m.github && <a href={`https://github.com/${m.github}`} rel="noopener" aria-label={`GitHub ${m.name}`}><Icon name="github-logo" size={16} /></a>}
-              {m.linkedin && <a href={m.linkedin} rel="noopener">LinkedIn <Icon name="arrow-up-right" size={12} /></a>}
-            </p>
-          )}
+          <a class="card" href={profilePath(locale, m.slug)}>
+            <span class="name">{m.name}</span>
+            <span class="role">{m.role[locale]}</span>
+            <span class="more">{d.team.profile}<Icon name="arrow-right" size={14} /></span>
+          </a>
         </li>
       ))}
     </ul>
@@ -35,13 +32,30 @@ const d = t(locale);
     list-style: none;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
-    gap: 32px 24px;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+    gap: 12px;
   }
-  li { display: grid; gap: 2px; align-content: start; padding-top: 16px; border-top: 1px solid var(--line-2); }
-  .name { font-weight: 500; letter-spacing: -0.01em; overflow-wrap: anywhere; }
-  .role { color: var(--ink-3); font-size: var(--text-sm); overflow-wrap: anywhere; }
-  .links { display: flex; gap: 12px; margin-top: 8px; font-size: var(--text-sm); }
-  .links a { display: inline-flex; align-items: center; gap: 4px; color: var(--ink-2); text-decoration: none; }
-  .links a:hover { color: var(--ink); }
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    height: 100%;
+    padding: 18px 18px 16px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-surface);
+    background: var(--surface);
+    text-decoration: none;
+    transition: border-color 150ms ease;
+  }
+  .card:hover { border-color: var(--ink-3); }
+  .name { font-weight: 600; letter-spacing: -0.01em; overflow-wrap: anywhere; }
+  .role { color: var(--ink-3); font-size: var(--text-sm); }
+  .more {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: auto;
+    padding-top: 14px;
+    font-size: var(--text-sm);
+    color: var(--ink-2);
+  }
+  .card:hover .more { color: var(--ink); }
 </style>

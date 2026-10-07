@@ -1,10 +1,45 @@
 // JSON-LD for search engines. Only facts that are true today; fields that are
 // still placeholders (TODO_) are left out rather than published.
 import { site } from './site';
-import { team } from './team';
+import { team, profilePath, type Member } from './team';
 import { t, pathFor, type Locale } from '../i18n';
 
-const filled = (v: string) => (v && !v.startsWith('TODO_') ? v : undefined);
+const filled = (v?: string) => (v && !v.startsWith('TODO_') ? v : undefined);
+
+const personId = (m: Member) => `${site.url}/tim/${m.slug}/#person`;
+
+function person(locale: Locale, m: Member) {
+  return {
+    '@type': 'Person',
+    '@id': personId(m),
+    name: m.name,
+    jobTitle: m.role[locale],
+    email: m.email,
+    url: new URL(profilePath(locale, m.slug), site.url).href,
+    worksFor: { '@id': `${site.url}/#organization` },
+    ...(m.github ? { sameAs: [`https://github.com/${m.github}`] } : {}),
+  };
+}
+
+export function personSchema(locale: Locale, m: Member) {
+  const url = new URL(profilePath(locale, m.slug), site.url).href;
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'ProfilePage',
+        '@id': `${url}#webpage`,
+        url,
+        name: `${m.name}, ${m.role[locale]}`,
+        inLanguage: locale === 'id' ? 'id-ID' : 'en-US',
+        mainEntity: { '@id': personId(m) },
+        isPartOf: { '@id': `${site.url}/#website` },
+      },
+      person(locale, m),
+      { '@type': 'Organization', '@id': `${site.url}/#organization`, name: site.name, url: site.url },
+    ],
+  };
+}
 
 export function schemaFor(locale: Locale) {
   const d = t(locale);
@@ -38,12 +73,19 @@ export function schemaFor(locale: Locale) {
     ...(phone ? { telephone: `+${phone}` } : {}),
     ...(email ? { email } : {}),
     numberOfEmployees: { '@type': 'QuantitativeValue', value: team.length },
-    employee: team.map((m) => ({
-      '@type': 'Person',
-      name: m.name,
-      jobTitle: m.role[locale],
-      ...(m.github ? { sameAs: [`https://github.com/${m.github}`] } : {}),
-    })),
+    ...(phone || email
+      ? {
+          contactPoint: {
+            '@type': 'ContactPoint',
+            contactType: 'customer service',
+            ...(phone ? { telephone: `+${phone}` } : {}),
+            ...(email ? { email } : {}),
+            availableLanguage: ['Indonesian', 'English'],
+            areaServed: 'ID',
+          },
+        }
+      : {}),
+    employee: team.map((m) => ({ '@id': personId(m) })),
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: d.why.title,
@@ -83,6 +125,7 @@ export function schemaFor(locale: Locale) {
         about: { '@id': orgId },
         primaryImageOfPage: `${site.url}/og.png`,
       },
+      ...team.map((m) => person(locale, m)),
     ],
   };
 }

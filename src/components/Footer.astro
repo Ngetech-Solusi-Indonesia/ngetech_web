@@ -4,8 +4,8 @@ import { site } from '../data/site';
 import LangSwitch from './LangSwitch.astro';
 import Logo from './Logo.astro';
 
-interface Props { locale: Locale }
-const { locale } = Astro.props;
+interface Props { locale: Locale; alternates?: Record<Locale, string> }
+const { locale, alternates } = Astro.props;
 const d = t(locale);
 const year = new Date().getFullYear();
 ---
@@ -13,11 +13,11 @@ const year = new Date().getFullYear();
   <div class="wrap row">
     <div class="left">
       <Logo size={22} />
-      <p>© {year} {site.legalName}. {d.footer.rights}</p>
+      <p>© {year} {site.legalName ?? site.name}. {d.footer.rights}</p>
     </div>
     <div class="right">
       <a href={`https://github.com/${site.githubOrg}`} rel="noopener">{d.footer.github}</a>
-      <LangSwitch locale={locale} label={d.nav.language} />
+      <LangSwitch locale={locale} label={d.nav.language} alternates={alternates} />
     </div>
   </div>
 </footer>

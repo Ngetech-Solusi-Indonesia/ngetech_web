@@ -1,0 +1,113 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import Icon from './Icon.astro';
+import { t, pathFor, type Locale } from '../i18n';
+import { team, profilePath, type Member } from '../data/team';
+import { projects } from '../data/projects';
+import { site, waLink } from '../data/site';
+import { personSchema } from '../data/schema';
+
+interface Props { locale: Locale; member: Member }
+const { locale, member: m } = Astro.props;
+const d = t(locale);
+const alternates = { id: profilePath('id', m.slug), en: profilePath('en', m.slug) };
+const title = `${m.name}, ${m.role[locale]} ${d.profile.titleAt}`;
+const summary = m.work.length
+  ? m.work.map((w) => d.projects[w.product].name).join(', ')
+  : d.profile.noWork;
+const description = `${d.profile.descPrefix} ${m.name}, ${m.role[locale]} NgeTech. ${summary}`.slice(0, 158);
+const statusOf = Object.fromEntries(projects.map((p) => [p.key, p.status]));
+const pillClass = { in_use: 'is-live', internal_testing: 'is-testing', in_development: '' } as const;
+const others = team.filter((x) => x.slug !== m.slug);
+---
+<Base locale={locale} title={title} description={description} alternates={alternates} schema={personSchema(locale, m)}>
+  <Header locale={locale} alternates={alternates} home={false} />
+  <main id="main" class="wrap profile">
+    <a class="back" href={`${pathFor(locale)}#team`}><Icon name="arrow-right" size={16} class="back-icon" />{d.profile.back}</a>
+
+    <header class="head">
+      <h1>{m.name}</h1>
+      <p class="role">{m.role[locale]}, {site.name}</p>
+      <div class="actions">
+        {m.whatsapp && (
+          <a class="btn btn-primary" href={waLink(d.contact.waText)} target="_blank" rel="noopener"><Icon name="whatsapp-logo" size={18} />{d.profile.whatsapp}</a>
+        )}
+        <a class:list={['btn', m.whatsapp ? 'btn-ghost' : 'btn-primary']} href={`mailto:${m.email}`}><Icon name="envelope-simple" size={18} />{m.email}</a>
+        {m.github && (
+          <a class="btn btn-ghost" href={`https://github.com/${m.github}`} rel="noopener me"><Icon name="github-logo" size={18} />{m.github}</a>
+        )}
+      </div>
+    </header>
+
+    <section class="work" aria-labelledby="work-title">
+      <h2 id="work-title">{d.profile.work}</h2>
+      {m.work.length ? (
+        <>
+          <ul>
+            {m.work.map((w) => (
+              <li>
+                <div class="w-head">
+                  <a href={`${pathFor(locale)}#products`}>{d.projects[w.product].name}</a>
+                  <span class={`pill ${pillClass[statusOf[w.product]]}`}>{d.status[statusOf[w.product]]}</span>
+                </div>
+                <p>{w.summary[locale]}</p>
+              </li>
+            ))}
+          </ul>
+          <p class="note">{d.profile.workNote}</p>
+        </>
+      ) : (
+        <p class="lead">{d.profile.noWork}</p>
+      )}
+    </section>
+
+    <nav class="others" aria-labelledby="others-title">
+      <h2 id="others-title">{d.profile.others}</h2>
+      <ul>
+        {others.map((o) => (
+          <li><a href={profilePath(locale, o.slug)}><span class="o-name">{o.name}</span><span class="o-role">{o.role[locale]}</span></a></li>
+        ))}
+      </ul>
+    </nav>
+  </main>
+  <Footer locale={locale} alternates={alternates} />
+</Base>
+
+<style>
+  .profile { padding-block: clamp(32px, 5vw, 64px) var(--section); display: grid; gap: clamp(48px, 6vw, 80px); }
+  .back { display: inline-flex; align-items: center; gap: 8px; width: max-content; color: var(--ink-2); text-decoration: none; font-size: var(--text-sm); }
+  .back:hover { color: var(--ink); }
+  .back :global(.back-icon) { transform: rotate(180deg); }
+  .head { display: grid; gap: 12px; margin-top: -24px; }
+  h1 { font-size: clamp(2.25rem, 1.5rem + 3vw, 3.5rem); line-height: 1.04; letter-spacing: -0.04em; }
+  .role { font-size: var(--text-xl); color: var(--ink-2); }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+  .actions .btn { max-width: 100%; }
+  .work h2, .others h2 { font-size: var(--text-xl); letter-spacing: -0.02em; margin-bottom: 20px; }
+  .work ul { list-style: none; padding: 0; border-top: 1px solid var(--ink); }
+  .work li { display: grid; gap: 6px; padding-block: 20px; border-bottom: 1px solid var(--line); }
+  .w-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+  .w-head a { font-weight: 600; font-size: var(--text-lg); letter-spacing: -0.015em; color: var(--ink); text-decoration: none; }
+  .w-head a:hover { text-decoration: underline; }
+  .work li p { color: var(--ink-2); max-width: 62ch; }
+  .note { margin-top: 14px; font-size: var(--text-sm); color: var(--ink-3); }
+  .lead { color: var(--ink-2); font-size: var(--text-lg); }
+  .others ul { list-style: none; padding: 0; display: grid; gap: 8px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
+  .others a {
+    display: grid; gap: 2px;
+    padding: 14px 16px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-control);
+    background: var(--surface);
+    text-decoration: none;
+    transition: border-color 150ms ease;
+  }
+  .others a:hover { border-color: var(--line-2); }
+  .o-name { font-weight: 500; }
+  .o-role { font-size: var(--text-sm); color: var(--ink-3); }
+  @media (max-width: 559px) {
+    .actions .btn { width: 100%; justify-content: flex-start; overflow: hidden; text-overflow: ellipsis; }
+  }
+</style>
