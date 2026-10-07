@@ -21,8 +21,9 @@ const ogImage = new URL('/og.png', site.url).href;
     {locales.map((l) => <link rel="alternate" hreflang={htmlLang[l]} href={new URL(pathFor(l), site.url).href} />)}
     <link rel="alternate" hreflang="x-default" href={new URL(pathFor('id'), site.url).href} />
 
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="icon" href="/brand/ngetech-mark-192.png" sizes="192x192" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="theme-color" content="#FAFAFA" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0B0B0C" media="(prefers-color-scheme: dark)" />
 

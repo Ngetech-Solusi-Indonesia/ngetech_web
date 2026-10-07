@@ -1,13 +1,20 @@
 {
   "schemaVersion": 2,
   "generatedAt": "2026-10-07T10:01:15Z",
-  "title": "Design System: Ngetech Solusi Indonesia",
+  "title": "Design System: NgeTech Solusi Indonesia",
   "extensions": {
     "colorMeta": {
       "state-teal": {
         "role": "primary",
-        "displayName": "State Teal",
-        "canonical": "#0B7A6E"
+        "displayName": "State Teal (logo cup)",
+        "canonical": "#0C7686",
+        "tonalRamp": [
+          "#E2F5F8",
+          "#A8DCE5",
+          "#45C6DB",
+          "#1495A6",
+          "#0C7686"
+        ]
       },
       "ground": {
         "role": "neutral",

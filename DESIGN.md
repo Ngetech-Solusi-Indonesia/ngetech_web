@@ -1,5 +1,5 @@
 ---
-name: Ngetech Solusi Indonesia
+name: NgeTech Solusi Indonesia
 description: Landing site for a five-person software and hardware team in Bandung.
 colors:
   ground: "#FAFAFA"
@@ -11,15 +11,15 @@ colors:
   ink-tertiary: "#6B6B74"
   hairline: "#E6E6E9"
   hairline-strong: "#D6D6DB"
-  state-teal: "#0B7A6E"
-  state-teal-soft: "#E3F2EF"
-  state-teal-line: "#A9D8CF"
+  state-teal: "#0C7686"
+  state-teal-soft: "#E2F5F8"
+  state-teal-line: "#A8DCE5"
   caution: "#8A5300"
   caution-soft: "#FBF0DC"
   ground-dark: "#0B0B0C"
   surface-dark: "#121214"
   ink-dark: "#EDEDEF"
-  state-teal-dark: "#34C7B4"
+  state-teal-dark: "#45C6DB"
   ngebooth-ground: "#141513"
   ngebooth-lime: "#C8F051"
 typography:
@@ -92,7 +92,7 @@ components:
     padding: "clamp(24px, 3vw, 36px)"
 ---
 
-# Design System: Ngetech Solusi Indonesia
+# Design System: NgeTech Solusi Indonesia
 
 ## Overview
 
@@ -100,7 +100,7 @@ components:
 
 The site is the category standard for a software company, executed straight at the craft level of Linear and Vercel. The product is the hero: a working mini app with three tabs (inventory, RFID attendance, NgeBooth) that visitors can click, labelled as sample data. Everything around it stays quiet so the demo and the WhatsApp action carry the page.
 
-Density is low and the grid is calm: a single 1200px column, left-aligned headings, hairlines instead of boxes wherever grouping is enough. Colour is neutral zinc with one teal used only to show that something changed or is live. Light and dark follow the system setting and carry the same hierarchy.
+Density is low and the grid is calm: a single 1200px column, left-aligned headings, hairlines instead of boxes wherever grouping is enough. Colour is neutral zinc with one teal used only to show that something changed or is live. Light and dark follow the system setting and carry the same hierarchy. The accent and the header mark come from the official NgeTech logo (teal cup, green leaf, circuit); the logo is used unmodified.
 
 Rejected for this site (user decision): the editorial label-and-hairline look of the first version, div-built fake screenshots, and the Bandung-distro direction offered by the concept roll.
 
@@ -115,7 +115,7 @@ Rejected for this site (user decision): the editorial label-and-hairline look of
 Neutral zinc with one state colour; no warm or cream cast.
 
 ### Primary
-- **State Teal** (#0B7A6E light, #34C7B4 dark): live status, stock-in deltas, the "after" state, focus rings, text selection. Never decoration, never a large fill.
+- **State Teal** (#0C7686 light, #45C6DB dark), taken from the logo cup (#1495A6 darkened for AA; the cup's mid cyan in dark mode): live status, stock-in deltas, the "after" state, focus rings, text selection. Never decoration, never a large fill.
 
 ### Neutral
 - **Zinc Ground** (#FAFAFA / #0B0B0C): page background.
@@ -158,6 +158,10 @@ Mostly flat with tonal layering. Only the hero's app window is lifted.
 
 ### Named Rules
 **The One Lifted Object Rule.** The demo window is the only elevated surface. Cards and panels separate by tone and hairline.
+
+## Brand Mark
+
+The official logo lives in `public/brand/`: the 1500px master, the full lockup, and the cup-and-leaf mark at 64/128/192px. The header and favicons use the mark; the wordmark text is set in Geist as "NgeTech". Never recolour, flatten or redraw the mark. The leaf green (#73CD5C) belongs to the logo only and is not a UI colour.
 
 ## Shapes
 

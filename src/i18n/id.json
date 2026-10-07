@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Ngetech Solusi Indonesia: software dan perangkat untuk usaha di Bandung",
+    "title": "NgeTech Solusi Indonesia: software dan perangkat untuk usaha di Bandung",
     "description": "Tim software di Bandung. Kami bikin aplikasi sesuai cara kerja Anda: sistem inventaris, absensi RFID, dan photobooth NgeBooth."
   },
   "nav": {
@@ -20,7 +20,7 @@
     "demoNote": "Demo interaktif dengan data contoh. Silakan dicoba."
   },
   "app": {
-    "label": "Demo aplikasi Ngetech",
+    "label": "Demo aplikasi NgeTech",
     "products": "Produk",
     "inventory": {
       "tab": "Inventaris",
@@ -148,7 +148,7 @@
     "in_development": "Dalam pengembangan"
   },
   "why": {
-    "title": "Yang Anda dapat dari Ngetech",
+    "title": "Yang Anda dapat dari NgeTech",
     "items": [
       {
         "title": "Software dan perangkatnya, satu tim",
@@ -216,7 +216,7 @@
     "title": "Ceritakan apa yang ingin Anda rapikan.",
     "body": "Kirim pesan lewat WhatsApp. Belum perlu spesifikasi lengkap, cukup ceritakan masalahnya.",
     "cta": "Chat di WhatsApp",
-    "waText": "Halo Ngetech, saya mau ngobrol soal proyek.",
+    "waText": "Halo NgeTech, saya mau ngobrol soal proyek.",
     "orEmail": "Atau email ke",
     "location": "Bandung, Indonesia"
   },

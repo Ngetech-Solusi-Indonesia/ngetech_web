@@ -35,14 +35,16 @@ Constraints: Indonesian is the primary language, English secondary. Contact is v
 Open (not yet provided): WhatsApp number, team names and roles, legal entity name, contact email, GitHub org.
 
 ## Brand Commitments
-- Name: Ngetech Solusi Indonesia ("Ngetech").
+- Name: NgeTech Solusi Indonesia ("NgeTech", spelled as in the logo).
+- Logo: teal cup with a green leaf and a circuit motif, from github.com/Ngetech-Solusi-Indonesia/.github (master: public/brand/ngetech-logo-1500.png). Used unmodified; only cropped to the mark for small sizes.
 - NgeBooth has its own identity (lime accent, Poppins wordmark), which is kept inside NgeBooth's own surfaces.
 - Voice: plain, concrete Indonesian. No marketing buzzwords, no forced puns on the name.
 - Visual direction (chosen 2026-10-07): the category standard for a software company, executed straight. Craft bar: Linear and Vercel.
 
 ## Evidence on Hand
 - NgeBooth photos / photo strips: the user can provide these (not yet received).
-- No screenshots of the inventory system, no team photos, no hardware photos available.
+- Official logo (found in the org's .github repo, 2026-10-07).
+- No screenshots of the inventory system, no team photos, no hardware photos available. The NgeBooth, inventory and RFID repos are not readable from this session.
 - No testimonials, client logos, case-study numbers, or metrics exist. None may be invented.
 
 ## Product Principles

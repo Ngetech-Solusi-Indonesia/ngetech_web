@@ -19,7 +19,7 @@
   color-scheme: light dark;
 
   /* Neutral zinc ground, off-black ink, one teal accent.
-     Contrast on --bg: ink 18.4:1, ink-2 7.4:1, ink-3 4.9:1, accent 5.0:1. */
+     Contrast on --bg: ink 18.4:1, ink-2 7.4:1, ink-3 5.1:1, accent 5.1:1. */
   --bg: #FAFAFA;
   --surface: #FDFDFD;
   --surface-2: #F3F3F4;
@@ -30,9 +30,10 @@
   --line: #E6E6E9;
   --line-2: #D6D6DB;
 
-  --accent: #0B7A6E;
-  --accent-soft: #E3F2EF;
-  --accent-line: #A9D8CF;
+  /* From the logo cup: #1495A6 darkened to pass AA as text (5.1:1). */
+  --accent: #0C7686;
+  --accent-soft: #E2F5F8;
+  --accent-line: #A8DCE5;
 
   --btn-bg: #111113;
   --btn-ink: #FAFAFA;
@@ -93,9 +94,10 @@
     --line: #232327;
     --line-2: #303036;
 
-    --accent: #34C7B4;
-    --accent-soft: #10302B;
-    --accent-line: #1F5B52;
+    /* The logo's mid cyan. */
+    --accent: #45C6DB;
+    --accent-soft: #0F2C31;
+    --accent-line: #1E5660;
 
     --btn-bg: #EDEDEF;
     --btn-ink: #0B0B0C;

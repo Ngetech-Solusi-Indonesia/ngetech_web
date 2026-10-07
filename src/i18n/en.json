@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Ngetech Solusi Indonesia: software and hardware for businesses in Bandung",
+    "title": "NgeTech Solusi Indonesia: software and hardware for businesses in Bandung",
     "description": "A software team in Bandung. We build apps around how you work: an inventory system, RFID attendance, and the NgeBooth photobooth."
   },
   "nav": {
@@ -20,7 +20,7 @@
     "demoNote": "Interactive demo with sample data. Go ahead and try it."
   },
   "app": {
-    "label": "Ngetech app demo",
+    "label": "NgeTech app demo",
     "products": "Products",
     "inventory": {
       "tab": "Inventory",
@@ -148,7 +148,7 @@
     "in_development": "In development"
   },
   "why": {
-    "title": "What you get with Ngetech",
+    "title": "What you get with NgeTech",
     "items": [
       {
         "title": "Software and hardware, one team",
@@ -216,7 +216,7 @@
     "title": "Tell us what you want to tidy up.",
     "body": "Send us a WhatsApp message. No full spec needed, just describe the problem.",
     "cta": "Chat on WhatsApp",
-    "waText": "Hi Ngetech, I'd like to talk about a project.",
+    "waText": "Hi NgeTech, I'd like to talk about a project.",
     "orEmail": "Or email",
     "location": "Bandung, Indonesia"
   },
