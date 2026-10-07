@@ -1,0 +1,37 @@
+{
+  "name": "Sistem Inventaris",
+  "nameEn": "Inventory System",
+  "order": 1,
+  "status": "in_use",
+  "screenshot": "/src/assets/products/inventory/screenshot.webp",
+  "alt": {
+    "id": "Halaman Penjualan di Sistem Inventaris: daftar transaksi dengan status Piutang atau Cash",
+    "en": "Sales page in the Inventory System: transactions marked Receivable or Cash"
+  },
+  "desc": {
+    "id": "Pencatatan pembelian, penjualan, stok gudang, dan piutang pelanggan dalam satu aplikasi web.",
+    "en": "Purchases, sales, warehouse stock and customer receivables in one web app."
+  },
+  "for": {
+    "id": "Usaha dagang dengan stok dan pelanggan langganan",
+    "en": "Trading businesses with stock and regular customers"
+  },
+  "points": [
+    {
+      "id": "Penjualan tunai atau piutang, tercatat otomatis",
+      "en": "Cash or credit sales, recorded automatically"
+    },
+    {
+      "id": "Pembelian dari pemasok dan stok gudang",
+      "en": "Purchases from suppliers and warehouse stock"
+    },
+    {
+      "id": "Piutang dan cicilan per pelanggan",
+      "en": "Receivables and instalments per customer"
+    },
+    {
+      "id": "Dashboard laba dan grafik harga beli",
+      "en": "Profit dashboard and purchase-price chart"
+    }
+  ]
+}

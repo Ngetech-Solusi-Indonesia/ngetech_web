@@ -1,8 +1,5 @@
 {
   "meta": {
-    "title": "NgeTech: Jasa Pembuatan Aplikasi dan Software di Bandung",
-    "description": "Tim software di Bandung yang membuat aplikasi sesuai cara kerja Anda: inventaris dan piutang, absensi RFID sekolah, dan photobooth NgeBooth.",
-    "ogAlt": "NgeTech: dari kertas dan Excel ke sistem yang rapi",
     "notFoundTitle": "Halaman tidak ditemukan",
     "notFoundBody": "Halaman yang Anda cari tidak ada. Mungkin alamatnya berubah.",
     "home": "Kembali ke beranda"
@@ -15,13 +12,6 @@
     "cta": "Chat di WhatsApp",
     "skip": "Langsung ke konten",
     "language": "Bahasa"
-  },
-  "hero": {
-    "title": "Dari kertas dan Excel ke sistem yang rapi.",
-    "sub": "Tim software di Bandung. Kami bikin aplikasi sesuai cara kerja Anda, lengkap dengan perangkatnya: pembaca kartu, kamera, printer.",
-    "cta": "Chat di WhatsApp",
-    "secondary": "Lihat produk kami",
-    "demoNote": "Demo interaktif dengan data contoh. Silakan dicoba."
   },
   "app": {
     "label": "Demo aplikasi NgeTech",
@@ -151,100 +141,8 @@
     "internal_testing": "Uji coba internal",
     "in_development": "Dalam pengembangan"
   },
-  "why": {
-    "title": "Yang Anda dapat dari NgeTech",
-    "items": [
-      {
-        "title": "Software dan perangkatnya, satu tim",
-        "body": "Pembaca kartu RFID, kamera, dan printer kami pasang dan sambungkan sendiri ke aplikasinya. Anda tidak perlu mengurus dua vendor."
-      },
-      {
-        "title": "Kami datang ke lokasi",
-        "body": "Tim kami di Bandung. Kami datang untuk memasang, lalu melatih orang yang akan memakainya."
-      },
-      {
-        "title": "Mengikuti alur kerja Anda",
-        "body": "Kami pelajari dulu cara kerja Anda sekarang, lalu aplikasinya dibuat mengikuti alur itu."
-      },
-      {
-        "title": "Biaya untuk ukuran UMKM",
-        "body": "Skala dan biaya proyek disesuaikan dengan ukuran usaha Anda."
-      }
-    ],
-    "hw": [
-      "Pembaca RFID",
-      "Kamera",
-      "Printer",
-      "Aplikasi Anda"
-    ],
-    "before": "Sebelum",
-    "after": "Sesudah",
-    "beforeItems": [
-      "Buku catatan",
-      "File Excel",
-      "Rekap manual"
-    ],
-    "afterItem": "Satu aplikasi",
-    "siteSteps": [
-      "Pasang perangkat dan aplikasi di lokasi Anda",
-      "Latih orang yang akan memakainya"
-    ]
-  },
-  "projects": {
-    "title": "Produk yang sudah kami bangun",
-    "sub": "Screenshot asli dari tiap aplikasi, dengan status apa adanya.",
-    "shotNote": "Screenshot asli dengan data contoh.",
-    "colFor": "Untuk",
-    "inventory": {
-      "name": "Sistem Inventaris",
-      "desc": "Pencatatan pembelian, penjualan, stok gudang, dan piutang pelanggan dalam satu aplikasi web.",
-      "for": "Usaha dagang dengan stok dan pelanggan langganan",
-      "points": [
-        "Penjualan tunai atau piutang, tercatat otomatis",
-        "Pembelian dari pemasok dan stok gudang",
-        "Piutang dan cicilan per pelanggan",
-        "Dashboard laba dan grafik harga beli"
-      ],
-      "alt": "Halaman Penjualan di Sistem Inventaris: daftar transaksi dengan status Piutang atau Cash"
-    },
-    "ngebooth": {
-      "name": "NgeBooth",
-      "desc": "Platform photobooth untuk acara dan vendor: dari ambil foto sampai cetak dan bagikan.",
-      "for": "Acara, event, dan vendor photobooth",
-      "points": [
-        "Template strip dan editor foto",
-        "QR code dan passcode untuk unduh foto",
-        "Dashboard vendor: harga, voucher, lisensi booth",
-        "Terhubung ke kamera dan printer"
-      ],
-      "alt": "Dashboard vendor NgeBooth: pendapatan, sesi, status perangkat, dan tren sesi foto"
-    },
-    "rfid": {
-      "name": "Absensi RFID",
-      "desc": "Absensi sekolah dengan kartu RFID: siswa tap kartu di pembaca ESP32, kehadiran masuk ke dashboard.",
-      "for": "Sekolah",
-      "points": [
-        "Pembaca kartu RFID berbasis ESP32",
-        "Data siswa, guru, kelas, dan jadwal",
-        "Rekap dan laporan kehadiran"
-      ],
-      "alt": "Halaman masuk Sistem Manajemen Kehadiran dengan logo NgeTech"
-    }
-  },
   "team": {
-    "title": "Tim kami",
-    "sub": "Lima orang di Bandung. Anda bicara langsung dengan yang mengerjakan proyek Anda.",
     "profile": "Profil"
-  },
-  "contact": {
-    "title": "Ceritakan apa yang ingin Anda rapikan.",
-    "body": "Kirim pesan lewat WhatsApp. Belum perlu spesifikasi lengkap, cukup ceritakan masalahnya.",
-    "cta": "Chat di WhatsApp",
-    "waText": "Halo NgeTech, saya mau ngobrol soal proyek.",
-    "orEmail": "Atau email ke",
-    "location": "Bandung, Indonesia",
-    "waWho": "Dijawab oleh Dani, CEO",
-    "emailWho": "Email dibalas oleh Farhan, CTO"
   },
   "footer": {
     "rights": "Hak cipta dilindungi.",

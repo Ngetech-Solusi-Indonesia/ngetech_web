@@ -8,17 +8,23 @@ Landing page for Ngetech Solusi Indonesia. Astro, static output, ID (default) + 
 | `pnpm dev` | Dev server |
 | `pnpm build:preview` | Build even with placeholders (for previews) |
 | `pnpm build` | Production build. **Fails while any `TODO_` remains** in `src/data` or `src/i18n` |
-| `pnpm preview` | Serve `dist/` |
+| `pnpm preview` | Serve the built site locally (Cloudflare Workers runtime) |
+| `pnpm cms:setup` | Run dev with Keystatic in GitHub mode (one-time GitHub App setup) |
+| `pnpm deploy` | Build and deploy to Cloudflare Workers via wrangler |
 | `pnpm test` | Playwright smoke tests (builds + serves on :4322) |
 | `node scripts/assets.mjs` | Regenerate `public/og.png` + `favicon-32.png` (needs `pnpm preview` running) |
 
 In the cloud dev container, Playwright needs `CHROMIUM_PATH=/opt/pw-browsers/chromium`.
 
+## Editing content (CMS)
+Content is edited in Keystatic at `/keystatic` (see `docs/cms.md`, in Indonesian). Saving commits to GitHub and the site rebuilds automatically.
+
 ## Where content lives
-- Copy: `src/i18n/id.json`, `src/i18n/en.json`. Both must have the same keys, or the build fails.
-- WhatsApp, email, legal name, GitHub org: `src/data/site.ts`
-- Team: `src/data/team.ts`
-- Project order + status: `src/data/projects.ts`
+- Page text (ID + EN side by side): `src/content/page.json`
+- Contact info: `src/content/site.json`
+- Products (+ screenshots in `src/assets/products/`): `src/content/products/`
+- Team and profiles: `src/content/team/`
+- Interface strings (demo app, nav, labels): `src/i18n/id.json`, `src/i18n/en.json`. Both must have the same keys, or the build fails.
 
 ## Before launch
 Fill every `TODO_` (run `pnpm check:content` to list them), then regenerate the OG image if the headline changed.

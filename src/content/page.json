@@ -1,0 +1,202 @@
+{
+  "meta": {
+    "title": {
+      "id": "NgeTech: Jasa Pembuatan Aplikasi dan Software di Bandung",
+      "en": "NgeTech: Custom Software and App Development in Bandung"
+    },
+    "description": {
+      "id": "Tim software di Bandung yang membuat aplikasi sesuai cara kerja Anda: inventaris dan piutang, absensi RFID sekolah, dan photobooth NgeBooth.",
+      "en": "A software team in Bandung building apps around how you work: inventory and receivables, RFID school attendance, and the NgeBooth photobooth."
+    },
+    "ogAlt": {
+      "id": "NgeTech: dari kertas dan Excel ke sistem yang rapi",
+      "en": "NgeTech: from paper and spreadsheets to one tidy system"
+    }
+  },
+  "hero": {
+    "title": {
+      "id": "Dari kertas dan Excel ke sistem yang rapi.",
+      "en": "From paper and spreadsheets to one tidy system."
+    },
+    "sub": {
+      "id": "Tim software di Bandung. Kami bikin aplikasi sesuai cara kerja Anda, lengkap dengan perangkatnya: pembaca kartu, kamera, printer.",
+      "en": "A software team in Bandung. We build apps around how you work, including the hardware: card readers, cameras, printers."
+    },
+    "cta": {
+      "id": "Chat di WhatsApp",
+      "en": "Chat on WhatsApp"
+    },
+    "secondary": {
+      "id": "Lihat produk kami",
+      "en": "See our products"
+    },
+    "demoNote": {
+      "id": "Demo interaktif dengan data contoh. Silakan dicoba.",
+      "en": "Interactive demo with sample data. Go ahead and try it."
+    }
+  },
+  "why": {
+    "title": {
+      "id": "Yang Anda dapat dari NgeTech",
+      "en": "What you get with NgeTech"
+    },
+    "items": [
+      {
+        "title": {
+          "id": "Software dan perangkatnya, satu tim",
+          "en": "Software and hardware, one team"
+        },
+        "body": {
+          "id": "Pembaca kartu RFID, kamera, dan printer kami pasang dan sambungkan sendiri ke aplikasinya. Anda tidak perlu mengurus dua vendor.",
+          "en": "We install RFID card readers, cameras and printers ourselves and connect them to the app. You don't have to manage two vendors."
+        }
+      },
+      {
+        "title": {
+          "id": "Kami datang ke lokasi",
+          "en": "We come to you"
+        },
+        "body": {
+          "id": "Tim kami di Bandung. Kami datang untuk memasang, lalu melatih orang yang akan memakainya.",
+          "en": "Our team is in Bandung. We come on site to install, then train the people who will use it."
+        }
+      },
+      {
+        "title": {
+          "id": "Mengikuti alur kerja Anda",
+          "en": "Built around your workflow"
+        },
+        "body": {
+          "id": "Kami pelajari dulu cara kerja Anda sekarang, lalu aplikasinya dibuat mengikuti alur itu.",
+          "en": "We first learn how you work today, then build the app to follow that flow."
+        }
+      },
+      {
+        "title": {
+          "id": "Biaya untuk ukuran UMKM",
+          "en": "Priced for small businesses"
+        },
+        "body": {
+          "id": "Skala dan biaya proyek disesuaikan dengan ukuran usaha Anda.",
+          "en": "Project scope and cost are sized to your business."
+        }
+      }
+    ],
+    "hw": [
+      {
+        "id": "Pembaca RFID",
+        "en": "RFID reader"
+      },
+      {
+        "id": "Kamera",
+        "en": "Camera"
+      },
+      {
+        "id": "Printer",
+        "en": "Printer"
+      },
+      {
+        "id": "Aplikasi Anda",
+        "en": "Your app"
+      }
+    ],
+    "before": {
+      "id": "Sebelum",
+      "en": "Before"
+    },
+    "after": {
+      "id": "Sesudah",
+      "en": "After"
+    },
+    "beforeItems": [
+      {
+        "id": "Buku catatan",
+        "en": "Notebooks"
+      },
+      {
+        "id": "File Excel",
+        "en": "Excel files"
+      },
+      {
+        "id": "Rekap manual",
+        "en": "Manual tallies"
+      }
+    ],
+    "afterItem": {
+      "id": "Satu aplikasi",
+      "en": "One app"
+    },
+    "siteSteps": [
+      {
+        "id": "Pasang perangkat dan aplikasi di lokasi Anda",
+        "en": "Install the hardware and app at your site"
+      },
+      {
+        "id": "Latih orang yang akan memakainya",
+        "en": "Train the people who will use it"
+      }
+    ]
+  },
+  "projects": {
+    "title": {
+      "id": "Produk yang sudah kami bangun",
+      "en": "Products we've built"
+    },
+    "sub": {
+      "id": "Screenshot asli dari tiap aplikasi, dengan status apa adanya.",
+      "en": "Real screenshots from each app, with its actual status."
+    },
+    "shotNote": {
+      "id": "Screenshot asli dengan data contoh.",
+      "en": "Real screenshot with sample data."
+    },
+    "colFor": {
+      "id": "Untuk",
+      "en": "For"
+    }
+  },
+  "team": {
+    "title": {
+      "id": "Tim kami",
+      "en": "Our team"
+    },
+    "sub": {
+      "id": "Lima orang di Bandung. Anda bicara langsung dengan yang mengerjakan proyek Anda.",
+      "en": "Five people in Bandung. You talk directly to the people building your project."
+    }
+  },
+  "contact": {
+    "title": {
+      "id": "Ceritakan apa yang ingin Anda rapikan.",
+      "en": "Tell us what you want to tidy up."
+    },
+    "body": {
+      "id": "Kirim pesan lewat WhatsApp. Belum perlu spesifikasi lengkap, cukup ceritakan masalahnya.",
+      "en": "Send us a WhatsApp message. No full spec needed, just describe the problem."
+    },
+    "cta": {
+      "id": "Chat di WhatsApp",
+      "en": "Chat on WhatsApp"
+    },
+    "waText": {
+      "id": "Halo NgeTech, saya mau ngobrol soal proyek.",
+      "en": "Hi NgeTech, I'd like to talk about a project."
+    },
+    "orEmail": {
+      "id": "Atau email ke",
+      "en": "Or email"
+    },
+    "location": {
+      "id": "Bandung, Indonesia",
+      "en": "Bandung, Indonesia"
+    },
+    "waWho": {
+      "id": "Dijawab oleh Dani, CEO",
+      "en": "Answered by Dani, CEO"
+    },
+    "emailWho": {
+      "id": "Email dibalas oleh Farhan, CTO",
+      "en": "answered by Farhan, CTO"
+    }
+  }
+}

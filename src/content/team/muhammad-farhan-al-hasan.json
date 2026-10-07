@@ -1,0 +1,35 @@
+{
+  "name": "Muhammad Farhan Al Hasan",
+  "short": "Farhan",
+  "order": 2,
+  "role": {
+    "id": "CTO",
+    "en": "CTO"
+  },
+  "email": "farhanlhsn@ngetech.studio",
+  "github": "farhanlhsn",
+  "whatsapp": false,
+  "work": [
+    {
+      "product": "ngebooth",
+      "summary": {
+        "id": "Arsitektur dan sebagian besar kode platform: editor booth, filter warna, galeri dengan passcode, analitik pendapatan, langganan vendor, keamanan, dan pengujian otomatis.",
+        "en": "Architecture and most of the platform code: the booth editor, colour filters, passcode gallery, revenue analytics, vendor subscriptions, security and automated tests."
+      }
+    },
+    {
+      "product": "inventory",
+      "summary": {
+        "id": "Migrasi ke PostgreSQL, pencatatan jasa, laba harian di dashboard, backup database otomatis, dan deployment dengan Docker.",
+        "en": "Migration to PostgreSQL, service records, daily profit on the dashboard, automated database backups and Docker deployment."
+      }
+    },
+    {
+      "product": "rfid",
+      "summary": {
+        "id": "Jadwal pelajaran untuk beberapa hari sekaligus, dari backend sampai form, dan layout yang responsif.",
+        "en": "Multi-day class schedules from backend to forms, and the responsive layout."
+      }
+    }
+  ]
+}

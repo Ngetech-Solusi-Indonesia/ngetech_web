@@ -1,0 +1,35 @@
+{
+  "name": "Ulinnuha Ubay",
+  "short": "Ubay",
+  "order": 5,
+  "role": {
+    "id": "Developer",
+    "en": "Developer"
+  },
+  "email": "ubay@ngetech.studio",
+  "github": "",
+  "whatsapp": false,
+  "work": [
+    {
+      "product": "inventory",
+      "summary": {
+        "id": "Perhitungan harga beli rata-rata dan laba, pencegahan stok minus, fitur piutang manual, dan perbaikan pencatatan piutang.",
+        "en": "Average purchase price and profit calculation, negative-stock prevention, manual receivables and fixes to receivable records."
+      }
+    },
+    {
+      "product": "rfid",
+      "summary": {
+        "id": "Halaman jadwal, halaman masuk, dan menu akun di sidebar.",
+        "en": "Schedule page, sign-in page and the account menu in the sidebar."
+      }
+    },
+    {
+      "product": "ngebooth",
+      "summary": {
+        "id": "Perbaikan batas waktu sesi.",
+        "en": "Fixed the session time limit."
+      }
+    }
+  ]
+}

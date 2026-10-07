@@ -2,6 +2,7 @@
 // still placeholders (TODO_) are left out rather than published.
 import { site } from './site';
 import { team, profilePath, type Member } from './team';
+import { projects } from './projects';
 import { t, pathFor, type Locale } from '../i18n';
 
 const filled = (v?: string) => (v && !v.startsWith('TODO_') ? v : undefined);
@@ -89,7 +90,7 @@ export function schemaFor(locale: Locale) {
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: d.why.title,
-      itemListElement: (['inventory', 'ngebooth', 'rfid'] as const).map((k) => ({
+      itemListElement: projects.map(({ key: k }) => ({
         '@type': 'Offer',
         itemOffered: {
           '@type': 'SoftwareApplication',

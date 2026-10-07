@@ -3,7 +3,7 @@
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 
-const ROOTS = ['src/i18n', 'src/data'];
+const ROOTS = ['src/i18n', 'src/data', 'src/content'];
 const BANNED = [
   'seamless', 'cutting-edge', 'cutting edge', 'empower', 'leverage', 'next-level',
   'revolutionize', 'revolusi', 'inovatif', 'innovative', 'world-class', 'game-changer',

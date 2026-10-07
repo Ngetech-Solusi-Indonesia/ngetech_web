@@ -1,8 +1,5 @@
 {
   "meta": {
-    "title": "NgeTech: Custom Software and App Development in Bandung",
-    "description": "A software team in Bandung building apps around how you work: inventory and receivables, RFID school attendance, and the NgeBooth photobooth.",
-    "ogAlt": "NgeTech: from paper and spreadsheets to one tidy system",
     "notFoundTitle": "Page not found",
     "notFoundBody": "The page you're looking for doesn't exist. The address may have changed.",
     "home": "Back to home"
@@ -15,13 +12,6 @@
     "cta": "Chat on WhatsApp",
     "skip": "Skip to content",
     "language": "Language"
-  },
-  "hero": {
-    "title": "From paper and spreadsheets to one tidy system.",
-    "sub": "A software team in Bandung. We build apps around how you work, including the hardware: card readers, cameras, printers.",
-    "cta": "Chat on WhatsApp",
-    "secondary": "See our products",
-    "demoNote": "Interactive demo with sample data. Go ahead and try it."
   },
   "app": {
     "label": "NgeTech app demo",
@@ -151,100 +141,8 @@
     "internal_testing": "Internal testing",
     "in_development": "In development"
   },
-  "why": {
-    "title": "What you get with NgeTech",
-    "items": [
-      {
-        "title": "Software and hardware, one team",
-        "body": "We install RFID card readers, cameras and printers ourselves and connect them to the app. You don't have to manage two vendors."
-      },
-      {
-        "title": "We come to you",
-        "body": "Our team is in Bandung. We come on site to install, then train the people who will use it."
-      },
-      {
-        "title": "Built around your workflow",
-        "body": "We first learn how you work today, then build the app to follow that flow."
-      },
-      {
-        "title": "Priced for small businesses",
-        "body": "Project scope and cost are sized to your business."
-      }
-    ],
-    "hw": [
-      "RFID reader",
-      "Camera",
-      "Printer",
-      "Your app"
-    ],
-    "before": "Before",
-    "after": "After",
-    "beforeItems": [
-      "Notebooks",
-      "Excel files",
-      "Manual tallies"
-    ],
-    "afterItem": "One app",
-    "siteSteps": [
-      "Install the hardware and app at your site",
-      "Train the people who will use it"
-    ]
-  },
-  "projects": {
-    "title": "Products we've built",
-    "sub": "Real screenshots from each app, with its actual status.",
-    "shotNote": "Real screenshot with sample data.",
-    "colFor": "For",
-    "inventory": {
-      "name": "Inventory System",
-      "desc": "Purchases, sales, warehouse stock and customer receivables in one web app.",
-      "for": "Trading businesses with stock and regular customers",
-      "points": [
-        "Cash or credit sales, recorded automatically",
-        "Purchases from suppliers and warehouse stock",
-        "Receivables and instalments per customer",
-        "Profit dashboard and purchase-price chart"
-      ],
-      "alt": "Sales page in the Inventory System: transactions marked Receivable or Cash"
-    },
-    "ngebooth": {
-      "name": "NgeBooth",
-      "desc": "A photobooth platform for events and vendors: from taking photos to printing and sharing them.",
-      "for": "Events and photobooth vendors",
-      "points": [
-        "Strip templates and photo editor",
-        "QR code and passcode to download photos",
-        "Vendor dashboard: pricing, vouchers, booth licences",
-        "Works with cameras and printers"
-      ],
-      "alt": "NgeBooth vendor dashboard: revenue, sessions, device status and session trend"
-    },
-    "rfid": {
-      "name": "RFID Attendance",
-      "desc": "School attendance with RFID cards: students tap a card on an ESP32 reader and attendance reaches the dashboard.",
-      "for": "Schools",
-      "points": [
-        "ESP32-based RFID card reader",
-        "Students, teachers, classes and schedules",
-        "Attendance summaries and reports"
-      ],
-      "alt": "Sign-in page of the attendance management system with the NgeTech logo"
-    }
-  },
   "team": {
-    "title": "Our team",
-    "sub": "Five people in Bandung. You talk directly to the people building your project.",
     "profile": "Profile"
-  },
-  "contact": {
-    "title": "Tell us what you want to tidy up.",
-    "body": "Send us a WhatsApp message. No full spec needed, just describe the problem.",
-    "cta": "Chat on WhatsApp",
-    "waText": "Hi NgeTech, I'd like to talk about a project.",
-    "orEmail": "Or email",
-    "location": "Bandung, Indonesia",
-    "waWho": "Answered by Dani, CEO",
-    "emailWho": "answered by Farhan, CTO"
   },
   "footer": {
     "rights": "All rights reserved.",

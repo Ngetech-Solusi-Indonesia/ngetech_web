@@ -1,6 +1,8 @@
 ---
 import { t, type Locale } from '../i18n';
+import { Image } from 'astro:assets';
 import { projects } from '../data/projects';
+import { productImage } from '../data/content';
 import Icon from './Icon.astro';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
@@ -31,15 +33,14 @@ const [lead, ...rest] = projects;
             <p class="for"><span>{d.projects.colFor}</span> {c.for}</p>
           </div>
           <figure class="shot">
-            <img
-              src={`${p.shot}-1600.webp`}
-              srcset={`${p.shot}-800.webp 800w, ${p.shot}-1600.webp 1600w`}
+            <Image
+              src={productImage(p.screenshot)}
+              widths={[800, 1600]}
               sizes={i === 0 ? '(min-width: 1000px) 700px, 100vw' : '(min-width: 900px) 580px, 100vw'}
-              width="1600"
-              height="1000"
+              format="webp"
+              quality={80}
               alt={c.alt}
               loading="lazy"
-              decoding="async"
             />
           </figure>
         </article>

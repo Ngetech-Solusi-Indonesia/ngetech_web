@@ -1,0 +1,13 @@
+{
+  "name": "Daniandra Prayudisty",
+  "short": "Dani",
+  "order": 1,
+  "role": {
+    "id": "CEO",
+    "en": "CEO"
+  },
+  "email": "daniandra@ngetech.studio",
+  "github": "",
+  "whatsapp": true,
+  "work": []
+}

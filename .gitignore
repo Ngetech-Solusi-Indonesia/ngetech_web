@@ -5,3 +5,8 @@ test-results/
 playwright-report/
 .impeccable/review/
 .impeccable/config.local.json
+.wrangler/
+.env
+.env.*
+!.env.example
+.dev.vars

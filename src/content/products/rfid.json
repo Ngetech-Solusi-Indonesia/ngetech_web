@@ -1,0 +1,33 @@
+{
+  "name": "Absensi RFID",
+  "nameEn": "RFID Attendance",
+  "order": 3,
+  "status": "in_development",
+  "screenshot": "/src/assets/products/rfid/screenshot.webp",
+  "alt": {
+    "id": "Halaman masuk Sistem Manajemen Kehadiran dengan logo NgeTech",
+    "en": "Sign-in page of the attendance management system with the NgeTech logo"
+  },
+  "desc": {
+    "id": "Absensi sekolah dengan kartu RFID: siswa tap kartu di pembaca ESP32, kehadiran masuk ke dashboard.",
+    "en": "School attendance with RFID cards: students tap a card on an ESP32 reader and attendance reaches the dashboard."
+  },
+  "for": {
+    "id": "Sekolah",
+    "en": "Schools"
+  },
+  "points": [
+    {
+      "id": "Pembaca kartu RFID berbasis ESP32",
+      "en": "ESP32-based RFID card reader"
+    },
+    {
+      "id": "Data siswa, guru, kelas, dan jadwal",
+      "en": "Students, teachers, classes and schedules"
+    },
+    {
+      "id": "Rekap dan laporan kehadiran",
+      "en": "Attendance summaries and reports"
+    }
+  ]
+}

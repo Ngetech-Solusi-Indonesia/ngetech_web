@@ -1,0 +1,28 @@
+{
+  "name": "Ali Hizqil",
+  "short": "Ali",
+  "order": 3,
+  "role": {
+    "id": "Desainer",
+    "en": "Designer"
+  },
+  "email": "ali@ngetech.studio",
+  "github": "alihizqils",
+  "whatsapp": false,
+  "work": [
+    {
+      "product": "ngebooth",
+      "summary": {
+        "id": "Desain dan UI dashboard admin dan super admin, landing page, alur registrasi, manajemen booth, dan halaman analitik.",
+        "en": "Design and UI for the admin and super-admin dashboards, landing page, sign-up flow, booth management and analytics pages."
+      }
+    },
+    {
+      "product": "rfid",
+      "summary": {
+        "id": "Tampilan kehadiran, mata pelajaran, dan guru, termasuk pencarian, filter, dan set ikon.",
+        "en": "Attendance, subject and teacher screens, including search, filters and the icon set."
+      }
+    }
+  ]
+}

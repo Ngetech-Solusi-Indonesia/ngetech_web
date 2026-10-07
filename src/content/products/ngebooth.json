@@ -1,0 +1,37 @@
+{
+  "name": "NgeBooth",
+  "nameEn": "NgeBooth",
+  "order": 2,
+  "status": "internal_testing",
+  "screenshot": "/src/assets/products/ngebooth/screenshot.webp",
+  "alt": {
+    "id": "Dashboard vendor NgeBooth: pendapatan, sesi, status perangkat, dan tren sesi foto",
+    "en": "NgeBooth vendor dashboard: revenue, sessions, device status and session trend"
+  },
+  "desc": {
+    "id": "Platform photobooth untuk acara dan vendor: dari ambil foto sampai cetak dan bagikan.",
+    "en": "A photobooth platform for events and vendors: from taking photos to printing and sharing them."
+  },
+  "for": {
+    "id": "Acara, event, dan vendor photobooth",
+    "en": "Events and photobooth vendors"
+  },
+  "points": [
+    {
+      "id": "Template strip dan editor foto",
+      "en": "Strip templates and photo editor"
+    },
+    {
+      "id": "QR code dan passcode untuk unduh foto",
+      "en": "QR code and passcode to download photos"
+    },
+    {
+      "id": "Dashboard vendor: harga, voucher, lisensi booth",
+      "en": "Vendor dashboard: pricing, vouchers, booth licences"
+    },
+    {
+      "id": "Terhubung ke kamera dan printer",
+      "en": "Works with cameras and printers"
+    }
+  ]
+}

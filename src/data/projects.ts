@@ -1,15 +1,11 @@
-export type Status = 'in_use' | 'internal_testing' | 'in_development';
+import { productDocs, type Status } from './content';
 
+export type { Status };
 export interface Project {
-  key: 'inventory' | 'ngebooth' | 'rfid';
+  key: string;
   status: Status;
-  // Real screenshot (sample data), in public/work/ as -800/-1600.webp
-  shot: string;
+  screenshot: string;
 }
 
-// Ordered by how far along each one is.
-export const projects: Project[] = [
-  { key: 'inventory', status: 'in_use', shot: '/work/inventory-sales' },
-  { key: 'ngebooth', status: 'internal_testing', shot: '/work/ngebooth-dashboard' },
-  { key: 'rfid', status: 'in_development', shot: '/work/rfid-login' },
-];
+// Edited in the CMS (src/content/products/), ordered by `order`.
+export const projects: Project[] = productDocs.map((p) => ({ key: p.slug, status: p.status, screenshot: p.screenshot }));

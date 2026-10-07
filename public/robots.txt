@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /keystatic
+Disallow: /api/keystatic
 
 Sitemap: https://ngetech.studio/sitemap-index.xml
