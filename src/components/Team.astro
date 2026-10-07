@@ -1,0 +1,70 @@
+---
+import { t, type Locale } from '../i18n';
+import { team, initials } from '../data/team';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const d = t(locale);
+---
+<section class="section" id="team">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="label"><span class="num">03</span><span>{d.team.label}</span></p>
+      <div>
+        <h2>{d.team.title}</h2>
+        <p class="intro">{d.team.intro}</p>
+      </div>
+    </div>
+    <ul class="people">
+      {team.map((m) => (
+        <li class="reveal">
+          <span class="mark mono" aria-hidden="true">{initials(m.name)}</span>
+          <div>
+            <p class="name">{m.name}</p>
+            <p class="role">{m.role[locale]}</p>
+            {(m.github || m.linkedin) && (
+              <p class="links mono">
+                {m.github && <a href={`https://github.com/${m.github}`} rel="noopener">GitHub</a>}
+                {m.linkedin && <a href={m.linkedin} rel="noopener">LinkedIn</a>}
+              </p>
+            )}
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .people {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: var(--space-4);
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+  }
+  li {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+  }
+  .mark {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 4px;
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+    font-size: 1.125rem;
+    letter-spacing: 0.04em;
+  }
+  .name { font-weight: 500; overflow-wrap: anywhere; }
+  .role { color: var(--ink-3); font-size: var(--step--1); overflow-wrap: anywhere; }
+  .links { display: flex; gap: var(--space-3); margin-top: var(--space-2); }
+  .links a { color: var(--ink-2); }
+</style>

@@ -1,0 +1,34 @@
+---
+import { t, type Locale } from '../i18n';
+import { site } from '../data/site';
+import LangSwitch from './LangSwitch.astro';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const d = t(locale);
+const year = new Date().getFullYear();
+---
+<footer class="footer">
+  <div class="wrap row">
+    <p class="mono">© {year} {site.legalName}. {d.footer.rights}</p>
+    <div class="end">
+      <a class="mono" href={`https://github.com/${site.githubOrg}`} rel="noopener">{d.footer.github} ↗</a>
+      <LangSwitch locale={locale} label={d.footer.language} />
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer { border-top: 1px solid var(--line); padding-block: var(--space-6); }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    align-items: center;
+    justify-content: space-between;
+    color: var(--ink-3);
+  }
+  .end { display: flex; align-items: center; gap: var(--space-5); }
+  a { text-decoration: none; color: var(--ink-2); }
+  a:hover { color: var(--ink); }
+</style>

@@ -1,0 +1,126 @@
+{
+  "meta": {
+    "title": "Ngetech Solusi Indonesia: software for operations, events and business",
+    "description": "A software team in Bandung. We build an inventory system, RFID attendance, and the NgeBooth photobooth app."
+  },
+  "nav": {
+    "projects": "Projects",
+    "services": "Services",
+    "team": "Team",
+    "contact": "Contact",
+    "cta": "WhatsApp us",
+    "skip": "Skip to content"
+  },
+  "hero": {
+    "title": "We build software for operations, events and businesses in Bandung.",
+    "sub": "An inventory system, RFID card attendance, and a photobooth app. Built by a team of five, from design through maintenance.",
+    "cta": "Chat on WhatsApp",
+    "secondary": "See projects",
+    "demoLabel": "A preview of our three products, running in sync",
+    "demoNote": "Animation with sample data, not client data."
+  },
+  "demo": {
+    "rfid": {
+      "title": "RFID attendance",
+      "head": "Main gate · Monday",
+      "tap": "Card read",
+      "present": "present"
+    },
+    "inventory": {
+      "title": "Inventory",
+      "head": "Stock · Warehouse A",
+      "colItem": "Item",
+      "colQty": "Qty",
+      "items": [
+        "A4 paper (ream)",
+        "Black printer ink",
+        "Cat6 LAN cable (m)"
+      ],
+      "log": "Out 2 reams · A4 paper"
+    },
+    "booth": {
+      "title": "NgeBooth",
+      "head": "Session #031",
+      "done": "Strip ready to print"
+    }
+  },
+  "status": {
+    "in_use": "In use by a client",
+    "internal_testing": "Internal testing",
+    "in_development": "In development"
+  },
+  "projects": {
+    "label": "Projects",
+    "title": "What we're working on",
+    "intro": "Three products, each with its actual status today.",
+    "inventory": {
+      "name": "Inventory System",
+      "desc": "A web app for recording goods coming in and going out. A client uses it every day.",
+      "points": [
+        "Record stock in and out",
+        "Stock history per item",
+        "Runs in the browser, nothing to install"
+      ]
+    },
+    "ngebooth": {
+      "name": "NgeBooth",
+      "desc": "A photobooth app for events. Take photos, lay them out as a strip, then print.",
+      "points": [
+        "Countdown and automatic capture",
+        "Photo strip layout",
+        "Being tested in-house"
+      ]
+    },
+    "rfid": {
+      "name": "RFID Attendance",
+      "desc": "Tap a card on the reader and attendance shows up on the dashboard.",
+      "points": [
+        "RFID card reader",
+        "Daily attendance summary",
+        "Not yet installed at a client site"
+      ]
+    }
+  },
+  "services": {
+    "label": "Services",
+    "title": "What we can help with",
+    "items": [
+      {
+        "title": "Web apps and dashboards",
+        "body": "For operational work that still lives on paper or in a spreadsheet."
+      },
+      {
+        "title": "Software that talks to hardware",
+        "body": "RFID readers, cameras and printers, connected to the app you use."
+      },
+      {
+        "title": "Event apps",
+        "body": "A photobooth and other tools that run for one day and can't break on that day."
+      },
+      {
+        "title": "Maintenance after launch",
+        "body": "Bug fixes and updates once the app is in use."
+      }
+    ]
+  },
+  "team": {
+    "label": "Team",
+    "title": "Five people in Bandung",
+    "intro": "You talk directly to the people building your project."
+  },
+  "contact": {
+    "label": "Contact",
+    "title": "Got something to build?",
+    "body": "Tell us what you need on WhatsApp or by email. You don't need a full spec yet.",
+    "wa": "Chat on WhatsApp",
+    "waText": "Hi Ngetech, I'd like to talk about a project.",
+    "email": "Email",
+    "location": "Location",
+    "locationValue": "Bandung, Indonesia"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "github": "GitHub",
+    "language": "Language"
+  }
+}

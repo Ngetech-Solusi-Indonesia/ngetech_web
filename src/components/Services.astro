@@ -1,0 +1,37 @@
+---
+import { t, type Locale } from '../i18n';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const d = t(locale);
+---
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="label"><span class="num">02</span><span>{d.services.label}</span></p>
+      <h2>{d.services.title}</h2>
+    </div>
+    <ol class="grid">
+      {d.services.items.map((s, i) => (
+        <li class="reveal">
+          <span class="mono n">{String(i + 1).padStart(2, '0')}</span>
+          <h3>{s.title}</h3>
+          <p>{s.body}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .grid {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0 var(--space-6);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  }
+  li { padding-block: var(--space-5) var(--space-6); border-top: 1px solid var(--ink); display: grid; gap: var(--space-2); align-content: start; }
+  .n { color: var(--accent-ink); }
+  h3 { font-size: var(--step-1); font-weight: 600; letter-spacing: -0.01em; }
+  p { color: var(--ink-2); font-size: 0.9375rem; }
+</style>

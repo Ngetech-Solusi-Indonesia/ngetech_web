@@ -1,0 +1,126 @@
+{
+  "meta": {
+    "title": "Ngetech Solusi Indonesia: software untuk operasional, event, dan bisnis",
+    "description": "Tim software di Bandung. Kami membuat sistem inventaris, absensi RFID, dan aplikasi photobooth NgeBooth."
+  },
+  "nav": {
+    "projects": "Proyek",
+    "services": "Layanan",
+    "team": "Tim",
+    "contact": "Kontak",
+    "cta": "Chat WhatsApp",
+    "skip": "Langsung ke konten"
+  },
+  "hero": {
+    "title": "Kami bikin software untuk operasional, event, dan bisnis di Bandung.",
+    "sub": "Sistem inventaris, absensi pakai kartu RFID, dan aplikasi photobooth. Dikerjakan oleh tim berlima, dari rancangan sampai perawatan.",
+    "cta": "Chat di WhatsApp",
+    "secondary": "Lihat proyek",
+    "demoLabel": "Cuplikan tiga produk kami, berjalan bersamaan",
+    "demoNote": "Animasi dengan data contoh, bukan data klien."
+  },
+  "demo": {
+    "rfid": {
+      "title": "Absensi RFID",
+      "head": "Gerbang utama · Senin",
+      "tap": "Kartu terbaca",
+      "present": "hadir"
+    },
+    "inventory": {
+      "title": "Inventaris",
+      "head": "Stok · Gudang A",
+      "colItem": "Barang",
+      "colQty": "Jumlah",
+      "items": [
+        "Kertas A4 (rim)",
+        "Tinta printer hitam",
+        "Kabel LAN Cat6 (m)"
+      ],
+      "log": "Keluar 2 rim · Kertas A4"
+    },
+    "booth": {
+      "title": "NgeBooth",
+      "head": "Sesi #031",
+      "done": "Strip siap dicetak"
+    }
+  },
+  "status": {
+    "in_use": "Dipakai klien",
+    "internal_testing": "Uji coba internal",
+    "in_development": "Dalam pengembangan"
+  },
+  "projects": {
+    "label": "Proyek",
+    "title": "Yang sedang kami kerjakan",
+    "intro": "Tiga produk, masing-masing dengan status sebenarnya hari ini.",
+    "inventory": {
+      "name": "Sistem Inventaris",
+      "desc": "Aplikasi web untuk mencatat barang masuk dan keluar. Sudah dipakai sehari-hari oleh klien.",
+      "points": [
+        "Catat barang masuk dan keluar",
+        "Riwayat stok per barang",
+        "Bisa diakses dari browser, tanpa instalasi"
+      ]
+    },
+    "ngebooth": {
+      "name": "NgeBooth",
+      "desc": "Aplikasi photobooth untuk acara. Ambil foto, susun jadi strip, lalu cetak.",
+      "points": [
+        "Hitung mundur dan pengambilan foto otomatis",
+        "Susunan strip foto",
+        "Sedang diuji di lingkungan kami sendiri"
+      ]
+    },
+    "rfid": {
+      "name": "Absensi RFID",
+      "desc": "Tap kartu di pembaca, kehadiran langsung tercatat di dashboard.",
+      "points": [
+        "Pembaca kartu RFID",
+        "Rekap kehadiran harian",
+        "Belum dipasang di tempat klien"
+      ]
+    }
+  },
+  "services": {
+    "label": "Layanan",
+    "title": "Yang bisa kami bantu",
+    "items": [
+      {
+        "title": "Aplikasi web dan dashboard",
+        "body": "Untuk pekerjaan operasional yang sekarang masih dicatat di kertas atau di spreadsheet."
+      },
+      {
+        "title": "Software yang terhubung ke perangkat",
+        "body": "Pembaca RFID, kamera, dan printer, disambungkan ke aplikasi yang Anda pakai."
+      },
+      {
+        "title": "Aplikasi untuk acara",
+        "body": "Photobooth dan alat lain yang dipakai sehari, tapi tidak boleh macet di hari itu."
+      },
+      {
+        "title": "Perawatan setelah dipakai",
+        "body": "Perbaikan bug dan pembaruan setelah aplikasinya berjalan."
+      }
+    ]
+  },
+  "team": {
+    "label": "Tim",
+    "title": "Lima orang di Bandung",
+    "intro": "Anda akan bicara langsung dengan orang yang mengerjakan proyeknya."
+  },
+  "contact": {
+    "label": "Kontak",
+    "title": "Ada yang mau dibikin?",
+    "body": "Ceritakan kebutuhannya lewat WhatsApp atau email. Belum perlu spesifikasi lengkap.",
+    "wa": "Chat di WhatsApp",
+    "waText": "Halo Ngetech, saya mau ngobrol soal proyek.",
+    "email": "Email",
+    "location": "Lokasi",
+    "locationValue": "Bandung, Indonesia"
+  },
+  "footer": {
+    "rights": "Hak cipta dilindungi.",
+    "github": "GitHub",
+    "language": "Bahasa"
+  }
+}

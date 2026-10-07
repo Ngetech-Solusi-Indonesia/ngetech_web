@@ -1,0 +1,81 @@
+---
+import { t, type Locale } from '../i18n';
+import { waLink } from '../data/site';
+import LangSwitch from './LangSwitch.astro';
+import WaIcon from './WaIcon.astro';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const d = t(locale);
+---
+<header class="header">
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="Ngetech Solusi Indonesia">
+      <img src="/favicon.svg" alt="" width="24" height="24" />
+      <span class="word">Ngetech</span>
+      <span class="sub mono">Solusi Indonesia</span>
+    </a>
+    <nav class="links" aria-label="Main">
+      <a href="#projects">{d.nav.projects}</a>
+      <a href="#services">{d.nav.services}</a>
+      <a href="#team">{d.nav.team}</a>
+      <a href="#contact">{d.nav.contact}</a>
+    </nav>
+    <div class="end">
+      <LangSwitch locale={locale} label={d.footer.language} />
+      <a class="btn btn-primary cta" href={waLink(d.contact.waText)} target="_blank" rel="noopener">
+        <WaIcon /><span>{d.nav.cta}</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--bg) 94%, transparent);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: saturate(1.2);
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+    min-height: 64px;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    text-decoration: none;
+    margin-right: auto;
+  }
+  .word {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.125rem;
+    letter-spacing: -0.02em;
+  }
+  .sub { color: var(--ink-3); font-size: var(--step--2); display: none; }
+  .links { display: none; gap: var(--space-5); }
+  .links a {
+    font-size: var(--step--1);
+    color: var(--ink-2);
+    text-decoration: none;
+  }
+  .links a:hover { color: var(--ink); }
+  .end { display: flex; align-items: center; gap: var(--space-3); }
+  .cta { min-height: 36px; padding: 6px 12px; font-size: var(--step--1); }
+  @media (max-width: 559px) {
+    .cta span {
+      position: absolute; width: 1px; height: 1px; overflow: hidden;
+      clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+    }
+  }
+  @media (min-width: 900px) {
+    .sub { display: inline; }
+    .links { display: flex; }
+  }
+</style>

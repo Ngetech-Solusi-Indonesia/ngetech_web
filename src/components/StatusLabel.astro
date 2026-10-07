@@ -1,0 +1,30 @@
+---
+import type { Status } from '../data/projects';
+interface Props { status: Status; text: string; tone?: 'default' | 'booth' }
+const { status, text, tone = 'default' } = Astro.props;
+---
+<span class:list={['status', `s-${status}`, tone === 'booth' && 'on-booth']}>
+  <span class="dot" aria-hidden="true"></span>{text}
+</span>
+
+<style>
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: var(--step--2);
+    letter-spacing: 0.04em;
+    color: var(--ink-2);
+    white-space: nowrap;
+  }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+  .s-in_use .dot { background: var(--status-in-use); }
+  .s-internal_testing .dot { background: var(--status-testing); }
+  .s-in_development .dot {
+    background: transparent;
+    box-shadow: inset 0 0 0 1.5px var(--status-dev);
+  }
+  .on-booth { color: #C9C9C1; }
+  .on-booth.s-internal_testing .dot { background: #E0A84A; }
+</style>

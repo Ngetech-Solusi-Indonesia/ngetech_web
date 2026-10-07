@@ -1,0 +1,36 @@
+---
+import { t, type Locale } from '../i18n';
+import { site, waLink } from '../data/site';
+import WaIcon from './WaIcon.astro';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const d = t(locale);
+---
+<section class="section" id="contact">
+  <div class="wrap grid">
+    <div class="reveal">
+      <p class="label"><span class="num">04</span><span>{d.contact.label}</span></p>
+      <h2>{d.contact.title}</h2>
+      <p class="body">{d.contact.body}</p>
+      <a class="btn btn-primary big" href={waLink(d.contact.waText)} target="_blank" rel="noopener"><WaIcon />{d.contact.wa}</a>
+    </div>
+    <dl class="facts reveal">
+      <div><dt class="label">{d.contact.email}</dt><dd><a href={`mailto:${site.email}`}>{site.email}</a></dd></div>
+      <div><dt class="label">{d.contact.location}</dt><dd>{d.contact.locationValue}</dd></div>
+      <div><dt class="label">Web</dt><dd>ngetech.studio</dd></div>
+    </dl>
+  </div>
+</section>
+
+<style>
+  .grid { display: grid; gap: var(--space-7); }
+  @media (min-width: 900px) { .grid { grid-template-columns: 7fr 5fr; align-items: end; } }
+  h2 { font-size: var(--step-4); margin-block: var(--space-4) var(--space-4); max-width: 14ch; }
+  .body { color: var(--ink-2); font-size: var(--step-1); max-width: 44ch; margin-bottom: var(--space-6); }
+  .big { min-height: 52px; padding-inline: 22px; font-size: var(--step-1); }
+  .facts { display: grid; border-top: 1px solid var(--line); }
+  .facts > div { display: grid; gap: 4px; padding-block: var(--space-4); border-bottom: 1px solid var(--line); }
+  dd { font-size: var(--step-1); overflow-wrap: anywhere; }
+  dd a { text-decoration-color: var(--line-strong); text-underline-offset: 4px; }
+  dd a:hover { text-decoration-color: currentColor; }
+</style>

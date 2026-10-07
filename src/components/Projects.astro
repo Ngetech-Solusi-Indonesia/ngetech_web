@@ -1,0 +1,82 @@
+---
+import { t, type Locale } from '../i18n';
+import { projects } from '../data/projects';
+import StatusLabel from './StatusLabel.astro';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const d = t(locale);
+---
+<section class="section" id="projects">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="label"><span class="num">01</span><span>{d.projects.label}</span></p>
+      <div>
+        <h2>{d.projects.title}</h2>
+        <p class="intro">{d.projects.intro}</p>
+      </div>
+    </div>
+
+    <ol class="list">
+      {projects.map((p, i) => {
+        const c = d.projects[p.key];
+        return (
+          <li class:list={['item reveal', p.key === 'ngebooth' && 'is-booth']}>
+            <span class="idx mono">{String(i + 1).padStart(2, '0')}</span>
+            <div class="title">
+              <h3>
+                {p.key === 'ngebooth' && <span class="booth-swatch" aria-hidden="true"></span>}
+                {c.name}
+              </h3>
+              <StatusLabel status={p.status} text={d.status[p.status]} />
+            </div>
+            <p class="desc">{c.desc}</p>
+            <ul class="points">
+              {c.points.map((pt) => <li>{pt}</li>)}
+            </ul>
+          </li>
+        );
+      })}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .list { list-style: none; padding: 0; border-bottom: 1px solid var(--line); }
+  .item {
+    display: grid;
+    gap: var(--space-3) var(--space-6);
+    grid-template-columns: 2.5rem 1fr;
+    padding-block: var(--space-6);
+    border-top: 1px solid var(--line);
+  }
+  .idx { color: var(--ink-3); padding-top: 6px; }
+  .title, .desc, .points { grid-column: 2; }
+  .title { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2) var(--space-4); }
+  h3 { font-size: var(--step-2); display: inline-flex; align-items: center; gap: 10px; }
+  .desc { color: var(--ink-2); max-width: 46ch; }
+  .points {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 6px;
+    font-size: var(--step--1);
+    color: var(--ink-2);
+  }
+  .points li { display: grid; grid-template-columns: 14px 1fr; }
+  .points li::before { content: '–'; color: var(--ink-3); }
+
+  /* NgeBooth keeps its own brand; a swatch until the real wordmark SVG is added. */
+  .booth-swatch {
+    width: 14px; height: 14px;
+    border-radius: 3px;
+    background: var(--booth-bg);
+    box-shadow: inset 0 0 0 3px var(--booth-bg), inset 0 0 0 7px var(--booth-lime);
+  }
+
+  @media (min-width: 900px) {
+    .item { grid-template-columns: 3rem 4fr 5fr 4fr; align-items: start; }
+    .title, .desc, .points { grid-column: auto; }
+    .title { flex-direction: column; gap: var(--space-2); }
+  }
+</style>
