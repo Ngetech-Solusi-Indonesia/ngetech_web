@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-07T10:01:15Z",
+  "title": "Design System: Ngetech Solusi Indonesia",
+  "extensions": {
+    "colorMeta": {
+      "state-teal": {
+        "role": "primary",
+        "displayName": "State Teal",
+        "canonical": "#0B7A6E"
+      },
+      "ground": {
+        "role": "neutral",
+        "displayName": "Zinc Ground",
+        "canonical": "#FAFAFA"
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#111113"
+      },
+      "ngebooth-lime": {
+        "role": "brand-scoped",
+        "displayName": "NgeBooth Lime",
+        "canonical": "#C8F051"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headline only, max two lines on desktop."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Metadata and demo figures, tabular numerals."
+      }
+    },
+    "shadows": [
+      {
+        "name": "window",
+        "value": "0 1px 2px rgb(17 17 19 / 0.06), 0 2px 4px rgb(17 17 19 / 0.04), 0 14px 24px -12px rgb(17 17 19 / 0.16)",
+        "purpose": "The hero product window only."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Hero entrance, demo state changes."
+      },
+      {
+        "name": "hero-entrance",
+        "value": "900ms rise + 6px blur, 80ms stagger; window 1200ms from 40px",
+        "purpose": "The page's one authored entrance."
+      },
+      {
+        "name": "tick",
+        "value": "420ms direction-aware number tick",
+        "purpose": "Feedback when a demo count changes."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "560px"
+      },
+      {
+        "name": "md",
+        "value": "760px"
+      },
+      {
+        "name": "lg",
+        "value": "900px"
+      },
+      {
+        "name": "xl",
+        "value": "960px"
+      },
+      {
+        "name": "2xl",
+        "value": "1100px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one contact action, same label everywhere.",
+      "html": "<a class=\"ds-btn\" href=\"#\">Chat di WhatsApp</a>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:8px;background:var(--btn-bg,#111113);color:var(--btn-ink,#FAFAFA);font:500 1rem/1 Geist,system-ui,sans-serif;letter-spacing:-0.01em;text-decoration:none;transition:background-color .16s,transform .12s}.ds-btn:hover{background:var(--btn-hover,#2A2A2F)}.ds-btn:active{transform:scale(.98)}"
+    },
+    {
+      "name": "Status Pill",
+      "kind": "chip",
+      "refersTo": "status-live",
+      "description": "True product status, text only.",
+      "html": "<span class=\"ds-pill\">Dipakai klien</span>",
+      "css": ".ds-pill{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:999px;border:1px solid var(--accent-line,#A9D8CF);background:var(--accent-soft,#E3F2EF);color:var(--accent,#0B7A6E);font:500 .75rem/1 Geist,system-ui,sans-serif}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Working Product (proposed)",
+    "overview": "Category-standard software site at Linear/Vercel craft. The hero is a working, labelled demo of three products; the rest stays quiet so the demo and the WhatsApp action carry the page.",
+    "keyCharacteristics": [
+      "One family, Geist",
+      "Neutral zinc, teal for state only",
+      "12px surfaces, 8px controls, pills for status",
+      "Real UI with real state, never a picture of UI"
+    ],
+    "rules": [
+      {
+        "name": "The State-Only Teal Rule",
+        "body": "Teal marks something live or just changed; never a decorative fill.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Theme Rule",
+        "body": "No section inverts mid-page.",
+        "section": "colors"
+      },
+      {
+        "name": "The No-Eyebrow Rule",
+        "body": "No small labels or numbers above headings.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Lifted Object Rule",
+        "body": "Only the demo window is elevated.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Show behaviour with working components labelled as sample data",
+      "Keep every status claim true"
+    ],
+    "donts": [
+      "No eyebrows, section numbers, decorative dots or em dashes",
+      "No div-built fake screenshots or invented metrics"
+    ]
+  }
+}

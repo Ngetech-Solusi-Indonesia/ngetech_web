@@ -1,82 +1,53 @@
 ---
 import { t, type Locale } from '../i18n';
 import { projects } from '../data/projects';
-import StatusLabel from './StatusLabel.astro';
-
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const d = t(locale);
+const pillClass = { in_use: 'is-live', internal_testing: 'is-testing', in_development: '' } as const;
 ---
-<section class="section" id="projects">
+<section class="section" id="status">
   <div class="wrap">
-    <div class="section-head reveal">
-      <p class="label"><span class="num">01</span><span>{d.projects.label}</span></p>
-      <div>
-        <h2>{d.projects.title}</h2>
-        <p class="intro">{d.projects.intro}</p>
-      </div>
+    <div class="section-head">
+      <h2>{d.projects.title}</h2>
+      <p>{d.projects.sub}</p>
     </div>
-
-    <ol class="list">
-      {projects.map((p, i) => {
+    <div class="table" role="table" aria-label={d.projects.title}>
+      <div class="tr th" role="row">
+        <span role="columnheader">{d.projects.colProduct}</span>
+        <span role="columnheader">{d.projects.colFor}</span>
+        <span role="columnheader">{d.projects.colStatus}</span>
+      </div>
+      {projects.map((p) => {
         const c = d.projects[p.key];
         return (
-          <li class:list={['item reveal', p.key === 'ngebooth' && 'is-booth']}>
-            <span class="idx mono">{String(i + 1).padStart(2, '0')}</span>
-            <div class="title">
-              <h3>
-                {p.key === 'ngebooth' && <span class="booth-swatch" aria-hidden="true"></span>}
-                {c.name}
-              </h3>
-              <StatusLabel status={p.status} text={d.status[p.status]} />
+          <div class="tr item" role="row" data-key={p.key}>
+            <div role="cell" class="product">
+              <h3>{c.name}</h3>
+              <p>{c.desc}</p>
             </div>
-            <p class="desc">{c.desc}</p>
-            <ul class="points">
-              {c.points.map((pt) => <li>{pt}</li>)}
-            </ul>
-          </li>
+            <span role="cell" class="for">{c.for}</span>
+            <span role="cell" class="status"><span class={`pill ${pillClass[p.status]}`}>{d.status[p.status]}</span></span>
+          </div>
         );
       })}
-    </ol>
+    </div>
   </div>
 </section>
 
 <style>
-  .list { list-style: none; padding: 0; border-bottom: 1px solid var(--line); }
-  .item {
-    display: grid;
-    gap: var(--space-3) var(--space-6);
-    grid-template-columns: 2.5rem 1fr;
-    padding-block: var(--space-6);
-    border-top: 1px solid var(--line);
-  }
-  .idx { color: var(--ink-3); padding-top: 6px; }
-  .title, .desc, .points { grid-column: 2; }
-  .title { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2) var(--space-4); }
-  h3 { font-size: var(--step-2); display: inline-flex; align-items: center; gap: 10px; }
-  .desc { color: var(--ink-2); max-width: 46ch; }
-  .points {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    gap: 6px;
-    font-size: var(--step--1);
-    color: var(--ink-2);
-  }
-  .points li { display: grid; grid-template-columns: 14px 1fr; }
-  .points li::before { content: '–'; color: var(--ink-3); }
+  .table { border-top: 1px solid var(--ink); }
+  .tr { display: grid; gap: 8px 24px; padding-block: 22px; border-bottom: 1px solid var(--line); }
+  .th { display: none; }
+  .product { display: grid; gap: 4px; }
+  .product p { color: var(--ink-2); max-width: 46ch; }
+  .for { color: var(--ink-2); font-size: var(--text-sm); }
+  .status { margin-top: 4px; }
 
-  /* NgeBooth keeps its own brand; a swatch until the real wordmark SVG is added. */
-  .booth-swatch {
-    width: 14px; height: 14px;
-    border-radius: 3px;
-    background: var(--booth-bg);
-    box-shadow: inset 0 0 0 3px var(--booth-bg), inset 0 0 0 7px var(--booth-lime);
-  }
-
-  @media (min-width: 900px) {
-    .item { grid-template-columns: 3rem 4fr 5fr 4fr; align-items: start; }
-    .title, .desc, .points { grid-column: auto; }
-    .title { flex-direction: column; gap: var(--space-2); }
+  @media (min-width: 760px) {
+    .tr { grid-template-columns: minmax(0, 6fr) minmax(0, 3fr) minmax(0, 3fr); align-items: start; }
+    .th { display: grid; padding-block: 12px; font-size: var(--text-xs); color: var(--ink-3); font-weight: 500; }
+    .for { font-size: var(--text-base); padding-top: 1px; }
+    .status { margin-top: 0; }
   }
 </style>

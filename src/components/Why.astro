@@ -1,0 +1,190 @@
+---
+import { t, type Locale } from '../i18n';
+import Icon from './Icon.astro';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const d = t(locale);
+const w = d.why;
+const hwIcons = ['identification-card', 'camera', 'printer'];
+---
+<section class="section" id="why">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>{w.title}</h2>
+    </div>
+    <div class="bento">
+      <article class="cell cell-hw">
+        <div class="copy">
+          <h3>{w.items[0].title}</h3>
+          <p>{w.items[0].body}</p>
+        </div>
+        <div class="hw" aria-hidden="true">
+          <ul class="hw-devices">
+            {hwIcons.map((icon, i) => (
+              <li><span class="hw-icon"><Icon name={icon} size={22} /></span><span>{w.hw[i]}</span></li>
+            ))}
+          </ul>
+          <svg class="hw-wires" viewBox="0 0 100 152" preserveAspectRatio="none">
+            <path d="M0 22 C 50 22, 50 76, 100 76" />
+            <path d="M0 76 L 100 76" />
+            <path d="M0 130 C 50 130, 50 76, 100 76" />
+          </svg>
+          <div class="hw-app"><Icon name="package" size={22} /><span>{w.hw[3]}</span></div>
+        </div>
+      </article>
+
+      <article class="cell cell-site">
+        <div class="copy">
+          <h3>{w.items[1].title}</h3>
+          <p>{w.items[1].body}</p>
+        </div>
+        <ol class="steps">
+          {w.siteSteps.map((step, i) => (
+            <li><span class="step-n num">{i + 1}</span><span>{step}</span></li>
+          ))}
+        </ol>
+      </article>
+
+      <article class="cell cell-flow">
+        <div class="copy">
+          <h3>{w.items[2].title}</h3>
+          <p>{w.items[2].body}</p>
+        </div>
+        <div class="flow" aria-hidden="true">
+          <div class="flow-col">
+            <span class="flow-label">{w.before}</span>
+            {w.beforeItems.map((x) => <span class="flow-chip">{x}</span>)}
+          </div>
+          <Icon name="arrow-right" size={20} class="flow-arrow" />
+          <div class="flow-col">
+            <span class="flow-label">{w.after}</span>
+            <span class="flow-chip is-after"><Icon name="check" size={14} />{w.afterItem}</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="cell cell-cost">
+        <span class="cost-icon"><Icon name="coins" size={20} /></span>
+        <h3>{w.items[3].title}</h3>
+        <p>{w.items[3].body}</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .bento { display: grid; gap: 12px; }
+  .cell {
+    display: grid;
+    gap: 28px;
+    align-content: space-between;
+    padding: clamp(24px, 3vw, 36px);
+    border-radius: var(--radius-surface);
+    border: 1px solid var(--line);
+    background: var(--surface);
+    min-width: 0;
+  }
+  .copy { display: grid; gap: 8px; max-width: 34rem; }
+  .copy h3 { font-size: var(--text-xl); letter-spacing: -0.02em; }
+  .copy p { color: var(--ink-2); font-size: var(--text-base); }
+
+  /* Software + hardware: devices wired into one app */
+  .hw { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 0; }
+  .hw-devices { list-style: none; padding: 0; display: grid; gap: 10px; }
+  .hw-devices li, .hw-app {
+    display: flex; align-items: center; gap: 10px;
+    font-size: var(--text-sm); color: var(--ink-2);
+  }
+  .hw-icon {
+    display: grid; place-items: center;
+    width: 44px; height: 44px;
+    border-radius: var(--radius-control);
+    border: 1px solid var(--line-2);
+    background: var(--surface-2);
+    color: var(--ink);
+  }
+  .hw-wires { width: 100%; height: 152px; margin-inline: 0; }
+  .hw-wires path { fill: none; stroke: var(--line-2); stroke-width: 1.25; vector-effect: non-scaling-stroke; }
+  .hw-app {
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    padding: 18px 16px;
+    border-radius: var(--radius-surface);
+    background: var(--btn-bg);
+    color: var(--btn-ink);
+    font-weight: 500;
+    text-align: center;
+  }
+
+  /* On site: the two steps we actually do */
+  .cell-site { display: flex; flex-direction: column; }
+  .steps { list-style: none; padding: 0; display: grid; gap: 10px; margin-top: auto; }
+  .steps li { display: grid; grid-template-columns: 28px 1fr; gap: 12px; align-items: center; font-size: var(--text-sm); color: var(--ink); font-weight: 500; }
+  .step-n {
+    display: grid; place-items: center;
+    width: 28px; height: 28px;
+    border-radius: var(--radius-control);
+    border: 1px solid var(--line-2);
+    background: var(--surface-2);
+    color: var(--ink-2);
+    font-size: var(--text-xs);
+  }
+
+  /* Workflow: before → after */
+  .cell-flow { background: var(--surface-2); }
+  .flow { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .flow-col { display: grid; gap: 6px; justify-items: start; }
+  .flow-label { font-size: var(--text-xs); color: var(--ink-3); margin-bottom: 2px; }
+  .flow-chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 10px;
+    border-radius: var(--radius-control);
+    border: 1px dashed var(--line-2);
+    font-size: var(--text-sm);
+    color: var(--ink-3);
+    background: var(--surface);
+  }
+  .flow-chip.is-after { border-style: solid; border-color: var(--accent-line); color: var(--accent); font-weight: 500; }
+  .flow :global(.flow-arrow) { color: var(--ink-3); }
+
+  /* Cost: one compact line, height matches its content */
+  .cell-cost {
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 6px 16px;
+    padding-block: 22px;
+  }
+  .cost-icon {
+    grid-row: span 2;
+    display: grid; place-items: center;
+    width: 44px; height: 44px;
+    border-radius: var(--radius-control);
+    border: 1px solid var(--line-2);
+    background: var(--surface-2);
+    color: var(--ink);
+  }
+  .cell-cost h3 { font-size: var(--text-lg); letter-spacing: -0.015em; }
+  .cell-cost p { color: var(--ink-2); grid-column: 2; }
+  @media (min-width: 760px) {
+    .cell-cost { grid-template-columns: auto auto 1fr; }
+    .cost-icon { grid-row: auto; }
+    .cell-cost p { grid-column: auto; }
+  }
+
+  @media (max-width: 559px) {
+    .hw { grid-template-columns: 1fr; gap: 16px; }
+    .hw-wires { display: none; }
+    .hw-devices { grid-template-columns: repeat(3, auto); justify-content: start; gap: 16px; }
+    .hw-devices li { flex-direction: column; align-items: flex-start; gap: 6px; font-size: var(--text-xs); }
+    .hw-app { flex-direction: row; justify-content: flex-start; }
+  }
+
+  @media (min-width: 900px) {
+    .bento { grid-template-columns: repeat(6, 1fr); }
+    .cell-hw { grid-column: span 4; }
+    .cell-site { grid-column: span 2; }
+    .cell-flow { grid-column: span 6; grid-template-columns: 1fr auto; align-items: center; align-content: center; }
+    .cell-cost { grid-column: span 6; }
+  }
+</style>

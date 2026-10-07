@@ -8,15 +8,15 @@ function collectErrors(page: Page) {
 }
 
 for (const [path, lang, heading] of [
-  ['/', 'id', 'Kami bikin software'],
-  ['/en/', 'en', 'We build software'],
+  ['/', 'id', 'Dari kertas dan Excel'],
+  ['/en/', 'en', 'From paper and spreadsheets'],
 ] as const) {
   test(`${path} renders in ${lang}`, async ({ page }) => {
     const errors = collectErrors(page);
     await page.goto(path);
     await expect(page.locator('html')).toHaveAttribute('lang', lang);
     await expect(page.locator('h1')).toContainText(heading);
-    for (const id of ['projects', 'services', 'team', 'contact']) {
+    for (const id of ['demo', 'why', 'status', 'team', 'contact']) {
       await expect(page.locator(`#${id}`)).toBeVisible();
     }
     expect(errors).toEqual([]);
@@ -25,13 +25,14 @@ for (const [path, lang, heading] of [
 
 test('project status labels match reality', async ({ page }) => {
   await page.goto('/');
-  const items = page.locator('#projects .item');
+  const items = page.locator('#status .item');
   await expect(items).toHaveCount(3);
   await expect(items.nth(0)).toContainText('Sistem Inventaris');
   await expect(items.nth(0)).toContainText('Dipakai klien');
   await expect(items.nth(1)).toContainText('Uji coba internal');
   await expect(items.nth(2)).toContainText('Dalam pengembangan');
-  await expect(items.nth(2)).not.toContainText(/sekolah|SMP|SMA/i);
+  // RFID names who it is for, never a site it runs at.
+  await expect(items.nth(2)).not.toContainText(/dipasang di|dipakai di|terpasang|klien/i);
 });
 
 test('WhatsApp links use wa.me with a prefilled message', async ({ page }) => {
@@ -48,21 +49,43 @@ test('language switch keeps the section hash', async ({ page }) => {
   await expect(page).toHaveURL(/\/en\/#team$/);
 });
 
-test('reduced motion shows the final demo frame and does not animate', async ({ browser }) => {
-  const ctx = await browser.newContext({ reducedMotion: 'reduce' });
-  const page = await ctx.newPage();
+test('inventory demo takes stock out and logs it', async ({ page }) => {
   await page.goto('/');
-  const rfid = page.locator('[data-panel="rfid"]');
-  await expect(rfid).toHaveAttribute('data-on', 'card read row');
-  await page.waitForTimeout(1500);
-  await expect(rfid).toHaveAttribute('data-on', 'card read row');
-  await ctx.close();
+  const row = page.locator('[data-row="0"]');
+  await expect(row.locator('[data-qty]')).toHaveText('42');
+  await row.locator('[data-delta="-1"]').click();
+  await row.locator('[data-delta="-1"]').click();
+  await expect(row.locator('[data-qty]')).toHaveText('40');
+  await expect(page.locator('[data-inv-log] li').first()).toContainText('Kertas A4 80 gsm');
+  await expect(page.locator('[data-inv-log] li').first()).toContainText('2 rim');
 });
 
-test('demo panels advance together', async ({ page }) => {
+test('inventory search filters and shows an empty state', async ({ page }) => {
   await page.goto('/');
-  // Within one 6s loop every panel reaches its last step.
-  await expect(page.locator('[data-panel="rfid"]')).toHaveAttribute('data-on', /row/, { timeout: 7000 });
-  await expect(page.locator('[data-panel="inventory"]')).toHaveAttribute('data-on', /log/, { timeout: 7000 });
-  await expect(page.locator('[data-panel="booth"]')).toHaveAttribute('data-on', /done/, { timeout: 7000 });
+  await page.fill('[data-inv-search]', 'lakban');
+  await expect(page.locator('tr[data-row]:visible')).toHaveCount(1);
+  await page.fill('[data-inv-search]', 'zzz');
+  await expect(page.locator('[data-inv-empty]')).toBeVisible();
+});
+
+test('RFID tab: keyboard tab switch, tap adds attendance', async ({ page }) => {
+  await page.goto('/');
+  await page.locator('#tab-inventory').focus();
+  await page.keyboard.press('ArrowRight');
+  await expect(page.locator('#tab-rfid')).toHaveAttribute('aria-selected', 'true');
+  await expect(page.locator('#panel-rfid')).toBeVisible();
+  await page.click('[data-tap]');
+  await expect(page.locator('[data-count]')).toHaveText('4');
+  await expect(page.locator('[data-roll] li').first()).toContainText('Rani Aulia');
+});
+
+test('NgeBooth session fills the strip (reduced motion runs instantly)', async ({ browser }) => {
+  const ctx = await browser.newContext({ reducedMotion: 'reduce' });
+  const page = await ctx.newPage();
+  await page.goto('/en/');
+  await page.click('#tab-booth');
+  await page.click('[data-booth-start]');
+  await expect(page.locator('.strip-frame.is-filled')).toHaveCount(4);
+  await expect(page.locator('[data-vf]')).toHaveText('Strip ready to print');
+  await ctx.close();
 });

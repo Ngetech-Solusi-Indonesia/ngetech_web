@@ -1,47 +1,145 @@
 {
   "meta": {
-    "title": "Ngetech Solusi Indonesia: software for operations, events and business",
-    "description": "A software team in Bandung. We build an inventory system, RFID attendance, and the NgeBooth photobooth app."
+    "title": "Ngetech Solusi Indonesia: software and hardware for businesses in Bandung",
+    "description": "A software team in Bandung. We build apps around how you work: an inventory system, RFID attendance, and the NgeBooth photobooth."
   },
   "nav": {
-    "projects": "Projects",
-    "services": "Services",
+    "demo": "Products",
+    "why": "Why us",
+    "status": "Status",
     "team": "Team",
-    "contact": "Contact",
-    "cta": "WhatsApp us",
-    "skip": "Skip to content"
+    "cta": "Chat on WhatsApp",
+    "skip": "Skip to content",
+    "language": "Language"
   },
   "hero": {
-    "title": "We build software for operations, events and businesses in Bandung.",
-    "sub": "An inventory system, RFID card attendance, and a photobooth app. Built by a team of five, from design through maintenance.",
+    "title": "From paper and spreadsheets to one tidy system.",
+    "sub": "A software team in Bandung. We build apps around how you work, including the hardware: card readers, cameras, printers.",
     "cta": "Chat on WhatsApp",
-    "secondary": "See projects",
-    "demoLabel": "A preview of our three products, running in sync",
-    "demoNote": "Animation with sample data, not client data."
+    "secondary": "See product status",
+    "demoNote": "Interactive demo with sample data. Go ahead and try it."
   },
-  "demo": {
-    "rfid": {
-      "title": "RFID attendance",
-      "head": "Main gate · Monday",
-      "tap": "Card read",
-      "present": "present"
-    },
+  "app": {
+    "label": "Ngetech app demo",
+    "products": "Products",
     "inventory": {
-      "title": "Inventory",
-      "head": "Stock · Warehouse A",
+      "tab": "Inventory",
+      "title": "Stock",
+      "search": "Search items",
       "colItem": "Item",
-      "colQty": "Qty",
+      "colPlace": "Location",
+      "colQty": "Stock",
+      "out": "Take out 1",
+      "in": "Add 1",
+      "low": "Low",
+      "log": "Activity",
+      "logOut": "out",
+      "logIn": "in",
+      "empty": "No matching items.",
       "items": [
-        "A4 paper (ream)",
-        "Black printer ink",
-        "Cat6 LAN cable (m)"
+        {
+          "name": "A4 paper 80 gsm",
+          "unit": "ream",
+          "place": "Warehouse",
+          "qty": 42
+        },
+        {
+          "name": "Black printer ink",
+          "unit": "bottle",
+          "place": "Shelf 2",
+          "qty": 7
+        },
+        {
+          "name": "Plastic folders",
+          "unit": "pcs",
+          "place": "Shelf 1",
+          "qty": 130
+        },
+        {
+          "name": "Brown envelopes",
+          "unit": "pack",
+          "place": "Warehouse",
+          "qty": 18
+        },
+        {
+          "name": "Clear tape",
+          "unit": "roll",
+          "place": "Shelf 3",
+          "qty": 4
+        }
       ],
-      "log": "Out 2 reams · A4 paper"
+      "seedLog": [
+        {
+          "name": "Clear tape",
+          "delta": -1,
+          "time": "08:47"
+        },
+        {
+          "name": "Black printer ink",
+          "delta": -2,
+          "time": "08:30"
+        },
+        {
+          "name": "Brown envelopes",
+          "delta": 10,
+          "time": "08:21"
+        },
+        {
+          "name": "Plastic folders",
+          "delta": -20,
+          "time": "08:12"
+        },
+        {
+          "name": "A4 paper 80 gsm",
+          "delta": 50,
+          "time": "07:55"
+        }
+      ]
+    },
+    "rfid": {
+      "tab": "RFID attendance",
+      "title": "Today's attendance",
+      "reader": "Card reader, main gate",
+      "tap": "Tap card",
+      "waiting": "Waiting for a card",
+      "read": "Card read",
+      "present": "Present",
+      "of": "of",
+      "reset": "Reset",
+      "full": "Everyone is in.",
+      "seed": [
+        {
+          "name": "Nadia Putri",
+          "time": "07:06"
+        },
+        {
+          "name": "Bagas Ramadhan",
+          "time": "07:03"
+        },
+        {
+          "name": "Fikri Hidayat",
+          "time": "06:58"
+        }
+      ],
+      "queue": [
+        "Rani Aulia",
+        "Dimas Prasetyo",
+        "Salsabila Rahma",
+        "Yoga Pratama",
+        "Intan Maharani",
+        "Rizky Firmansyah"
+      ]
     },
     "booth": {
-      "title": "NgeBooth",
-      "head": "Session #031",
-      "done": "Strip ready to print"
+      "tab": "NgeBooth",
+      "title": "Photo session",
+      "layout": "4-photo strip",
+      "start": "Start session",
+      "again": "New session",
+      "ready": "Ready",
+      "done": "Strip ready to print",
+      "frame": "Photo",
+      "note": "Sample frames. Real NgeBooth photos coming soon."
     }
   },
   "status": {
@@ -49,78 +147,81 @@
     "internal_testing": "Internal testing",
     "in_development": "In development"
   },
+  "why": {
+    "title": "What you get with Ngetech",
+    "items": [
+      {
+        "title": "Software and hardware, one team",
+        "body": "We install RFID card readers, cameras and printers ourselves and connect them to the app. You don't have to manage two vendors."
+      },
+      {
+        "title": "We come to you",
+        "body": "Our team is in Bandung. We come on site to install, then train the people who will use it."
+      },
+      {
+        "title": "Built around your workflow",
+        "body": "We first learn how you work today, then build the app to follow that flow."
+      },
+      {
+        "title": "Priced for small businesses",
+        "body": "Project scope and cost are sized to your business."
+      }
+    ],
+    "hw": [
+      "RFID reader",
+      "Camera",
+      "Printer",
+      "Your app"
+    ],
+    "before": "Before",
+    "after": "After",
+    "beforeItems": [
+      "Notebooks",
+      "Excel files",
+      "Manual tallies"
+    ],
+    "afterItem": "One app",
+    "siteSteps": [
+      "Install the hardware and app at your site",
+      "Train the people who will use it"
+    ]
+  },
   "projects": {
-    "label": "Projects",
-    "title": "What we're working on",
-    "intro": "Three products, each with its actual status today.",
+    "title": "Where our products stand, honestly",
+    "sub": "As of today.",
+    "colProduct": "Product",
+    "colFor": "For",
+    "colStatus": "Status",
     "inventory": {
       "name": "Inventory System",
-      "desc": "A web app for recording goods coming in and going out. A client uses it every day.",
-      "points": [
-        "Record stock in and out",
-        "Stock history per item",
-        "Runs in the browser, nothing to install"
-      ]
+      "desc": "Record stock in and out, see what's left at each location.",
+      "for": "Businesses that hold stock"
     },
     "ngebooth": {
       "name": "NgeBooth",
-      "desc": "A photobooth app for events. Take photos, lay them out as a strip, then print.",
-      "points": [
-        "Countdown and automatic capture",
-        "Photo strip layout",
-        "Being tested in-house"
-      ]
+      "desc": "Photobooth app: take photos, lay out a strip, print.",
+      "for": "Events"
     },
     "rfid": {
       "name": "RFID Attendance",
-      "desc": "Tap a card on the reader and attendance shows up on the dashboard.",
-      "points": [
-        "RFID card reader",
-        "Daily attendance summary",
-        "Not yet installed at a client site"
-      ]
+      "desc": "Tap a card on the reader and attendance is recorded.",
+      "for": "Schools and offices"
     }
   },
-  "services": {
-    "label": "Services",
-    "title": "What we can help with",
-    "items": [
-      {
-        "title": "Web apps and dashboards",
-        "body": "For operational work that still lives on paper or in a spreadsheet."
-      },
-      {
-        "title": "Software that talks to hardware",
-        "body": "RFID readers, cameras and printers, connected to the app you use."
-      },
-      {
-        "title": "Event apps",
-        "body": "A photobooth and other tools that run for one day and can't break on that day."
-      },
-      {
-        "title": "Maintenance after launch",
-        "body": "Bug fixes and updates once the app is in use."
-      }
-    ]
-  },
   "team": {
-    "label": "Team",
-    "title": "Five people in Bandung",
-    "intro": "You talk directly to the people building your project."
+    "title": "Our team",
+    "sub": "Five people in Bandung. You talk directly to the people building your project."
   },
   "contact": {
-    "label": "Contact",
-    "title": "Got something to build?",
-    "body": "Tell us what you need on WhatsApp or by email. You don't need a full spec yet.",
-    "wa": "Chat on WhatsApp",
+    "title": "Tell us what you want to tidy up.",
+    "body": "Send us a WhatsApp message. No full spec needed, just describe the problem.",
+    "cta": "Chat on WhatsApp",
     "waText": "Hi Ngetech, I'd like to talk about a project.",
-    "email": "Email",
-    "location": "Location",
-    "locationValue": "Bandung, Indonesia"
+    "orEmail": "Or email",
+    "location": "Bandung, Indonesia"
   },
   "footer": {
     "rights": "All rights reserved.",
-    "github": "GitHub",
-    "language": "Language"
+    "github": "GitHub"
   }
 }

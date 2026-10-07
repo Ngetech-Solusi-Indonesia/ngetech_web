@@ -5,13 +5,9 @@ const { locale, label } = Astro.props;
 ---
 <nav class="lang" aria-label={label}>
   {locales.map((l) => (
-    <a
-      href={pathFor(l)}
-      hreflang={l}
-      lang={l}
-      aria-current={l === locale ? 'true' : undefined}
-      data-lang-link
-    >{l.toUpperCase()}</a>
+    <a href={pathFor(l)} hreflang={l} lang={l} aria-current={l === locale ? 'true' : undefined} data-lang-link>
+      {l.toUpperCase()}
+    </a>
   ))}
 </nav>
 
@@ -27,21 +23,24 @@ const { locale, label } = Astro.props;
 <style>
   .lang {
     display: inline-flex;
-    font-family: var(--font-mono);
-    font-size: var(--step--2);
-    letter-spacing: 0.06em;
-    border: 1px solid var(--line-strong);
-    border-radius: var(--radius);
-    overflow: hidden;
+    padding: 2px;
+    gap: 2px;
+    border-radius: var(--radius-control);
+    background: var(--surface-2);
+    font-size: 0.75rem;
+    font-weight: 500;
   }
   a {
-    padding: 6px 9px;
-    min-width: 36px;
-    text-align: center;
+    display: grid;
+    place-items: center;
+    min-width: 32px;
+    height: 28px;
+    padding: 0 6px;
+    border-radius: 6px;
     text-decoration: none;
     color: var(--ink-3);
+    transition: color 150ms ease, background-color 150ms ease;
   }
-  a + a { border-left: 1px solid var(--line-strong); }
-  a[aria-current] { color: var(--ink); background: var(--surface-2); }
-  a:hover:not([aria-current]) { color: var(--ink); }
+  a:hover { color: var(--ink); }
+  a[aria-current] { color: var(--ink); background: var(--surface); box-shadow: 0 1px 2px rgb(0 0 0 / 0.08); }
 </style>

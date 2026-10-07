@@ -23,4 +23,10 @@ In the cloud dev container, Playwright needs `CHROMIUM_PATH=/opt/pw-browsers/chr
 ## Before launch
 Fill every `TODO_` (run `pnpm check:content` to list them), then regenerate the OG image if the headline changed.
 
+Design system: `DESIGN.md` (+ `.impeccable/design.json`); product truth: `PRODUCT.md`; direction contract: `.impeccable/surfaces/`.
+
+After regenerating `og.png` / `favicon-32.png`, re-embed their origin with impeccable's `embed-prompt` (see `.impeccable/surfaces/`), or note how they were made.
+
+NgeBooth photos: put four images in `public/ngebooth/` and list them in `src/data/ngebooth.ts`; the demo strip uses them automatically.
+
 Docs: `docs/superpowers/specs/` (design spec), `docs/superpowers/plans/` (implementation plan), `docs/qa-2026-10-07.md`.
